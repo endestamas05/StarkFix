@@ -1,6 +1,6 @@
 /* Theme variables - Light mode (default) */
 :root {
-    --body-bg: #ffffff;
+    --body-bg: #10151b;
     --text-color: #212529;
     --navbar-bg: #1565c0;
     --navbar-color: #e3f2fd;
@@ -9,7 +9,6 @@
     --modal-bg: #ffffff;
     --modal-color: #212529;
     --section-shadow: rgba(0, 0, 0, 0.1);
-    --section-bg: linear-gradient(135deg, #85d0ffcc 60%, #1565c0 100%);
     --secondary-text: #6c757d;
     --border-color: #dee2e6;
     --header-bg: linear-gradient(135deg, #85d0ffcc 60%, #1565c0 100%);
@@ -21,7 +20,7 @@
 
 /* Dark mode variables */
 [data-theme="dark"] {
-    --body-bg: #10151b;
+    --body-bg: #ffffff;
     --text-color: #e3f2fd;
     --navbar-bg: #1565c0;
     --navbar-color: #e3f2fd;
@@ -30,7 +29,6 @@
     --modal-bg: #18202a;
     --modal-color: #e3f2fd;
     --section-shadow: rgba(0, 0, 0, 0.5);
-    --section-bg: linear-gradient(135deg, #222c38 60%, #1565c0 100%);
     --secondary-text: #adb5bd;
     --border-color: #444444;
     --header-bg: linear-gradient(135deg, #222c38 60%, #1565c0 100%);
@@ -62,7 +60,6 @@ body {
 /* Navbar */
 .navbar {
     background-color: var(--navbar-bg);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -102,7 +99,7 @@ body {
 }
 /* Theme toggle button */
 .theme-toggle {
-    background-color: var(--body-bg);
+    background-color: var(--modal-bg);
     border: none;
     cursor: pointer;
     padding: 0.5rem;
@@ -119,13 +116,10 @@ body {
 
 /* Section styling */
 section {
-    padding: 3rem 0;
-    margin: 1rem 0;
-    background: var(--section-bg);
-    border-radius: 1.5rem;
-    box-shadow: 0 2px 16px var(--section-shadow);
+    padding: 4rem !important;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
-
 /* Cards */
 .card {
     background-color: var(--card-bg);
@@ -175,16 +169,12 @@ section {
 }
 
 /* Contact section */
-.contact-section {
-    background: var(--section-bg);
-}
 .contact-info {
     margin-top: 1rem;
-    background: var(--body-bg);
+    background: var(--card-bg);
     color: var(--text-color);
     border-radius: 1rem;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 2px 16px var(--section-shadow);
+    box-shadow: 0 8px 32px var(--primary-color);
 }
 .contact-info p {
     margin-bottom: 0.5rem;
@@ -225,11 +215,39 @@ section {
     background-color: var(--card-bg) !important;
 }
 
+/* Pasztell színek világos módhoz - kékes irány */
+.about-section {
+    background: #f6f8fc;
+    margin-top: 0;
+}
+.services-section {
+    background: #e3f2fd;
+}
+.references-section {
+    background: #d6ecf8;
+}
+.contact-section {
+    background: #e1e7f9;
+}
+
+/* Pasztell színek sötét módhoz - kékes irány */
+[data-theme="dark"] .about-section {
+    background: #232b39;
+}
+[data-theme="dark"] .services-section {
+    background: #1b263b;
+}
+[data-theme="dark"] .references-section {
+    background: #223c4a;
+}
+[data-theme="dark"] .contact-section {
+    background: #232b58;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     section {
-        padding: 2rem 1rem;
-        border-radius: 0.7rem;
+        padding: 2rem 1rem !important;
     }
     .reference-card .card-img-top {
         height: 140px;
@@ -312,7 +330,7 @@ nav {
     position: static;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(0, 0, 0, 0.4);
+    background: #1565c0bb;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -361,22 +379,25 @@ nav {
     bottom: 1.5rem;
     display: flex;
     gap: 0.5rem;
-    z-index: 11; /* legyen a háromszög felett */
 }
 
-/* Háromszög háttér a jobb alsó sarokban */
-.carousel-controls-custom::before {
-    content: "";
-    position: absolute;
-    right: -2rem;
-    bottom: -2rem;
-    /* width és height NEM kell! */
-    z-index: -1;
-    /* Derékszögű háromszög */
-    border-bottom: 14rem solid #1565c0bb;
-    border-left: 14rem solid transparent;
-    border-top: 0;
-    border-right: 0;
-    border-radius: 0 0 0 2rem;
-    pointer-events: none;
+.reference-card .card-img-top {
+    width: 100%;
+    height: 220px; /* vagy nagyobb, pl. 250px, 300px */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1rem 1rem 0 0;
+}
+@media (max-width: 768px) {
+    .reference-card .card-img-top {
+        height: 160px; /* mobilon is legyen nagyobb */
+    }
+}
+
+.reference-main {
+    background-color: #ffffff;
+}
+
+[data-theme="dark"] .reference-main {
+    background-color: #10151b;
 }
