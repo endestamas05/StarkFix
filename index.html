@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>StarkFix Árnyékolástechnika</title>
         <!-- Bootstrap -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <style></style>
@@ -25,15 +29,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link p-2" href="#about">Rólunk</a></li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#services">Szolgáltatások</a>
+                            <a class="nav-link p-2" href="#about">Rólunk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="references.html">Referenciák</a>
+                            <a class="nav-link p-2" href="#services"
+                                >Szolgáltatások</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#contact">Kapcsolat</a>
+                            <a class="nav-link p-2" href="references.html"
+                                >Referenciák</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="#contact"
+                                >Kapcsolat</a
+                            >
                         </li>
                     </ul>
                     <button
@@ -49,11 +61,98 @@
         </nav>
 
         <!-- Header -->
-        <header>
-            <h1>StarkFix Árnyékolástechnika</h1>
-            <p class="lead">Modern, megbízható árnyékolástechnikai megoldások Ausztriában</p>
+        <header
+            id="hero-reference"
+            class="d-flex flex-column justify-content-center align-items-center"
+        >
+            <div
+                id="heroCarousel"
+                class="carousel slide w-100 h-100 position-relative"
+                data-bs-ride="carousel"
+                data-bs-interval="8000"
+            >
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active h-100">
+                        <img
+                            src="images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp"
+                            class="d-block w-100 hero-img"
+                            alt="Referencia 1"
+                        />
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img
+                            src="images/images.jpeg"
+                            class="d-block w-100 hero-img"
+                            alt="Referencia 2"
+                        />
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img
+                            src="images/loggia-szajko-arnyekolas-veszprem.jpg"
+                            class="d-block w-100 hero-img"
+                            alt="Referencia 3"
+                        />
+                    </div>
+                </div>
+                <!-- Indikátorok bal alsó sarokban -->
+                <div class="carousel-indicators custom-indicators">
+                    <button
+                        type="button"
+                        data-bs-target="#heroCarousel"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="1. kép"
+                    ></button>
+                    <button
+                        type="button"
+                        data-bs-target="#heroCarousel"
+                        data-bs-slide-to="1"
+                        aria-label="2. kép"
+                    ></button>
+                    <button
+                        type="button"
+                        data-bs-target="#heroCarousel"
+                        data-bs-slide-to="2"
+                        aria-label="3. kép"
+                    ></button>
+                </div>
+                <!-- Léptetők jobb alsó sarokban -->
+                <div class="carousel-controls-custom">
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#heroCarousel"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Előző</span>
+                    </button>
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#heroCarousel"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            class="carousel-control-next-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Következő</span>
+                    </button>
+                </div>
+            </div>
+            <div
+                class="hero-caption text-center text-white position-absolute w-100"
+                style="top: 0; left: 0"
+            >
+                <h1 class="display-4 fw-bold">StarkFix Austria</h1>
+                <p class="fix-for-you">Fix for you</p>
+            </div>
         </header>
-        <div class="section-divider"></div>
 
         <!-- About Section -->
         <section id="about" class="container about-section shadow">
@@ -61,10 +160,12 @@
                 <div class="col-lg-6 text-center text-lg-start">
                     <h2 class="mb-3">Rólunk</h2>
                     <p>
-                        A StarkFix egy Ausztriában működő árnyékolástechnikai cég. Fő célunk, hogy
-                        otthonát vagy munkahelyét kényelmesebbé, energiatakarékosabbá és
-                        esztétikusabbá tegyük modern árnyékoló rendszereinkkel. Szakértelmünk és
-                        precizitásunk garantálja a minőséget minden projektben.
+                        A StarkFix egy Ausztriában működő árnyékolástechnikai
+                        cég. Fő célunk, hogy otthonát vagy munkahelyét
+                        kényelmesebbé, energiatakarékosabbá és esztétikusabbá
+                        tegyük modern árnyékoló rendszereinkkel. Szakértelmünk
+                        és precizitásunk garantálja a minőséget minden
+                        projektben.
                     </p>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
@@ -132,8 +233,6 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
-
         <!-- Services Section with Cards -->
         <section id="services" class="container services-section shadow">
             <h2 class="mb-4 text-center">Szolgáltatásaink</h2>
@@ -148,8 +247,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Redőnyök</h5>
                             <p class="card-text">
-                                Modern, energiatakarékos redőnyök felszerelése és javítása családi
-                                házakban és irodákban.
+                                Modern, energiatakarékos redőnyök felszerelése
+                                és javítása családi házakban és irodákban.
                             </p>
                         </div>
                     </div>
@@ -164,8 +263,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Napellenzők</h5>
                             <p class="card-text">
-                                Kültéri és beltéri napellenzők tervezése, kivitelezése, javítása,
-                                automatizálása.
+                                Kültéri és beltéri napellenzők tervezése,
+                                kivitelezése, javítása, automatizálása.
                             </p>
                         </div>
                     </div>
@@ -180,19 +279,22 @@
                         <div class="card-body">
                             <h5 class="card-title">Szúnyoghálók</h5>
                             <p class="card-text">
-                                Praktikus, tartós szúnyoghálók ablakokra és ajtókra, egyedi méretben
-                                is.
+                                Praktikus, tartós szúnyoghálók ablakokra és
+                                ajtókra, egyedi méretben is.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
-
         <!-- References Section as Cards -->
-        <section id="references" class="container references-section shadow py-5">
-            <h2 class="mb-4 text-center fw-bold references-title">Referenciák</h2>
+        <section
+            id="references"
+            class="container references-section shadow py-5"
+        >
+            <h2 class="mb-4 text-center fw-bold references-title">
+                Referenciák
+            </h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
                     <div
@@ -200,22 +302,22 @@
                         data-bs-toggle="modal"
                         data-bs-target="#referenceModal"
                         data-title="Családi ház árnyékolás"
-                        data-images="../images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp,
-                        ../images/images.jpeg,
-                        ../images/loggia-szajko-arnyekolas-veszprem.jpg,
-                        ../images/szajko-arnyekolastechina-veszprem.jpg"
+                        data-images="images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp,
+                        images/images.jpeg,
+                        images/loggia-szajko-arnyekolas-veszprem.jpg,
+                        images/szajko-arnyekolastechina-veszprem.jpg"
                         data-desc="Modern redőnyök és szúnyoghálók felszerelése egy bécsi családi házban."
                     >
                         <img
-                            src="../images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp"
+                            src="images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp"
                             class="card-img-top"
                             alt="Referencia 1"
                         />
                         <div class="card-body">
                             <h5 class="card-title">Családi ház árnyékolás</h5>
                             <p class="card-text text-secondary">
-                                Modern redőnyök és szúnyoghálók felszerelése egy bécsi családi
-                                házban.
+                                Modern redőnyök és szúnyoghálók felszerelése egy
+                                bécsi családi házban.
                             </p>
                         </div>
                     </div>
@@ -237,7 +339,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Irodaépület napellenző</h5>
                             <p class="card-text text-secondary">
-                                Automatizált napellenző rendszer telepítése egy modern irodaházban.
+                                Automatizált napellenző rendszer telepítése egy
+                                modern irodaházban.
                             </p>
                         </div>
                     </div>
@@ -259,7 +362,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Terasz árnyékolás</h5>
                             <p class="card-text text-secondary">
-                                Kültéri árnyékoló megoldás egy osztrák családi ház teraszán.
+                                Kültéri árnyékoló megoldás egy osztrák családi
+                                ház teraszán.
                             </p>
                         </div>
                     </div>
@@ -268,7 +372,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="text-center mt-4">
-                        <a href="/references" class="btn btn-primary btn-lg"
+                        <a href="references.html" class="btn btn-primary btn-lg"
                             >További referenciák megtekintése</a
                         >
                     </div>
@@ -296,8 +400,15 @@
                         ></button>
                     </div>
                     <div class="modal-body text-center">
-                        <div id="referenceCarousel" class="carousel slide" data-bs-ride="false">
-                            <div class="carousel-inner" id="referenceCarouselInner">
+                        <div
+                            id="referenceCarousel"
+                            class="carousel slide"
+                            data-bs-ride="false"
+                        >
+                            <div
+                                class="carousel-inner"
+                                id="referenceCarouselInner"
+                            >
                                 <!-- Slides will be injected by JS -->
                             </div>
                             <button
@@ -306,7 +417,10 @@
                                 data-bs-target="#referenceCarousel"
                                 data-bs-slide="prev"
                             >
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span
+                                    class="carousel-control-prev-icon"
+                                    aria-hidden="true"
+                                ></span>
                                 <span class="visually-hidden">Előző</span>
                             </button>
                             <button
@@ -315,20 +429,27 @@
                                 data-bs-target="#referenceCarousel"
                                 data-bs-slide="next"
                             >
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span
+                                    class="carousel-control-next-icon"
+                                    aria-hidden="true"
+                                ></span>
                                 <span class="visually-hidden">Következő</span>
                             </button>
                         </div>
-                        <p id="referenceModalDesc" class="text-secondary mt-3"></p>
+                        <p
+                            id="referenceModalDesc"
+                            class="text-secondary mt-3"
+                        ></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section-divider"></div>
-
         <!-- Contact Section -->
-        <section id="contact" class="container-fluid contact-section shadow rounded-0 mb-0">
+        <section
+            id="contact"
+            class="container-fluid contact-section shadow rounded-0 mb-0"
+        >
             <h2 class="mb-3 text-center">Kapcsolat</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6 contact-info text-center">

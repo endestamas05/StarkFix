@@ -20,7 +20,7 @@
 }
 
 /* Dark mode variables */
-[data-theme='dark'] {
+[data-theme="dark"] {
     --body-bg: #10151b;
     --text-color: #e3f2fd;
     --navbar-bg: #1565c0;
@@ -56,7 +56,7 @@ svg rect {
 body {
     background-color: var(--body-bg);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Navbar */
@@ -115,36 +115,6 @@ body {
 
 .theme-toggle:hover {
     background-color: var(--text-color);
-}
-
-/* Header */
-header {
-    background: var(--header-bg);
-    padding: 4rem 1rem 3rem 1rem;
-    text-align: center;
-    color: var(--header-color);
-    position: relative;
-    overflow: hidden;
-    border-radius: 0 0 2rem 2rem;
-    box-shadow: 0 4px 32px #1565c01a;
-}
-header h1 {
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 4px 24px #0001;
-}
-.section-divider {
-    width: 100%;
-    height: 40px;
-    background: repeating-linear-gradient(
-        90deg,
-        var(--primary-color) 0px,
-        var(--primary-color) 12px,
-        var(--primary-color-light) 12px,
-        var(--primary-color-light) 24px
-    );
-    opacity: 0.3;
-    margin: 2rem 0;
 }
 
 /* Section styling */
@@ -257,10 +227,6 @@ section {
 
 /* Responsive */
 @media (max-width: 768px) {
-    header {
-        padding: 3rem 1rem;
-        border-radius: 0 0 1rem 1rem;
-    }
     section {
         padding: 2rem 1rem;
         border-radius: 0.7rem;
@@ -268,4 +234,149 @@ section {
     .reference-card .card-img-top {
         height: 140px;
     }
+}
+
+nav {
+    min-height: 8vh;
+}
+
+#hero-reference {
+    height: 92vh;
+    width: 100%;
+    position: relative;
+    background: #222;
+    overflow: hidden;
+}
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.7;
+    transition: transform 8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-caption {
+    position: relative;
+    z-index: 2;
+    padding-top: 30vh;
+    padding-bottom: 10vh;
+    text-shadow: 0 2px 8px #000a;
+}
+/* Mobil optimalizálás */
+@media (max-width: 768px) {
+    #hero-reference {
+        height: 90vh;
+    }
+    nav {
+        min-height: 10vh;
+    }
+    .hero-caption {
+        padding-top: 20vh;
+        padding-bottom: 5vh;
+    }
+    .hero-caption h1 {
+        font-size: 2rem;
+    }
+    .hero-caption p {
+        font-size: 1rem;
+    }
+}
+
+.fix-for-you {
+    font-family: "Pacifico", cursive;
+    font-style: normal;
+    transform: rotate(-5deg);
+    display: inline-block;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    color: #fff;
+    text-shadow: 0 2px 8px #000a;
+}
+
+/* Carousel indikátorok bal alsó sarokban */
+.carousel-indicators.custom-indicators {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    right: auto;
+    top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 10;
+    justify-content: flex-start;
+}
+
+/* Carousel léptetők jobb alsó sarokban */
+.carousel-controls-custom .carousel-control-prev,
+.carousel-controls-custom .carousel-control-next {
+    position: static;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    opacity: 1;
+    transition: background 0.2s;
+}
+.carousel-controls-custom .carousel-control-prev:hover,
+.carousel-controls-custom .carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Kis pontok stílusa */
+.carousel-indicators [data-bs-target] {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.9;
+    border: none;
+    margin: 0 0.2rem;
+    transition: opacity 0.2s;
+}
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: var(--navbar-bg);
+}
+
+.carousel-item .hero-img {
+    transform: scale(1);
+}
+
+.carousel-item.active .hero-img {
+    transform: scale(1.2);
+}
+
+.carousel-controls-custom {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 11; /* legyen a háromszög felett */
+}
+
+/* Háromszög háttér a jobb alsó sarokban */
+.carousel-controls-custom::before {
+    content: "";
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    /* width és height NEM kell! */
+    z-index: -1;
+    /* Derékszögű háromszög */
+    border-bottom: 14rem solid #1565c0bb;
+    border-left: 14rem solid transparent;
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0 0 0 2rem;
+    pointer-events: none;
 }
