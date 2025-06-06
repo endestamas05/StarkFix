@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>StarkFix Árnyékolástechnika</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <style></style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">StarkFix</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link p-2" href="#about">Rólunk</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="#services">Szolgáltatások</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="../html/references.html">Referenciák</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="#contact">Kapcsolat</a>
+                        </li>
+                    </ul>
+                    <button
+                        id="theme-toggle"
+                        class="btn nav-link theme-toggle rounded-circle"
+                        style="justify-self: center"
+                        aria-label="Téma váltása"
+                    >
+                        <span class="theme-icon">🌞</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <h1>StarkFix Árnyékolástechnika</h1>
+            <p class="lead">Modern, megbízható árnyékolástechnikai megoldások Ausztriában</p>
+        </header>
+        <div class="section-divider"></div>
+
+        <!-- About Section -->
+        <section id="about" class="container about-section shadow">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h2 class="mb-3">Rólunk</h2>
+                    <p>
+                        A StarkFix egy Ausztriában működő árnyékolástechnikai cég. Fő célunk, hogy
+                        otthonát vagy munkahelyét kényelmesebbé, energiatakarékosabbá és
+                        esztétikusabbá tegyük modern árnyékoló rendszereinkkel. Szakértelmünk és
+                        precizitásunk garantálja a minőséget minden projektben.
+                    </p>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <!-- Redőny minta SVG -->
+                    <svg
+                        width="100%"
+                        height="120"
+                        viewBox="0 0 400 120"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="theme-svg"
+                    >
+                        <rect
+                            x="10"
+                            y="10"
+                            width="380"
+                            height="100"
+                            rx="18"
+                            fill="var(--primary-color-light)"
+                            stroke="var(--primary-color)"
+                            stroke-width="4"
+                            class="svg-rect-bg"
+                        />
+                        <rect
+                            x="20"
+                            y="25"
+                            width="360"
+                            height="12"
+                            rx="4"
+                            fill="var(--primary-color)"
+                            opacity="0.7"
+                            class="svg-rect"
+                        />
+                        <rect
+                            x="20"
+                            y="45"
+                            width="360"
+                            height="12"
+                            rx="4"
+                            fill="var(--primary-color)"
+                            opacity="0.5"
+                            class="svg-rect"
+                        />
+                        <rect
+                            x="20"
+                            y="65"
+                            width="360"
+                            height="12"
+                            rx="4"
+                            fill="var(--primary-color)"
+                            opacity="0.7"
+                            class="svg-rect"
+                        />
+                        <rect
+                            x="20"
+                            y="85"
+                            width="360"
+                            height="12"
+                            rx="4"
+                            fill="var(--primary-color)"
+                            opacity="0.5"
+                            class="svg-rect"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- Services Section with Cards -->
+        <section id="services" class="container services-section shadow">
+            <h2 class="mb-4 text-center">Szolgáltatásaink</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-3">
+                        <img
+                            src="https://source.unsplash.com/random/400x200?roller-blind,window&sig=11"
+                            class="card-img-top rounded"
+                            alt="Redőnyök"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Redőnyök</h5>
+                            <p class="card-text">
+                                Modern, energiatakarékos redőnyök felszerelése és javítása családi
+                                házakban és irodákban.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-3">
+                        <img
+                            src="https://source.unsplash.com/random/400x200?awning,terrace&sig=12"
+                            class="card-img-top rounded"
+                            alt="Napellenzők"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Napellenzők</h5>
+                            <p class="card-text">
+                                Kültéri és beltéri napellenzők tervezése, kivitelezése, javítása,
+                                automatizálása.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-3">
+                        <img
+                            src="https://source.unsplash.com/random/400x200?insect-screen,window&sig=13"
+                            class="card-img-top rounded"
+                            alt="Szúnyoghálók"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Szúnyoghálók</h5>
+                            <p class="card-text">
+                                Praktikus, tartós szúnyoghálók ablakokra és ajtókra, egyedi méretben
+                                is.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- References Section as Cards -->
+        <section id="references" class="container references-section shadow py-5">
+            <h2 class="mb-4 text-center fw-bold references-title">Referenciák</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div
+                        class="card reference-card h-100 border-0"
+                        data-bs-toggle="modal"
+                        data-bs-target="#referenceModal"
+                        data-title="Családi ház árnyékolás"
+                        data-images="../images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp,
+                        ../images/images.jpeg,
+                        ../images/loggia-szajko-arnyekolas-veszprem.jpg,
+                        ../images/szajko-arnyekolastechina-veszprem.jpg"
+                        data-desc="Modern redőnyök és szúnyoghálók felszerelése egy bécsi családi házban."
+                    >
+                        <img
+                            src="../images/image_6a2978af13ee7aecfea3fbb008a42271.xl.webp"
+                            class="card-img-top"
+                            alt="Referencia 1"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Családi ház árnyékolás</h5>
+                            <p class="card-text text-secondary">
+                                Modern redőnyök és szúnyoghálók felszerelése egy bécsi családi
+                                házban.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div
+                        class="card reference-card h-100 border-0"
+                        data-bs-toggle="modal"
+                        data-bs-target="#referenceModal"
+                        data-title="Irodaépület napellenző"
+                        data-img="https://source.unsplash.com/random/800x500?blinds,architecture,blue&sig=22"
+                        data-desc="Automatizált napellenző rendszer telepítése egy modern irodaházban."
+                    >
+                        <img
+                            src="https://source.unsplash.com/random/400x250?blinds,architecture,blue&sig=22"
+                            class="card-img-top"
+                            alt="Referencia 2"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Irodaépület napellenző</h5>
+                            <p class="card-text text-secondary">
+                                Automatizált napellenző rendszer telepítése egy modern irodaházban.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div
+                        class="card reference-card h-100 border-0"
+                        data-bs-toggle="modal"
+                        data-bs-target="#referenceModal"
+                        data-title="Terasz árnyékolás"
+                        data-img="https://source.unsplash.com/random/800x500?curtain,office,light&sig=23"
+                        data-desc="Kültéri árnyékoló megoldás egy osztrák családi ház teraszán."
+                    >
+                        <img
+                            src="https://source.unsplash.com/random/400x250?curtain,office,light&sig=23"
+                            class="card-img-top"
+                            alt="Referencia 3"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">Terasz árnyékolás</h5>
+                            <p class="card-text text-secondary">
+                                Kültéri árnyékoló megoldás egy osztrák családi ház teraszán.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mt-4">
+                        <a href="/references" class="btn btn-primary btn-lg"
+                            >További referenciák megtekintése</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for image preview (body legvégén, section-ön kívül!) -->
+        <div
+            class="modal fade"
+            id="referenceModal"
+            tabindex="-1"
+            aria-labelledby="referenceModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="referenceModalLabel"></h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Bezárás"
+                        ></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div id="referenceCarousel" class="carousel slide" data-bs-ride="false">
+                            <div class="carousel-inner" id="referenceCarouselInner">
+                                <!-- Slides will be injected by JS -->
+                            </div>
+                            <button
+                                class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#referenceCarousel"
+                                data-bs-slide="prev"
+                            >
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Előző</span>
+                            </button>
+                            <button
+                                class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#referenceCarousel"
+                                data-bs-slide="next"
+                            >
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Következő</span>
+                            </button>
+                        </div>
+                        <p id="referenceModalDesc" class="text-secondary mt-3"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container-fluid contact-section shadow rounded-0 mb-0">
+            <h2 class="mb-3 text-center">Kapcsolat</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 contact-info text-center">
+                    <p><strong>Email:</strong> info@starkfix.at</p>
+                    <p><strong>Telefon:</strong> +43 123 456 789</p>
+                    <p><strong>Cím:</strong> Bécs, Ausztria</p>
+                    <p class="mt-3 text-secondary" style="font-size: 0.95rem">
+                        Kérdés esetén keressen minket bizalommal!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bootstrap JS -->
+        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../javascript/index.js"></script>
+    </body>
+</html>
