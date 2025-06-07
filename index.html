@@ -31,6 +31,9 @@
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
+                    aria-label="Navigáció megnyitása"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -122,18 +125,21 @@
                         class="active"
                         aria-current="true"
                         aria-label="1. kép"
+                        style="min-width: 48px; min-height: 48px; margin: 4px;"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="1"
                         aria-label="2. kép"
+                        style="min-width: 48px; min-height: 48px; margin: 4px;"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="2"
                         aria-label="3. kép"
+                        style="min-width: 48px; min-height: 48px; margin: 4px;"
                     ></button>
                 </div>
                 <!-- Léptetők jobb alsó sarokban -->
@@ -143,11 +149,10 @@
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide="prev"
+                        aria-label="Előző kép"
+                        style="min-width: 48px; min-height: 48px; margin: 4px;"
                     >
-                        <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Előző</span>
                     </button>
                     <button
@@ -155,11 +160,10 @@
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide="next"
+                        aria-label="Következő kép"
+                        style="min-width: 48px; min-height: 48px; margin: 4px;"
                     >
-                        <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Következő</span>
                     </button>
                 </div>
@@ -337,7 +341,7 @@
                             loading="lazy"
                         />
                         <div class="card-body">
-                            <h5 class="card-title">Linz kikötői zsaluziák</h5>
+                            <h3 class="card-title">Linz kikötői zsaluziák</h3>
                             <p class="card-text text-secondary">
                                 Zsalúziák felszerelése a Linz-i kikitő egyik
                                 épületére.
@@ -366,9 +370,9 @@
                             loading="lazy"
                         />
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h3 class="card-title">
                                 Zsaluzia speciális átalakítással
-                            </h5>
+                            </h3>
                             <p class="card-text text-secondary">
                                 Sodronyos vezetésű zsaluzia speciális
                                 átalakítással, Felső-Ausztriában.
@@ -395,7 +399,7 @@
                             loading="lazy"
                         />
                         <div class="card-body">
-                            <h5 class="card-title">Téli kert árnyékolás</h5>
+                            <h3 class="card-title">Téli kert árnyékolás</h3>
                             <p class="card-text text-secondary">
                                 Téli kert árnyékolás szerelése
                                 Felső-Ausztriában.
