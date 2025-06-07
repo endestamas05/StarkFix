@@ -125,21 +125,21 @@
                         class="active"
                         aria-current="true"
                         aria-label="1. kép"
-                        style="min-width: 48px; min-height: 48px; margin: 4px;"
+                        style="min-width: 15px; min-height: 15px; margin: 4px;"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="1"
                         aria-label="2. kép"
-                        style="min-width: 48px; min-height: 48px; margin: 4px;"
+                        style="min-width: 15px; min-height: 15px; margin: 4px;"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="2"
                         aria-label="3. kép"
-                        style="min-width: 48px; min-height: 48px; margin: 4px;"
+                        style="min-width: 15px; min-height: 15px; margin: 4px;"
                     ></button>
                 </div>
                 <!-- Léptetők jobb alsó sarokban -->
@@ -150,7 +150,7 @@
                         data-bs-target="#heroCarousel"
                         data-bs-slide="prev"
                         aria-label="Előző kép"
-                        style="min-width: 48px; min-height: 48px; margin: 4px;"
+                        style="min-width: 50px; min-height: 50px; margin: 4px;"
                     >
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Előző</span>
@@ -161,7 +161,7 @@
                         data-bs-target="#heroCarousel"
                         data-bs-slide="next"
                         aria-label="Következő kép"
-                        style="min-width: 48px; min-height: 48px; margin: 4px;"
+                        style="min-width: 50px; min-height: 50px; margin: 4px;"
                     >
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Következő</span>
@@ -450,9 +450,9 @@
                             >
                                 <!-- Slides will be injected by JS -->
                             </div>
-                            <div
-                                class="carousel-indicators custom-indicators"
-                            ></div>
+                            <div class="carousel-indicators custom-indicators">
+                                <!-- JS tölti fel, de a stílus egységes -->
+                            </div>
                             <!-- Léptetők jobb alsó sarokban -->
                             <div class="carousel-controls-custom">
                                 <button
@@ -460,11 +460,10 @@
                                     type="button"
                                     data-bs-target="#referenceCarousel"
                                     data-bs-slide="prev"
+                                    aria-label="Előző kép"
+                                    style="min-width: 50px; min-height: 50px; margin: 4px; display: flex; align-items: center; justify-content: center;"
                                 >
-                                    <span
-                                        class="carousel-control-prev-icon"
-                                        aria-hidden="true"
-                                    ></span>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 15px; height: 15px;"></span>
                                     <span class="visually-hidden">Előző</span>
                                 </button>
                                 <button
@@ -472,11 +471,10 @@
                                     type="button"
                                     data-bs-target="#referenceCarousel"
                                     data-bs-slide="next"
+                                    aria-label="Következő kép"
+                                    style="min-width: 50px; min-height: 50px; margin: 4px; display: flex; align-items: center; justify-content: center;"
                                 >
-                                    <span
-                                        class="carousel-control-next-icon"
-                                        aria-hidden="true"
-                                    ></span>
+                                    <span class="carousel-control-next-icon" aria-hidden="true" style="width: 15px; height: 15px;"></span>
                                     <span class="visually-hidden"
                                         >Következő</span
                                     >
