@@ -14,6 +14,14 @@
         <link rel="stylesheet" href="css/styles.min.css" />
     </head>
     <body>
+        <!--
+        A képek tömörítése optimalizálva lett cwebp-vel (60% minőség), jelentősen csökkentve a hálózati forgalmat és a Lighthouse payload hibát.
+        Ha új képet töltesz fel, futtasd a következőt a projekt gyökerében:
+
+        .\cwebp.exe -q 60 input.webp -o output.webp
+
+        A fő hero és kártya képek már optimalizáltak.
+        -->
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -79,6 +87,7 @@
                             class="d-block w-100 hero-img"
                             alt="Referencia 1"
                             width="1200" height="600"
+                            loading="lazy"
                         />
                     </div>
                     <div class="carousel-item h-100">
@@ -89,6 +98,7 @@
                             class="d-block w-100 hero-img"
                             alt="Referencia 2"
                             width="1200" height="600"
+                            loading="lazy"
                         />
                     </div>
                     <div class="carousel-item h-100">
@@ -99,6 +109,7 @@
                             class="d-block w-100 hero-img"
                             alt="Referencia 3"
                             width="1200" height="600"
+                            loading="lazy"
                         />
                     </div>
                 </div>
@@ -323,6 +334,7 @@
                             class="card-img-top"
                             alt="Linz kikötői zsaluziák"
                             width="400" height="250"
+                            loading="lazy"
                         />
                         <div class="card-body">
                             <h5 class="card-title">Linz kikötői zsaluziák</h5>
@@ -351,6 +363,7 @@
                             class="card-img-top"
                             alt="Zsaluzia speciális átalakítással"
                             width="400" height="250"
+                            loading="lazy"
                         />
                         <div class="card-body">
                             <h5 class="card-title">
@@ -379,6 +392,7 @@
                             class="card-img-top"
                             alt="Téli kert árnyékolás"
                             width="400" height="250"
+                            loading="lazy"
                         />
                         <div class="card-body">
                             <h5 class="card-title">Téli kert árnyékolás</h5>
