@@ -2,17 +2,16 @@
 <html lang="hu">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>StarkFix Árnyékolástechnika</title>
-        <!-- Bootstrap -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-            rel="stylesheet"
-        />
+        <!-- Preconnect for Unsplash -->
+        <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+        <link rel="preconnect" href="https://source.unsplash.com" crossorigin>
+        <!-- Preload Bootstrap CSS -->
+        <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/styles.css" />
-        <style></style>
+        <!-- Use minified CSS -->
+        <link rel="stylesheet" href="css/styles.min.css" />
     </head>
     <body>
         <!-- Navbar -->
@@ -75,22 +74,31 @@
                     <div class="carousel-item h-100 active">
                         <img
                             src="images/Raffstore/1.webp"
+                            srcset="images/Raffstore/1-400.webp 400w, images/Raffstore/1-800.webp 800w, images/Raffstore/1.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="d-block w-100 hero-img"
                             alt="Referencia 1"
+                            width="1200" height="600"
                         />
                     </div>
                     <div class="carousel-item h-100">
                         <img
                             src="images/Jal80MontageHafenLinz/IMG_6768.webp"
+                            srcset="images/Jal80MontageHafenLinz/IMG_6768-400.webp 400w, images/Jal80MontageHafenLinz/IMG_6768-800.webp 800w, images/Jal80MontageHafenLinz/IMG_6768.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="d-block w-100 hero-img"
                             alt="Referencia 2"
+                            width="1200" height="600"
                         />
                     </div>
                     <div class="carousel-item h-100">
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
+                            srcset="images/Wintergartenbeschattung/1-400.webp 400w, images/Wintergartenbeschattung/1-800.webp 800w, images/Wintergartenbeschattung/1.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="d-block w-100 hero-img"
                             alt="Referencia 3"
+                            width="1200" height="600"
                         />
                     </div>
                 </div>
@@ -310,8 +318,11 @@
                     >
                         <img
                             src="images/Jal80MontageHafenLinz/IMG_6639.webp"
+                            srcset="images/Jal80MontageHafenLinz/IMG_6639-400.webp 400w, images/Jal80MontageHafenLinz/IMG_6639-800.webp 800w, images/Jal80MontageHafenLinz/IMG_6639.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="card-img-top"
                             alt="Linz kikötői zsaluziák"
+                            width="400" height="250"
                         />
                         <div class="card-body">
                             <h5 class="card-title">Linz kikötői zsaluziák</h5>
@@ -335,8 +346,11 @@
                     >
                         <img
                             src="images/Raffstore/1.webp"
+                            srcset="images/Raffstore/1-400.webp 400w, images/Raffstore/1-800.webp 800w, images/Raffstore/1.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="card-img-top"
                             alt="Zsaluzia speciális átalakítással"
+                            width="400" height="250"
                         />
                         <div class="card-body">
                             <h5 class="card-title">
@@ -360,8 +374,11 @@
                     >
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
+                            srcset="images/Wintergartenbeschattung/1-400.webp 400w, images/Wintergartenbeschattung/1-800.webp 800w, images/Wintergartenbeschattung/1.webp 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                             class="card-img-top"
                             alt="Téli kert árnyékolás"
+                            width="400" height="250"
                         />
                         <div class="card-body">
                             <h5 class="card-title">Téli kert árnyékolás</h5>
@@ -476,7 +493,19 @@
         </section>
 
         <!-- Bootstrap JS -->
-        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="javascript/index.js"></script>
+        <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
+        <!-- Use minified JS -->
+        <script src="javascript/index.min.js" defer></script>
+        <!--
+        Szerveroldali optimalizálás javaslatok:
+        - Engedélyezd a gzip vagy brotli tömörítést (text compression)
+        - Állíts be hosszú távú cache policy-t képekre, CSS-re, JS-re
+        - Használj HTTP/2-t vagy HTTP/3-at
+        - Tisztítsd a felesleges CSS/JS-t (pl. PurgeCSS)
+        - Animált tartalomhoz használj videó formátumot
+        - Harmadik féltől származó erőforrásokat lazy load/facade-dal töltsd
+        - Kerüld a duplikált JS modulokat, legacy JS-t
+        - Minimalizáld a kritikus request chain-t, layout shift-et
+        -->
     </body>
 </html>
