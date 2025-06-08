@@ -57,6 +57,21 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Layout utility: teljes magasságú oldal, sticky footer, overflow fix */
+.fullpage-flex {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #f6f8fc;
+}
+.fullpage-main {
+    flex-grow: 1;
+}
+.fullpage-footer {
+    margin-top: auto;
+}
+
 /* Navbar */
 .navbar {
     background-color: var(--navbar-bg);
@@ -117,8 +132,6 @@ body {
 /* Section styling */
 section {
     padding: 4rem !important;
-    margin-top: 2px;
-    margin-bottom: 2px;
 }
 /* Cards */
 .card {
@@ -218,30 +231,37 @@ section {
 /* Pasztell színek világos módhoz - kékes irány */
 .about-section {
     background: #f6f8fc;
-    margin-top: 2px;
+    border-top: 2px solid black;
 }
 .services-section {
     background: #e3f2fd;
+    border-top: 2px solid black;
 }
 .references-section {
     background: #d6ecf8;
+    border-top: 2px solid black;
 }
 .contact-section {
     background: #e1e7f9;
+    border-top: 2px solid black;
 }
 
 /* Pasztell színek sötét módhoz - kékes irány */
 [data-theme="dark"] .about-section {
     background: #232b39;
+    border-top: 2px solid white;
 }
 [data-theme="dark"] .services-section {
     background: #1b263b;
+    border-top: 2px solid white;
 }
 [data-theme="dark"] .references-section {
     background: #223c4a;
+    border-top: 2px solid white;
 }
 [data-theme="dark"] .contact-section {
     background: #232b58;
+    border-top: 2px solid white;
 }
 
 /* Responsive */
