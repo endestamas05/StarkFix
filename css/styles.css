@@ -218,7 +218,7 @@ section {
 /* Pasztell színek világos módhoz - kékes irány */
 .about-section {
     background: #f6f8fc;
-    margin-top: 0;
+    margin-top: 2px;
 }
 .services-section {
     background: #e3f2fd;
@@ -396,8 +396,10 @@ nav {
 
 .reference-main {
     background-color: #ffffff;
+    color: #212529;
 }
 
 [data-theme="dark"] .reference-main {
     background-color: #10151b;
+    color: #e3f2fd;
 }
