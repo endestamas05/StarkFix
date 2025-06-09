@@ -1,0 +1,57 @@
+/* Csak a szunyoghalok.html oldalhoz tartozó stílusok */
+
+/* Szúnyogháló típus menü - csak az aktív elem legyen aláhúzva */
+.mosquito-type-nav {
+    font-size: 1.15rem;
+    border-bottom: 1px solid #e3f2fd;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 2px 12px 0 #1565c01a;
+    background: var(--card-bg);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+.mosquito-type-link {
+    padding-bottom: 0.4rem;
+    border-bottom: 0 solid transparent !important;
+    transition: border-color 0.2s, color 0.2s;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--bs-primary);
+    border-bottom: 0;
+}
+.mosquito-type-link.active,
+.mosquito-type-link[aria-current="true"] {
+    border-bottom: 3px solid #1565c0 !important;
+    color: #1565c0 !important;
+}
+.mosquito-type-link:not(.active):not([aria-current="true"]) {
+    border-bottom: 0 !important;
+}
+.mosquito-type-nav-inner {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.sticky-mosquito-nav {
+  position: sticky;
+  top: 74px;
+  z-index: 1020;
+  background: var(--card-bg);
+  border-radius: var(--bs-border-radius);
+  border: 0;
+  box-shadow: 0 2px 16px var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .mosquito-type-nav {
+        gap: 1rem;
+        font-size: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .mosquito-type-nav-inner {
+        gap: 0.5rem;
+    }
+}
+
