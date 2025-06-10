@@ -109,10 +109,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = themeToggle ? themeToggle.querySelector(".theme-icon") : null;
 
-  function setTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-    if (themeIcon) updateThemeIcon(theme);
+  // --- TÉMA IKON VÁLTÁS ÁTTŰNÉS ---
+  if (themeIcon) {
+    const fadeDuration = 220;
+    function fadeThemeIcon(newTheme) {
+      themeIcon.style.transition = 'opacity 0.22s, filter 0.22s';
+      themeIcon.style.opacity = '0';
+      themeIcon.style.filter = 'blur(2px)';
+      setTimeout(() => {
+        updateThemeIcon(newTheme);
+        themeIcon.style.opacity = '1';
+        themeIcon.style.filter = 'none';
+      }, fadeDuration);
+    }
+    // Sima témaváltáskor fadeThemeIcon-t hívunk
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+      fadeThemeIcon(theme);
+    }
   }
   function updateThemeIcon(theme) {
     if (themeIcon) themeIcon.textContent = theme === "dark" ? "🌙" : "🌞";
@@ -139,4 +154,47 @@ document.addEventListener("DOMContentLoaded", function () {
       setTheme(newTheme);
     });
   }
+
+  // --- KÁRTYA BELÉPŐ ANIMÁCIÓ (IntersectionObserver) ---
+  const cardObserver = new window.IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("inview");
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.card, .reference-card').forEach(card => {
+    card.classList.add('card-animate');
+    cardObserver.observe(card);
+  });
+
+  // --- GOMB RIPPLE ANIMÁCIÓ ---
+  document.querySelectorAll('.btn, .btn-outline-primary, .btn-primary').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      ripple.style.position = 'absolute';
+      ripple.style.borderRadius = '50%';
+      ripple.style.transform = 'translate(-50%, -50%)';
+      ripple.style.background = 'rgba(21,101,192,0.18)';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.zIndex = 2;
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 1.2;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      ripple.style.opacity = 1;
+      ripple.style.transition = 'opacity 0.5s, transform 0.5s';
+      btn.appendChild(ripple);
+      setTimeout(() => {
+        ripple.style.opacity = 0;
+        ripple.style.transform = 'scale(2.5)';
+      }, 10);
+      setTimeout(() => ripple.remove(), 510);
+    });
+  });
 });
