@@ -793,4 +793,8 @@ nav {
     transition: opacity 0.22s, filter 0.22s;
 }
 
+.reference-card{
+    cursor: pointer;
+}
+
 /* --- VÉGE --- */
