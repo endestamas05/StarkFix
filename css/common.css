@@ -779,4 +779,8 @@ nav {
     cursor: pointer;
 }
 
+#analyticsConsentModal{
+    z-index: 9999;
+}
+
 /* --- VÉGE --- */
