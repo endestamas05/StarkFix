@@ -78,7 +78,7 @@ body {
     background-color: var(--navbar-bg);
     position: sticky;
     top: 0;
-    z-index: 3000;
+    z-index: 2000;
 }
 
 .navbar-brand {
@@ -780,7 +780,7 @@ nav {
 }
 
 #analyticsConsentModal{
-    z-index: 9999;
+    z-index: 3000;
 }
 
 /* --- VÉGE --- */
