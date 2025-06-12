@@ -11,14 +11,28 @@
         <link rel="stylesheet" href="css/common.css" />
     </head>
     <body class="fullpage-flex">
-        <!--
-        A képek tömörítése optimalizálva lett cwebp-vel (60% minőség), jelentősen csökkentve a hálózati forgalmat és a Lighthouse payload hibát.
-        Ha új képet töltesz fel, futtasd a következőt a projekt gyökerében:
-
-        .\cwebp.exe -q 60 input.webp -o output.webp
-
-        A fő hero és kártya képek már optimalizáltak.
-        -->
+        <!-- Cookie Consent Modal -->
+        <div class="modal fade" id="analyticsConsentModal" tabindex="-1" aria-labelledby="analyticsConsentLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow rounded-3">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title w-100 text-center" id="analyticsConsentLabel">Statisztikai adatok gyűjtése</h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>
+                            Az oldal működésének fejlesztése és népszerűségének mérése érdekében statisztikai célú, anonim adatokat gyűjtünk a Google Analytics segítségével. Ezekből személyes adatot nem tárolunk, kizárólag összesített statisztikákat látunk arról, hogy hányan, mely oldalakat, mennyi ideig és hogyan használják, illetve mely külső linkekre kattintanak.
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            A statisztikai méréshez való hozzájárulásod segít, hogy az oldal még jobb legyen. A döntésedet bármikor módosíthatod a böngésződben a sütik törlésével, vagy az oldal alján található "Adatkezelési beállítások" gombra kattintva.
+                        </p>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center gap-3">
+                        <button type="button" class="btn btn-primary" id="acceptAnalytics">Elfogadom</button>
+                        <button type="button" class="btn btn-outline-secondary" id="declineAnalytics">Nem kérem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -515,7 +529,7 @@
                 </div>
                 <div class="col-md-4">
                     <div
-                        class="card reference-card h-100 border-0 p-3"
+                        class="card reference-card h-100 border-0 p-3 rounded"
                         data-bs-toggle="modal"
                         data-bs-target="#referenceModal"
                         data-title="Télikert árnyékolás"
@@ -539,8 +553,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Télikert árnyékolás</h5>
                             <p class="card-text text-secondary fst-italic">
-                                Télikert árnyékolás szerelése
-                                Felső-Ausztriában.
+                                Télikert árnyékolás szerelése Felső-Ausztriában.
                             </p>
                         </div>
                     </div>
@@ -583,12 +596,11 @@
             </div>
         </section>
         <footer class="text-center py-4 references-section fullpage-footer">
-            <small
-                >© 2025 StarkFix Austria. Minden jog fenntartva. |
-                <a href="legal.html" class="text-primary"
-                    >Jogi nyilatkozat</a
-                ></small
-            >
+            <small>
+                © 2025 StarkFix Austria. Minden jog fenntartva. |
+                <a href="legal.html" class="text-primary">Jogi nyilatkozat</a> |
+                <a href="#" id="openAnalyticsConsent" class="text-secondary text-decoration-underline" style="cursor:pointer;">Adatkezelési beállítások</a>
+            </small>
         </footer>
 
         <!-- Modal for image preview (body legvégén, section-ön kívül!) -->
@@ -687,5 +699,6 @@
         <!-- Bootstrap JS -->
         <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
         <script src="javascript/common.js" defer></script>
+        <script src="javascript/index.js" defer></script>
     </body>
 </html>
