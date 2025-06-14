@@ -1,9 +1,10 @@
+<!-- Deutsche Version von szunyoghalok.html, mit korrekten Sprachumschalter-Links -->
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="de">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Szúnyoghálók – StarkFix Árnyékolástechnika</title>
+        <title>Insektenschutz – StarkFix Sonnenschutztechnik</title>
         <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/common.css" />
@@ -18,7 +19,7 @@
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
-                    aria-label="Open navigation"
+                    aria-label="Navigation öffnen"
                     aria-controls="navbarNav"
                     aria-expanded="false"
                 >
@@ -27,23 +28,27 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#about"
-                                >Rólunk</a
+                            <a class="nav-link p-2" href="index-de.html#about"
+                                >Über uns</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#services"
-                                >Termékek</a
+                            <a
+                                class="nav-link p-2"
+                                href="index-de.html#services"
+                                >Produkte</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#references"
-                                >Referenciák</a
+                            <a
+                                class="nav-link p-2"
+                                href="index-de.html#references"
+                                >Referenzen</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#contact"
-                                >Kapcsolat</a
+                            <a class="nav-link p-2" href="index-de.html#contact"
+                                >Kontakt</a
                             >
                         </li>
                     </ul>
@@ -54,7 +59,7 @@
                             id="theme-toggle"
                             class="btn nav-link theme-toggle rounded-circle"
                             style="justify-self: center"
-                            aria-label="Téma váltása"
+                            aria-label="Thema wechseln"
                         >
                             <span class="theme-icon">🌞</span>
                         </button>
@@ -65,9 +70,9 @@
                                 id="langDropdown"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
-                                aria-label="Select language"
+                                aria-label="Sprache auswählen"
                             >
-                                <span class="fw-bold">EN</span>
+                                <span class="fw-bold">DE</span>
                             </button>
                             <ul
                                 class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
@@ -75,10 +80,10 @@
                             >
                                 <li>
                                     <a
-                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
                                         href="index.html"
                                     >
-                                        <span role="img" aria-label="Német"
+                                        <span role="img" aria-label="Deutsch"
                                             >🇩🇪</span
                                         >
                                         Deutsch
@@ -86,13 +91,13 @@
                                 </li>
                                 <li>
                                     <a
-                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        class="dropdown-item d-flex align-items-center gap-2"
                                         href="index-en.html"
                                     >
-                                        <span role="img" aria-label="Angol"
+                                        <span role="img" aria-label="Englisch"
                                             >🇬🇧</span
                                         >
-                                        English
+                                        Englisch
                                     </a>
                                 </li>
                                 <li>
@@ -100,10 +105,10 @@
                                         class="dropdown-item d-flex align-items-center gap-2"
                                         href="index-hu.html"
                                     >
-                                        <span role="img" aria-label="Magyar"
+                                        <span role="img" aria-label="Ungarisch"
                                             >🇭🇺</span
                                         >
-                                        Magyar
+                                        Ungarisch
                                     </a>
                                 </li>
                             </ul>
@@ -116,7 +121,7 @@
             <div class="row">
                 <div class="col-12 mb-3 d-flex back-btn-row">
                     <a
-                        href="index-hu.html#services"
+                        href="index.html#services"
                         class="btn btn-outline-primary w-auto d-inline-block"
                     >
                         <svg
@@ -136,19 +141,19 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        Vissza
+                        Zurück
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 text-center mb-2">
-                    <h1 class="display-5 fw-bold mb-2">Szúnyoghálók</h1>
+                    <h1 class="display-5 fw-bold mb-2">Insektenschutz</h1>
                 </div>
             </div>
-            <!-- Sticky típus menü -->
+            <!-- Sticky Typenmenü -->
             <nav
                 class="mosquito-type-nav sticky-mosquito-nav d-flex justify-content-center align-items-center"
-                aria-label="Szúnyogháló típus választó"
+                aria-label="Insektenschutz Typauswahl"
             >
                 <div class="mosquito-type-nav-inner">
                     <a
@@ -156,17 +161,17 @@
                         class="mosquito-type-link active"
                         id="plisze-link"
                         aria-current="true"
-                        >Pliszé</a
+                        >Plissee</a
                     >
                     <a href="#keret" class="mosquito-type-link" id="keret-link"
-                        >Keret</a
+                        >Rahmen</a
                     >
                     <a href="#rolok" class="mosquito-type-link" id="rolok-link"
-                        >Rolók</a
+                        >Rollos</a
                     >
                 </div>
             </nav>
-            <!-- Pliszé szekció -->
+            <!-- Plissee Abschnitt -->
             <div id="plisze" class="mb-5" tabindex="-1">
                 <div class="row align-items-center">
                     <div
@@ -174,7 +179,7 @@
                     >
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
-                            alt="Szúnyoghálók"
+                            alt="Insektenschutz"
                             class="img-fluid rounded shadow"
                             width="800"
                             height="400"
@@ -184,12 +189,12 @@
                     <div
                         class="col-md-6 d-flex flex-column justify-content-center"
                     >
-                        <h2 class="h4 fw-bold mb-3">Szúnyogháló-pliszé</h2>
+                        <h2 class="h4 fw-bold mb-3">Plissee-Insektenschutz</h2>
                         <p>
-                            Modern, harmonikaszerűen nyitható-zárható szerkezet,
-                            ideális nagyobb nyílásokhoz, teraszajtókhoz is.
-                            Könnyen kezelhető, tartós, esztétikus, kis helyen
-                            elfér.
+                            Moderne, wie eine Ziehharmonika faltbare Lösung,
+                            ideal auch für große Öffnungen und Terrassentüren.
+                            Einfach zu bedienen, langlebig, ästhetisch und
+                            platzsparend.
                         </p>
                         <ul
                             class="list-group list-group-flush mb-0"
@@ -212,26 +217,7 @@
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Nagy nyílásokhoz, tolóajtókhoz is ideális
-                            </li>
-                            <li
-                                class="list-group-item d-flex align-items-center reference-main"
-                                style="border: none"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="22"
-                                    height="22"
-                                    fill="#1565c0"
-                                    class="me-2 flex-shrink-0"
-                                    viewBox="0 0 16 16"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
-                                    />
-                                </svg>
-                                Könnyen kezelhető, kis helyigény
+                                Ideal für große Öffnungen und Schiebetüren
                             </li>
                             <li
                                 class="list-group-item d-flex align-items-center reference-main"
@@ -250,15 +236,34 @@
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Tartós, esztétikus kivitel
+                                Einfach zu bedienen, platzsparend
+                            </li>
+                            <li
+                                class="list-group-item d-flex align-items-center reference-main"
+                                style="border: none"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="#1565c0"
+                                    class="me-2 flex-shrink-0"
+                                    viewBox="0 0 16 16"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    />
+                                </svg>
+                                Langlebig, ästhetisch
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- Szekció elválasztó Keret előtt -->
+            <!-- Abschnittstrenner vor Rahmen Abschnitt -->
             <div class="section-divider mb-5"></div>
-            <!-- Keret szekció -->
+            <!-- Rahmen Abschnitt -->
             <div id="keret" class="mb-5" tabindex="-1">
                 <div
                     class="row align-items-center flex-md-row-reverse d-flex justify-content-start"
@@ -266,7 +271,7 @@
                     <div class="col-md-6 mb-3 mb-md-0">
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
-                            alt="Szúnyoghálók"
+                            alt="Insektenschutz"
                             class="img-fluid rounded shadow"
                             width="800"
                             height="400"
@@ -276,11 +281,12 @@
                     <div
                         class="col-md-6 d-flex flex-column justify-content-center"
                     >
-                        <h2 class="h4 fw-bold mb-3">Szúnyogháló-keret</h2>
+                        <h2 class="h4 fw-bold mb-3">Insektenschutzrahmen</h2>
                         <p>
-                            Klasszikus, fix vagy nyitható keretes megoldás
-                            ablakokra, ajtókra. Strapabíró alumínium vagy
-                            műanyag keret, UV-álló háló, egyszerű felszerelés.
+                            Klassische, feste oder zu öffnende Rahmenlösung für
+                            Fenster und Türen. Robuster Aluminium- oder
+                            Kunststoffrahmen, UV-beständiges Netz, einfache
+                            Montage.
                         </p>
                         <ul
                             class="list-group list-group-flush mb-0"
@@ -300,10 +306,10 @@
                                     aria-hidden="true"
                                 >
                                     <path
-                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                        d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Fix vagy nyitható kivitel
+                                Feste oder zu öffnende Ausführung
                             </li>
                             <li
                                 class="list-group-item d-flex align-items-center reference-main"
@@ -322,7 +328,7 @@
                                         d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Strapabíró, UV-álló háló
+                                Robustes, UV-beständiges Netz
                             </li>
                             <li
                                 class="list-group-item d-flex align-items-center reference-main"
@@ -341,15 +347,15 @@
                                         d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Egyszerű felszerelés, hosszú élettartam
+                                Einfache Montage, lange Lebensdauer
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- Szekció elválasztó Rolók előtt -->
+            <!-- Abschnittstrenner vor Rollos Abschnitt -->
             <div class="section-divider mb-5"></div>
-            <!-- Rolók szekció -->
+            <!-- Rollos Abschnitt -->
             <div id="rolok" class="mb-5" tabindex="-1">
                 <div class="row align-items-center">
                     <div
@@ -357,7 +363,7 @@
                     >
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
-                            alt="Szúnyoghálók"
+                            alt="Insektenschutz"
                             class="img-fluid rounded shadow"
                             width="800"
                             height="400"
@@ -367,11 +373,12 @@
                     <div
                         class="col-md-6 d-flex flex-column justify-content-center"
                     >
-                        <h2 class="h4 fw-bold mb-3">Szúnyoghálós rolók</h2>
+                        <h2 class="h4 fw-bold mb-3">Insektenschutzrollos</h2>
                         <p>
-                            Fel- vagy oldalra húzható, helytakarékos, praktikus
-                            megoldás ablakokra, erkélyajtókra. Rugós vagy láncos
-                            működtetés, halk és megbízható mechanika.
+                            Nach oben oder zur Seite aufrollbare, platzsparende
+                            und praktische Lösung für Fenster und Balkontüren.
+                            Feder- oder Kettenbedienung, leise und zuverlässige
+                            Mechanik.
                         </p>
                         <ul
                             class="list-group list-group-flush mb-0"
@@ -394,7 +401,7 @@
                                         d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Fel- vagy oldalra húzható kivitel
+                                Nach oben oder zur Seite aufrollbar
                             </li>
                             <li
                                 class="list-group-item d-flex align-items-center reference-main"
@@ -413,8 +420,7 @@
                                         d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Helytakarékos, szinte láthatatlan használaton
-                                kívül
+                                Platzsparend, nahezu unsichtbar im Ruhezustand
                             </li>
                             <li
                                 class="list-group-item d-flex align-items-center reference-main"
@@ -433,7 +439,7 @@
                                         d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                     />
                                 </svg>
-                                Halk, megbízható működés
+                                Leise, zuverlässige Bedienung
                             </li>
                         </ul>
                     </div>
@@ -442,18 +448,18 @@
         </main>
         <footer class="text-center py-4 references-section fullpage-footer">
             <small>
-                © 2025 StarkFix Austria. Minden jog fenntartva. |
-                <a href="legal.html" class="text-primary">Jogi nyilatkozat</a> |
+                © 2025 StarkFix Austria. Alle Rechte vorbehalten. |
+                <a href="legal-de.html" class="text-primary">Impressum</a> |
                 <a
                     href="#"
                     id="openAnalyticsConsent"
                     class="text-secondary text-decoration-underline"
                     style="cursor: pointer"
-                    >Adatvédelmi beállítások</a
+                    >Datenschutzeinstellungen</a
                 >
             </small>
         </footer>
-        <!-- Cookie Consent Modal -->
+        <!-- Cookie Consent Modal (duplicate for fallback, can be removed if not needed) -->
         <div
             class="modal fade"
             id="analyticsConsentModal"
@@ -468,35 +474,37 @@
                             class="modal-title w-100 text-center"
                             id="analyticsConsentLabel"
                         >
-                            Statisztikai adatgyűjtés
+                            Statistische Datenerhebung
                         </h5>
                     </div>
                     <div class="modal-body text-center">
                         <p>
-                            Az oldal népszerűségének méréséhez és fejlesztéséhez
-                            anonim, statisztikai adatokat gyűjtünk a Google
-                            Analytics szolgáltatással (adatfeldolgozó: Google
-                            Ireland Ltd.). Személyes adatokat nem tárolunk, csak
-                            összesített statisztikákat látunk arról, hány
-                            látogató mely oldalakat mennyi ideig használ,
-                            illetve mely külső linkekre kattintanak. Adatkezelő:
+                            Zur Verbesserung und Messung der Beliebtheit dieser
+                            Website erfassen wir anonyme, statistische Daten mit
+                            dem Dienst Google Analytics (Auftragsverarbeiter:
+                            Google Ireland Ltd.). Wir speichern keine
+                            personenbezogenen Daten, sondern sehen nur
+                            aggregierte Statistiken darüber, wie viele Besucher
+                            welche Seiten wie lange nutzen und auf welche
+                            externen Links geklickt wird. Verantwortlicher:
                             StarkFix Austria (info@starkfixaustria.at).
                         </p>
                         <p class="text-secondary small mb-0">
-                            Személyes adatokat nem tárolunk, így nincs törölhető
-                            adat. A Google Analytics-ben csak összesített
-                            statisztikákat látunk, személyes azonosítókat nem
-                            ismerünk. Ha mégis törlést szeretne kérni, kérjük,
-                            vegye fel velünk a kapcsolatot – segítünk a kérelem
-                            benyújtásában az adatfeldolgozóhoz (Google Ireland
-                            Ltd.).
+                            Wir speichern keine personenbezogenen Daten, daher
+                            gibt es bei uns keine löschbaren Daten. In Google
+                            Analytics sehen wir nur aggregierte Statistiken und
+                            kennen keine persönlichen Kennungen. Sollten Sie
+                            dennoch eine Löschung beantragen wollen,
+                            kontaktieren Sie uns bitte – wir unterstützen Sie
+                            bei der Antragstellung beim Auftragsverarbeiter
+                            (Google Ireland Ltd.).
                         </p>
                         <p class="text-secondary small mb-0">
-                            A statisztikai méréshez adott hozzájárulása segít
-                            nekünk az oldal további fejlesztésében. Döntését
-                            bármikor módosíthatja a böngészőben a sütik
-                            törlésével vagy az oldal alján található
-                            „Adatvédelmi beállítások” linken keresztül.
+                            Ihre Zustimmung zur statistischen Messung hilft uns,
+                            die Website weiter zu verbessern. Sie können Ihre
+                            Entscheidung jederzeit durch das Löschen von Cookies
+                            im Browser oder über den Link
+                            „Datenschutzeinstellungen“ am Seitenende ändern.
                         </p>
                     </div>
                     <div
@@ -507,20 +515,20 @@
                             class="btn btn-primary"
                             id="acceptAnalytics"
                         >
-                            Elfogadom
+                            Akzeptieren
                         </button>
                         <button
                             type="button"
                             class="btn btn-outline-secondary"
                             id="declineAnalytics"
                         >
-                            Elutasítom
+                            Ablehnen
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal for mosquito net details -->
+        <!-- Modal für Insektenschutz-Details -->
         <div
             class="modal fade"
             id="mosquitoModal"
@@ -536,7 +544,7 @@
                             type="button"
                             class="btn-close"
                             data-bs-dismiss="modal"
-                            aria-label="Bezárás"
+                            aria-label="Schließen"
                         ></button>
                     </div>
                     <div class="modal-body text-center">

@@ -1,14 +1,81 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>StarkFix Sonnenschutztechnik</title>
+        <title>StarkFix Shading Solutions</title>
         <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/common.css" />
     </head>
     <body class="fullpage-flex">
+        <!-- Cookie Consent Modal -->
+        <div
+            class="modal fade"
+            id="analyticsConsentModal"
+            tabindex="-1"
+            aria-labelledby="analyticsConsentLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow rounded-3">
+                    <div class="modal-header border-0">
+                        <h5
+                            class="modal-title w-100 text-center"
+                            id="analyticsConsentLabel"
+                        >
+                            Statistical Data Collection
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>
+                            For the improvement and popularity measurement of
+                            this website, we collect anonymous, statistical data
+                            using the Google Analytics service (data processor:
+                            Google Ireland Ltd.). We do not store any personal
+                            data, only aggregated statistics about how many
+                            people visit which pages, for how long, and which
+                            external links are clicked. Data controller:
+                            StarkFix Austria (info@starkfixaustria.at).
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            We do not store personal data, so there is no
+                            deletable data at us. In Google Analytics, we only
+                            see aggregated statistics and do not know any
+                            personal identifiers. If you still wish to request
+                            data deletion, please contact us and we will assist
+                            you in submitting your request to the data processor
+                            (Google Ireland Ltd.).
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            Your consent to statistical measurement helps us
+                            improve the website. You can change your decision at
+                            any time by clearing cookies in your browser or by
+                            clicking the "Privacy settings" link at the bottom
+                            of the page.
+                        </p>
+                    </div>
+                    <div
+                        class="modal-footer border-0 justify-content-center gap-3"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="acceptAnalytics"
+                        >
+                            Accept
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            id="declineAnalytics"
+                        >
+                            Decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -18,7 +85,7 @@
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
-                    aria-label="Navigation öffnen"
+                    aria-label="Open navigation"
                     aria-controls="navbarNav"
                     aria-expanded="false"
                 >
@@ -27,20 +94,20 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#about">Über uns</a>
+                            <a class="nav-link p-2" href="#about">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#services"
-                                >Produkte</a
+                                >Products</a
                             >
                         </li>
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#references"
-                                >Referenzen</a
+                                >References</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#contact">Kontakt</a>
+                            <a class="nav-link p-2" href="#contact">Contact</a>
                         </li>
                     </ul>
                     <div
@@ -61,9 +128,9 @@
                                 id="langDropdown"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
-                                aria-label="Sprache wählen"
+                                aria-label="Select language"
                             >
-                                <span class="fw-bold">DE</span>
+                                <span class="fw-bold">EN</span>
                             </button>
                             <ul
                                 class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
@@ -71,7 +138,7 @@
                             >
                                 <li>
                                     <a
-                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        class="dropdown-item d-flex align-items-center gap-2"
                                         href="index.html"
                                     >
                                         <span role="img" aria-label="German"
@@ -82,7 +149,7 @@
                                 </li>
                                 <li>
                                     <a
-                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
                                         href="index-en.html"
                                     >
                                         <span role="img" aria-label="English"
@@ -130,7 +197,7 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 80vw, 1200px"
                             class="d-block w-100 hero-img"
-                            alt="Referenz 1"
+                            alt="Reference 1"
                             width="1200"
                             height="600"
                             loading="lazy"
@@ -146,7 +213,7 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 80vw, 1200px"
                             class="d-block w-100 hero-img"
-                            alt="Referenz 2"
+                            alt="Reference 2"
                             width="1200"
                             height="600"
                             loading="lazy"
@@ -162,14 +229,14 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 80vw, 1200px"
                             class="d-block w-100 hero-img"
-                            alt="Referenz 3"
+                            alt="Reference 3"
                             width="1200"
                             height="600"
                             loading="lazy"
                         />
                     </div>
                 </div>
-                <!-- Indikatoren unten links -->
+                <!-- Indicators bottom left -->
                 <div class="carousel-indicators custom-indicators">
                     <button
                         type="button"
@@ -177,53 +244,53 @@
                         data-bs-slide-to="0"
                         class="active"
                         aria-current="true"
-                        aria-label="Bild 1"
+                        aria-label="Image 1"
                         style="min-width: 15px; min-height: 15px; margin: 4px"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="1"
-                        aria-label="Bild 2"
+                        aria-label="Image 2"
                         style="min-width: 15px; min-height: 15px; margin: 4px"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide-to="2"
-                        aria-label="Bild 3"
+                        aria-label="Image 3"
                         style="min-width: 15px; min-height: 15px; margin: 4px"
                     ></button>
                 </div>
-                <!-- Steuerung unten rechts -->
+                <!-- Controls bottom right -->
                 <div class="carousel-controls-custom">
                     <button
                         class="carousel-control-prev"
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide="prev"
-                        aria-label="Vorheriges Bild"
+                        aria-label="Previous image"
                         style="min-width: 50px; min-height: 50px; margin: 4px"
                     >
                         <span
                             class="carousel-control-prev-icon"
                             aria-hidden="true"
                         ></span>
-                        <span class="visually-hidden">Vorheriges</span>
+                        <span class="visually-hidden">Previous</span>
                     </button>
                     <button
                         class="carousel-control-next"
                         type="button"
                         data-bs-target="#heroCarousel"
                         data-bs-slide="next"
-                        aria-label="Nächstes Bild"
+                        aria-label="Next image"
                         style="min-width: 50px; min-height: 50px; margin: 4px"
                     >
                         <span
                             class="carousel-control-next-icon"
                             aria-hidden="true"
                         ></span>
-                        <span class="visually-hidden">Nächstes</span>
+                        <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
@@ -243,21 +310,21 @@
         >
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h2 class="mb-3">Über uns</h2>
+                    <h2 class="mb-3">About Us</h2>
                     <p>
-                        Seit 2016 ist unser Unternehmen auf professionelle
-                        Sonnenschutztechnik spezialisiert, unser Team verfügt
-                        über mehr als 20 Jahre Erfahrung in diesem Bereich.
-                        Unser Hauptziel ist es, unseren Kunden hochwertige,
-                        langlebige und ästhetische Lösungen zu bieten – ob
-                        Rollläden, Jalousien, Markisen oder individuelle
-                        Systeme. Mit kundenorientiertem Ansatz, zuverlässiger
-                        Arbeit und präziser Ausführung streben wir bei jedem
-                        Projekt nach maximaler Zufriedenheit unserer Partner.
+                        Since 2016, our company has been specializing in
+                        professional shading technology, with our team having
+                        over 20 years of experience in the field. Our main goal
+                        is to provide our clients with high-quality, durable,
+                        and aesthetic solutions, whether it is shutters, blinds,
+                        awnings, or custom shading systems. With a
+                        customer-friendly approach, reliable work, and precise
+                        execution, we strive to ensure maximum satisfaction for
+                        all our partners in every project.
                     </p>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <!-- Rollladen-SVG -->
+                    <!-- Shutter sample SVG -->
                     <svg
                         width="100%"
                         height="120"
@@ -327,18 +394,18 @@
             class="container-fluid services-section shadow"
             style="scroll-margin-top: 70px"
         >
-            <h2 class="mb-4 text-center">Unsere Produkte</h2>
+            <h2 class="mb-4 text-center">Our Products</h2>
             <div class="row g-4">
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Rollläden.html"
+                        href="Shutters.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
-                                <h5 class="card-title">Rollläden</h5>
+                                <h5 class="card-title">Shutters</h5>
                                 <p class="card-text fst-italic">
-                                    zuverlässiger Sonnenschutz, das ganze Jahr
+                                    reliable shading, all year round
                                 </p>
                             </div>
                         </div>
@@ -346,14 +413,14 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Jalousien.html"
+                        href="External-venetian-blinds.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
-                                <h5 class="card-title">Jalousien</h5>
+                                <h5 class="card-title">Venetian Blinds</h5>
                                 <p class="card-text fst-italic">
-                                    modernes Design, präziser Lichtschutz
+                                    clean design, precise light control
                                 </p>
                             </div>
                         </div>
@@ -361,46 +428,16 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Außenrollos.html"
-                        class="text-decoration-none text-reset"
-                    >
-                        <div class="card h-100 text-center p-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Außenrollos</h5>
-                                <p class="card-text fst-italic">
-                                    moderner Look, effektiver Schutz
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a
-                        href="Innenbeschattungen.html"
-                        class="text-decoration-none text-reset"
-                    >
-                        <div class="card h-100 text-center p-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Innenbeschattungen</h5>
-                                <p class="card-text fst-italic">
-                                    Innenjalousie, Plissee, Rollo, Lamellenvorhang
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a
-                        href="Wintergartenbeschattung.html"
+                        href="Outdoor-roller-blinds.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Wintergartenbeschattung
+                                    Outdoor Roller Blinds
                                 </h5>
                                 <p class="card-text fst-italic">
-                                    optimales Klima das ganze Jahr
+                                    modern look, effective protection
                                 </p>
                             </div>
                         </div>
@@ -408,14 +445,14 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Pergolen.html"
+                        href="Interior-shading.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
-                                <h5 class="card-title">Pergolen</h5>
+                                <h5 class="card-title">Indoor Blinds</h5>
                                 <p class="card-text fst-italic">
-                                    zeitlose Eleganz im Freien
+                                    vertical blinds, indoor venetians, rollers
                                 </p>
                             </div>
                         </div>
@@ -423,14 +460,16 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Gelenkarmmarkisen.html"
+                        href="Conservatory-shading.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
-                                <h5 class="card-title">Gelenkarmmarkisen</h5>
+                                <h5 class="card-title">
+                                    Conservatory Shading
+                                </h5>
                                 <p class="card-text fst-italic">
-                                    Schatten mit Stil
+                                    optimal climate all year
                                 </p>
                             </div>
                         </div>
@@ -438,14 +477,14 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Insektenschutz.html"
+                        href="Pergolas.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
-                                <h5 class="card-title">Insektenschutz</h5>
+                                <h5 class="card-title">Pergolas</h5>
                                 <p class="card-text fst-italic">
-                                    Schutz vor Insekten, ohne Kompromisse
+                                    timeless elegance outdoors
                                 </p>
                             </div>
                         </div>
@@ -453,14 +492,44 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <a
-                        href="Service.html"
+                        href="Retractable-awnings.html"
+                        class="text-decoration-none text-reset"
+                    >
+                        <div class="card h-100 text-center p-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Retractable Awnings</h5>
+                                <p class="card-text fst-italic">
+                                    stylish shade
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a
+                        href="Insect-screens.html"
+                        class="text-decoration-none text-reset"
+                    >
+                        <div class="card h-100 text-center p-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Insect Screens</h5>
+                                <p class="card-text fst-italic">
+                                    protection against insects, no compromise
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a
+                        href="Service-en.html"
                         class="text-decoration-none text-reset"
                     >
                         <div class="card h-100 text-center p-3">
                             <div class="card-body">
                                 <h5 class="card-title">Service</h5>
                                 <p class="card-text fst-italic">
-                                    zuverlässige Hilfe, wenn Sie sie brauchen
+                                    reliable help when you need it
                                 </p>
                             </div>
                         </div>
@@ -475,7 +544,7 @@
             style="scroll-margin-top: 70px"
         >
             <h2 class="mb-4 text-center fw-bold references-title">
-                Referenzen
+                References
             </h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
@@ -483,9 +552,9 @@
                         class="card reference-card h-100 border-0 p-3"
                         data-bs-toggle="modal"
                         data-bs-target="#referenceModal"
-                        data-title="Jalousien im Hafen Linz"
+                        data-title="Venetian blinds at Linz port"
                         data-images="images/Jal80MontageHafenLinz/IMG_6639.webp,images/Jal80MontageHafenLinz/IMG_6640.webp,images/Jal80MontageHafenLinz/IMG_6768.webp,images/Jal80MontageHafenLinz/IMG_6665.webp"
-                        data-desc="Montage von Jalousien an einem Gebäude im Hafen Linz."
+                        data-desc="Installation of venetian blinds on a building at Linz port."
                     >
                         <img
                             src="images/Jal80MontageHafenLinz/IMG_6639.webp"
@@ -496,16 +565,18 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"
                             class="img-fluid shadow"
-                            alt="Jalousien im Hafen Linz"
+                            alt="Venetian blinds at Linz port"
                             width="400"
                             height="250"
                             loading="lazy"
                         />
                         <div class="card-body">
-                            <h5 class="card-title">Jalousien im Hafen Linz</h5>
+                            <h5 class="card-title">
+                                Venetian blinds at Linz port
+                            </h5>
                             <p class="card-text text-secondary fst-italic">
-                                Montage von Jalousien an einem Gebäude im Hafen
-                                Linz.
+                                Installation of venetian blinds on a building at
+                                Linz port.
                             </p>
                         </div>
                     </div>
@@ -515,9 +586,9 @@
                         class="card reference-card h-100 border-0 p-3"
                         data-bs-toggle="modal"
                         data-bs-target="#referenceModal"
-                        data-title="Jalousie mit Spezialumbau"
+                        data-title="Venetian blind with special conversion"
                         data-images="images/Raffstore/1.webp,images/Raffstore/2.webp,images/Raffstore/6.webp"
-                        data-desc="Seilgeführte Jalousie mit Spezialumbau in Oberösterreich."
+                        data-desc="Cable-guided venetian blind with special conversion in Upper Austria."
                     >
                         <img
                             src="images/Raffstore/1.webp"
@@ -528,18 +599,18 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"
                             class="img-fluid shadow"
-                            alt="Jalousie mit Spezialumbau"
+                            alt="Venetian blind with special conversion"
                             width="400"
                             height="250"
                             loading="lazy"
                         />
                         <div class="card-body">
                             <h5 class="card-title">
-                                Jalousie mit Spezialumbau
+                                Venetian blind with special conversion
                             </h5>
                             <p class="card-text text-secondary fst-italic">
-                                Seilgeführte Jalousie mit Spezialumbau in
-                                Oberösterreich.
+                                Cable-guided venetian blind with special
+                                conversion in Upper Austria.
                             </p>
                         </div>
                     </div>
@@ -549,9 +620,9 @@
                         class="card reference-card h-100 border-0 p-3"
                         data-bs-toggle="modal"
                         data-bs-target="#referenceModal"
-                        data-title="Wintergartenbeschattung"
+                        data-title="Winter garden shading"
                         data-images="images/Wintergartenbeschattung/1.webp, images/Wintergartenbeschattung/2.webp"
-                        data-desc="Montage von Wintergartenbeschattung in Oberösterreich"
+                        data-desc="Winter garden shading installation in Upper Austria"
                     >
                         <img
                             src="images/Wintergartenbeschattung/1.webp"
@@ -562,16 +633,16 @@
                             "
                             sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"
                             class="img-fluid shadow"
-                            alt="Wintergartenbeschattung"
+                            alt="Winter garden shading"
                             width="400"
                             height="250"
                             loading="lazy"
                         />
                         <div class="card-body">
-                            <h5 class="card-title">Wintergartenbeschattung</h5>
+                            <h5 class="card-title">Winter garden shading</h5>
                             <p class="card-text text-secondary fst-italic">
-                                Montage von Wintergartenbeschattung in
-                                Oberösterreich.
+                                Winter garden shading installation in Upper
+                                Austria.
                             </p>
                         </div>
                     </div>
@@ -581,9 +652,9 @@
                 <div class="col-12">
                     <div class="text-center mt-4">
                         <a
-                            href="Referenzen.html"
+                            href="References.html"
                             class="btn btn-primary btn-lg"
-                            >Weitere Referenzen ansehen</a
+                            >See more references</a
                         >
                     </div>
                 </div>
@@ -594,7 +665,7 @@
             id="contact"
             class="container-fluid contact-section shadow rounded-0 mb-0"
         >
-            <h2 class="mb-3 text-center">Kontakt</h2>
+            <h2 class="mb-3 text-center">Contact</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6 contact-info text-center p-5">
                     <p>
@@ -604,26 +675,26 @@
                         >
                     </p>
                     <p>
-                        <strong>Telefon:</strong>
+                        <strong>Phone:</strong>
                         <a href="tel:+4369918391466">+43 699 18391466</a>
                     </p>
-                    <p><strong>Adresse:</strong> 4030 Linz, Denkstraße 29/6</p>
+                    <p><strong>Address:</strong> 4030 Linz, Denkstraße 29/6</p>
                     <p class="mt-3 text-secondary" style="font-size: 0.95rem">
-                        Bei Fragen kontaktieren Sie uns gerne!
+                        If you have any questions, feel free to contact us!
                     </p>
                 </div>
             </div>
         </section>
         <footer class="text-center py-4 references-section fullpage-footer">
             <small>
-                © 2025 StarkFix Austria. Alle Rechte vorbehalten. |
-                <a href="legal.html" class="text-primary">Impressum</a> |
+                © 2025 StarkFix Austria. All rights reserved. |
+                <a href="legal-en.html" class="text-primary">Legal notice</a> |
                 <a
                     href="#"
                     id="openAnalyticsConsent"
                     class="text-secondary text-decoration-underline"
                     style="cursor: pointer"
-                    >Datenschutzeinstellungen</a
+                    >Privacy settings</a
                 >
             </small>
         </footer>
@@ -642,37 +713,35 @@
                             class="modal-title w-100 text-center"
                             id="analyticsConsentLabel"
                         >
-                            Statistische Datenerhebung
+                            Statistical Data Collection
                         </h5>
                     </div>
                     <div class="modal-body text-center">
                         <p>
-                            Zur Verbesserung und Messung der Beliebtheit dieser
-                            Website erfassen wir anonyme, statistische Daten mit
-                            dem Dienst Google Analytics (Auftragsverarbeiter:
-                            Google Ireland Ltd.). Wir speichern keine
-                            personenbezogenen Daten, sondern sehen nur
-                            aggregierte Statistiken darüber, wie viele Besucher
-                            welche Seiten wie lange nutzen und auf welche
-                            externen Links geklickt wird. Verantwortlicher:
+                            For the improvement and popularity measurement of
+                            this website, we collect anonymous, statistical data
+                            using the Google Analytics service (data processor:
+                            Google Ireland Ltd.). We do not store any personal
+                            data, only aggregated statistics about how many
+                            people visit which pages, for how long, and which
+                            external links are clicked. Data controller:
                             StarkFix Austria (info@starkfixaustria.at).
                         </p>
                         <p class="text-secondary small mb-0">
-                            Wir speichern keine personenbezogenen Daten, daher
-                            gibt es bei uns keine löschbaren Daten. In Google
-                            Analytics sehen wir nur aggregierte Statistiken und
-                            kennen keine persönlichen Kennungen. Sollten Sie
-                            dennoch eine Löschung beantragen wollen,
-                            kontaktieren Sie uns bitte – wir unterstützen Sie
-                            bei der Antragstellung beim Auftragsverarbeiter
+                            We do not store personal data, so there is no
+                            deletable data at us. In Google Analytics, we only
+                            see aggregated statistics and do not know any
+                            personal identifiers. If you still wish to request
+                            data deletion, please contact us and we will assist
+                            you in submitting your request to the data processor
                             (Google Ireland Ltd.).
                         </p>
                         <p class="text-secondary small mb-0">
-                            Ihre Zustimmung zur statistischen Messung hilft uns,
-                            die Website weiter zu verbessern. Sie können Ihre
-                            Entscheidung jederzeit durch das Löschen von Cookies
-                            im Browser oder über den Link
-                            „Datenschutzeinstellungen“ am Seitenende ändern.
+                            Your consent to statistical measurement helps us
+                            improve the website. You can change your decision at
+                            any time by clearing cookies in your browser or by
+                            clicking the "Privacy settings" link at the bottom
+                            of the page.
                         </p>
                     </div>
                     <div
@@ -683,14 +752,14 @@
                             class="btn btn-primary"
                             id="acceptAnalytics"
                         >
-                            Akzeptieren
+                            Accept
                         </button>
                         <button
                             type="button"
                             class="btn btn-outline-secondary"
                             id="declineAnalytics"
                         >
-                            Ablehnen
+                            Decline
                         </button>
                     </div>
                 </div>
@@ -712,7 +781,7 @@
                             type="button"
                             class="btn-close"
                             data-bs-dismiss="modal"
-                            aria-label="Schließen"
+                            aria-label="Close"
                         ></button>
                     </div>
                     <div class="modal-body text-center">
@@ -736,7 +805,7 @@
                                     type="button"
                                     data-bs-target="#referenceCarousel"
                                     data-bs-slide="prev"
-                                    aria-label="Vorheriges Bild"
+                                    aria-label="Previous image"
                                     style="
                                         min-width: 50px;
                                         min-height: 50px;
@@ -752,7 +821,7 @@
                                         style="width: 15px; height: 15px"
                                     ></span>
                                     <span class="visually-hidden"
-                                        >Vorheriges</span
+                                        >Previous</span
                                     >
                                 </button>
                                 <button
@@ -760,7 +829,7 @@
                                     type="button"
                                     data-bs-target="#referenceCarousel"
                                     data-bs-slide="next"
-                                    aria-label="Nächstes Bild"
+                                    aria-label="Next image"
                                     style="
                                         min-width: 50px;
                                         min-height: 50px;
@@ -775,9 +844,7 @@
                                         aria-hidden="true"
                                         style="width: 15px; height: 15px"
                                     ></span>
-                                    <span class="visually-hidden"
-                                        >Nächstes</span
-                                    >
+                                    <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
                         </div>

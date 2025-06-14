@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="de">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Belső árnyékolók – StarkFix Árnyékolástechnika</title>
+        <title>Innenbeschattungen – StarkFix Sonnenschutztechnik</title>
         <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/common.css" />
@@ -12,13 +12,13 @@
     <body class="fullpage-flex">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">StarkFix</a>
+                <a class="navbar-brand" href="index-de.html">StarkFix</a>
                 <button
                     class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
-                    aria-label="Navigáció megnyitása"
+                    aria-label="Navigation öffnen"
                     aria-controls="navbarNav"
                     aria-expanded="false"
                 >
@@ -27,42 +27,91 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#about"
-                                >Rólunk</a
+                            <a class="nav-link p-2" href="index-de.html#about"
+                                >Über uns</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#services"
-                                >Termékek</a
+                            <a
+                                class="nav-link p-2"
+                                href="index-de.html#services"
+                                >Produkte</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#references"
-                                >Referenciák</a
+                            <a
+                                class="nav-link p-2"
+                                href="index-de.html#references"
+                                >Referenzen</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index-hu.html#contact"
-                                >Kapcsolat</a
+                            <a class="nav-link p-2" href="index-de.html#contact"
+                                >Kontakt</a
                             >
                         </li>
                     </ul>
-                    <button
-                        id="theme-toggle"
-                        class="btn nav-link theme-toggle rounded-circle"
-                        aria-label="Téma váltása"
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center ms-3 gap-2"
                     >
-                        <span class="theme-icon">🌞</span>
-                    </button>
-                    <div class="dropdown ms-2">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Magyar
+                        <button
+                            id="theme-toggle"
+                            class="btn nav-link theme-toggle rounded-circle"
+                            style="justify-self: center"
+                            aria-label="Téma váltása"
+                        >
+                            <span class="theme-icon">🌞</span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="belso-arnyekolok-de.html">Német</a></li>
-                            <li><a class="dropdown-item" href="belso-arnyekolok-en.html">Angol</a></li>
-                            <li><a class="dropdown-item active" href="#">Magyar</a></li>
-                        </ul>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+                                type="button"
+                                id="langDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="Sprache wählen"
+                            >
+                                <span class="fw-bold">DE</span>
+                            </button>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
+                                aria-labelledby="langDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        href="index.html"
+                                    >
+                                        <span role="img" aria-label="German"
+                                            >🇩🇪</span
+                                        >
+                                        Deutsch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index-en.html"
+                                    >
+                                        <span role="img" aria-label="English"
+                                            >🇬🇧</span
+                                        >
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index-hu.html"
+                                    >
+                                        <span role="img" aria-label="Hungarian"
+                                            >🇭🇺</span
+                                        >
+                                        Magyar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +120,7 @@
             <div class="row">
                 <div class="col-12 mb-3 d-flex back-btn-row">
                     <a
-                        href="index-hu.html#services"
+                        href="index.html#services"
                         class="btn btn-outline-primary w-auto d-inline-block"
                     >
                         <svg
@@ -91,19 +140,19 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        Vissza
+                        Zurück
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 text-center mb-2">
-                    <h1 class="display-5 fw-bold mb-2">Belső árnyékolók</h1>
+                    <h1 class="display-5 fw-bold mb-2">Innenbeschattungen</h1>
                 </div>
             </div>
-            <!-- Sticky típus menü -->
+            <!-- Sticky Typenmenü -->
             <nav
                 class="belso-type-nav sticky-balso-nav d-flex justify-content-center"
-                aria-label="Belső árnyékoló típus választó"
+                aria-label="Innenbeschattung Typauswahl"
             >
                 <div class="belso-type-nav-inner d-flex align-items-center">
                     <a
@@ -111,19 +160,19 @@
                         class="belso-type-link active"
                         id="belsozsaluzia-link"
                         aria-current="true"
-                        >Belső zsalúzia</a
+                        >Innenjalousie</a
                     >
                     <a href="#plisze" class="belso-type-link" id="plisze-link"
-                        >Pliszé</a
+                        >Plissee</a
                     >
                     <a href="#rolo" class="belso-type-link" id="rolo-link"
-                        >Roló</a
+                        >Rollo</a
                     >
                     <a
                         href="#szalagfuggony"
                         class="belso-type-link"
                         id="szalagfuggony-link"
-                        >Szalagfüggöny</a
+                        >Lamellenvorhang</a
                     >
                 </div>
             </nav>
@@ -131,7 +180,7 @@
                 <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
                     <img
                         src="images/Wintergartenbeschattung/1.webp"
-                        alt="Belső zsalúzia"
+                        alt="Innenjalousie"
                         class="img-fluid rounded shadow"
                         width="800"
                         height="400"
@@ -139,12 +188,13 @@
                     />
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="display-6 fw-bold mb-3">Belső zsalúzia</h2>
+                    <h2 class="display-6 fw-bold mb-3">Innenjalousie</h2>
                     <p>
-                        A belső zsalúziák kiválóan szabályozzák a beáramló
-                        fényt, modern és letisztult megjelenést biztosítanak
-                        bármely helyiségben. Könnyen kezelhetők, tartósak, és
-                        számos színben, lamellaméretben elérhetők.
+                        Innenjalousien ermöglichen eine präzise Steuerung des
+                        Lichteinfalls és sorgen für ein modernes, klares
+                        Erscheinungsbild in jedem Raum. Sie sind einfach zu
+                        bedienen, langlebig és in vielen Farben és
+                        Lamellenbreiten erhältlich.
                     </p>
                     <ul
                         class="list-group list-group-flush mb-4 rounded"
@@ -167,8 +217,7 @@
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Precíz fényirányítás, tükröződésmentes
-                            munkakörnyezet
+                            Präzise Lichtsteuerung, blendfreies Arbeiten
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -184,10 +233,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Modern, letisztult design
+                            Modernes, klares Design
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -203,10 +252,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Könnyű kezelhetőség, egyszerű tisztítás
+                            Einfache Bedienung, leichte Reinigung
                         </li>
                     </ul>
                 </div>
@@ -219,7 +268,7 @@
                 <div class="col-lg-6 mb-2 mb-lg-0">
                     <img
                         src="images/Wintergartenbeschattung/2.webp"
-                        alt="Pliszé árnyékoló"
+                        alt="Plissee"
                         class="img-fluid rounded shadow"
                         width="800"
                         height="400"
@@ -227,13 +276,13 @@
                     />
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="display-6 fw-bold mb-3">Pliszé</h2>
+                    <h2 class="display-6 fw-bold mb-3">Plissee</h2>
                     <p>
-                        A pliszé árnyékolók modern, elegáns megoldást kínálnak
-                        minden ablakra. Különleges harmonikaszerű anyaguknak
-                        köszönhetően rugalmasan mozgathatók, akár
-                        alulról-felfelé, akár felülről-lefelé. Ideálisak ferde,
-                        íves vagy tetőtéri ablakokra is.
+                        Plissees bieten eine moderne, elegante Lösung für jedes
+                        Fenster. Dank ihres besonderen, faltbaren Materials
+                        lassen sie sich flexibel von unten nach oben oder von
+                        oben nach unten bewegen. Ideal auch für schräge,
+                        gebogene oder Dachfenster.
                     </p>
                     <ul
                         class="list-group list-group-flush mb-4 rounded"
@@ -256,8 +305,7 @@
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Egyedi méretre gyártható, szinte bármilyen
-                            ablakformához
+                            Maßanfertigung für nahezu jede Fensterform
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -273,10 +321,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Kiváló fény- és hőszabályozás
+                            Hervorragende Licht- und Wärmeregulierung
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -292,10 +340,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Könnyű kezelhetőség, modern megjelenés
+                            Einfache Bedienung, modernes Aussehen
                         </li>
                     </ul>
                 </div>
@@ -305,7 +353,7 @@
                 <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
                     <img
                         src="images/Wintergartenbeschattung/1.webp"
-                        alt="Roló"
+                        alt="Rollo"
                         class="img-fluid rounded shadow"
                         width="800"
                         height="400"
@@ -313,12 +361,13 @@
                     />
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="display-6 fw-bold mb-3">Roló</h2>
+                    <h2 class="display-6 fw-bold mb-3">Rollo</h2>
                     <p>
-                        A rolók egyszerű, de hatékony belső árnyékolók, amelyek
-                        kiválóan alkalmasak ablakok, ajtók árnyékolására.
-                        Változatos színekben, mintákkal, fényáteresztő vagy
-                        sötétítő kivitelben is elérhetők.
+                        Rollos sind einfache, aber effektive Innenbeschattungen,
+                        die sich hervorragend für Fenster und Türen eignen. Sie
+                        sind in verschiedenen Farben, Mustern sowie als
+                        lichtdurchlässige oder verdunkelnde Ausführung
+                        erhältlich.
                     </p>
                     <ul
                         class="list-group list-group-flush mb-4 rounded"
@@ -338,10 +387,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Fényáteresztő és sötétítő változatban
+                            Lichtdurchlässig oder verdunkelnd
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -360,7 +409,7 @@
                                     d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Egyszerű, gyors felszerelés
+                            Einfache, schnelle Montage
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -379,7 +428,7 @@
                                     d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Széles szín- és mintaválaszték
+                            Große Auswahl an Farben und Mustern
                         </li>
                     </ul>
                 </div>
@@ -392,7 +441,7 @@
                 <div class="col-lg-6 mb-2 mb-lg-0">
                     <img
                         src="images/Wintergartenbeschattung/1.webp"
-                        alt="Szalagfüggöny"
+                        alt="Lamellenvorhang"
                         class="img-fluid rounded shadow"
                         width="800"
                         height="400"
@@ -400,12 +449,12 @@
                     />
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="display-6 fw-bold mb-3">Szalagfüggöny</h2>
+                    <h2 class="display-6 fw-bold mb-3">Lamellenvorhang</h2>
                     <p>
-                        A szalagfüggönyök elegáns és praktikus megoldást
-                        kínálnak nagy üvegfelületek, irodák, tárgyalók
-                        árnyékolására. Könnyen kezelhetők, modern megjelenésűek,
-                        és egyedi méretre készülnek.
+                        Lamellenvorhänge sind eine elegante und praktische
+                        Lösung für große Glasflächen, Büros és
+                        Besprechungsräume. Sie sind einfach zu bedienen, modern
+                        im Design és werden individuell nach Maß gefertigt.
                     </p>
                     <ul
                         class="list-group list-group-flush mb-4 rounded"
@@ -425,10 +474,10 @@
                                 aria-hidden="true"
                             >
                                 <path
-                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Nagy üvegfelületekhez ideális
+                            Ideal für große Glasflächen
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -447,7 +496,7 @@
                                     d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Egyedi méret, széles színválaszték
+                            Maßanfertigung, große Farbauswahl
                         </li>
                         <li
                             class="list-group-item d-flex align-items-center reference-main"
@@ -466,7 +515,7 @@
                                     d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
                                 />
                             </svg>
-                            Könnyű kezelhetőség, modern megjelenés
+                            Einfache Bedienung, modernes Design
                         </li>
                     </ul>
                 </div>
@@ -474,9 +523,9 @@
         </main>
         <footer class="text-center py-4 references-section fullpage-footer">
             <small
-                >© 2025 StarkFix Austria. Minden jog fenntartva. |
-                <a href="legal.html" class="text-primary"
-                    >Jogi nyilatkozat</a
+                >© 2025 StarkFix Austria. Alle Rechte vorbehalten. |
+                <a href="legal-de.html" class="text-primary"
+                    >Rechtliche Hinweise</a
                 ></small
             >
         </footer>
@@ -496,37 +545,38 @@
                             class="modal-title w-100 text-center"
                             id="analyticsConsentLabel"
                         >
-                            Statisztikai adatok gyűjtése
+                            Erhebung von Statistikdaten
                         </h5>
                     </div>
                     <div class="modal-body text-center">
                         <p>
-                            Az oldal működésének fejlesztése és népszerűségének
-                            mérése érdekében statisztikai célú, anonim adatokat
-                            gyűjtünk a Google Analytics szolgáltatás
-                            (adatfeldolgozó: Google Ireland Ltd.) segítségével.
-                            Ezekből személyes adatot nem tárolunk, kizárólag
-                            összesített statisztikákat látunk arról, hogy
-                            hányan, mely oldalakat, mennyi ideig és hogyan
-                            használják, illetve mely külső linkekre kattintanak.
-                            Az adatkezelő: StarkFix Austria
+                            Zur Verbesserung der Funktionalität und zur Messung
+                            der Beliebtheit der Website erfassen wir anonyme,
+                            statistische Daten mit Google Analytics
+                            (Datenverarbeiter: Google Ireland Ltd.). Es werden
+                            keine personenbezogenen Daten gespeichert, wir sehen
+                            ausschließlich aggregierte Statistiken darüber, wie
+                            viele Nutzer welche Seiten wie lange und wie nutzen
+                            sowie auf welche externen Links geklickt wird.
+                            Verantwortlicher: StarkFix Austria
                             (info@starkfixaustria.at).
                         </p>
                         <p class="text-secondary small mb-0">
-                            Személyes adatot nem tárolunk, így törlési igény
-                            esetén ténylegesen nincs nálunk törölhető adat. A
-                            Google Analytics-ben csak összesített statisztikákat
-                            látunk, személyes azonosítót nem ismerünk. Ha mégis
-                            törlési igényt szeretnél benyújtani, írj nekünk, és
-                            segítünk a Google Analytics adatfeldolgozónál
-                            (Google Ireland Ltd.) érvényesíteni a kérelmet.
+                            Es werden keine personenbezogenen Daten gespeichert,
+                            daher gibt es bei uns keine tatsächlich löschbaren
+                            Daten. In Google Analytics sehen wir nur aggregierte
+                            Statistiken, keine persönlichen Kennungen. Solltest
+                            du dennoch einen Löschantrag stellen wollen,
+                            kontaktiere uns bitte – wir helfen dir, den Antrag
+                            beim Datenverarbeiter Google Ireland Ltd.
+                            einzureichen.
                         </p>
                         <p class="text-secondary small mb-0">
-                            A statisztikai méréshez való hozzájárulásod segít,
-                            hogy az oldal még jobb legyen. Döntésedet bármikor
-                            módosíthatod a böngésződben a sütik törlésével, vagy
-                            az oldal alján található „Adatkezelési beállítások”
-                            gombra kattintva.
+                            Deine Zustimmung zur statistischen Messung hilft
+                            uns, die Website weiter zu verbessern. Du kannst
+                            deine Entscheidung jederzeit durch Löschen der
+                            Cookies in deinem Browser oder über den Button
+                            „Datenschutzeinstellungen“ am Seitenende ändern.
                         </p>
                     </div>
                     <div
@@ -537,14 +587,14 @@
                             class="btn btn-primary"
                             id="acceptAnalytics"
                         >
-                            Elfogadom
+                            Ich akzeptiere
                         </button>
                         <button
                             type="button"
                             class="btn btn-outline-secondary"
                             id="declineAnalytics"
                         >
-                            Nem kérem
+                            Ablehnen
                         </button>
                     </div>
                 </div>
