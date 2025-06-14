@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Referenciák – StarkFix Árnyékolástechnika</title>
+        <!-- Preload Bootstrap CSS -->
+        <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <!-- Use minified CSS -->
+        <link rel="stylesheet" href="css/common.css" />
+    </head>
+    <body class="fullpage-flex">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">StarkFix</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-label="Open navigation"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-hu.html#about"
+                                >Rólunk</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-hu.html#services"
+                                >Termékek</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-hu.html#references"
+                                >Referenciák</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-hu.html#contact"
+                                >Kapcsolat</a
+                            >
+                        </li>
+                    </ul>
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center ms-3 gap-2"
+                    >
+                        <button
+                            id="theme-toggle"
+                            class="btn nav-link theme-toggle rounded-circle"
+                            style="justify-self: center"
+                            aria-label="Téma váltása"
+                        >
+                            <span class="theme-icon">🌞</span>
+                        </button>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+                                type="button"
+                                id="langDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="Select language"
+                            >
+                                <span class="fw-bold">EN</span>
+                            </button>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
+                                aria-labelledby="langDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index.html"
+                                    >
+                                        <span role="img" aria-label="Német"
+                                            >🇩🇪</span
+                                        >
+                                        Deutsch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        href="index-en.html"
+                                    >
+                                        <span role="img" aria-label="Angol"
+                                            >🇬🇧</span
+                                        >
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index-hu.html"
+                                    >
+                                        <span role="img" aria-label="Magyar"
+                                            >🇭🇺</span
+                                        >
+                                        Magyar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="container-fluid py-5 reference-main fullpage-main">
+            <h1 class="mb-4 text-center">Referenciáink</h1>
+            <p class="text-center mb-5">
+                Itt találja bővebb referenciáinkat és korábbi munkáinkat.
+            </p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div
+                        class="card reference-card h-100 border-0"
+                        data-title="Modern családi ház árnyékolás"
+                        data-img="https://source.unsplash.com/random/800x500?window,shades,modern&sig=101"
+                        data-desc="Modern redőnyök és szúnyoghálók felszerelése egy bécsi családi házban."
+                    >
+                        <img
+                            src="https://source.unsplash.com/random/400x250?window,shades,modern&sig=101"
+                            srcset="
+                                https://source.unsplash.com/random/400x250?window,shades,modern&sig=101   400w,
+                                https://source.unsplash.com/random/800x500?window,shades,modern&sig=101   800w,
+                                https://source.unsplash.com/random/1200x750?window,shades,modern&sig=101 1200w
+                            "
+                            sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                            width="400"
+                            height="250"
+                            class="img-fluid rounded-top shadow"
+                            alt="Referencia 1"
+                            loading="lazy"
+                            data-bs-toggle="modal"
+                            data-bs-target="#referenceModal"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Modern családi ház árnyékolás
+                            </h5>
+                            <p class="card-text text-secondary">
+                                Modern redőnyök és szúnyoghálók felszerelése egy
+                                bécsi családi házban.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for image preview -->
+            <div
+                class="modal fade"
+                id="referenceModal"
+                tabindex="-1"
+                aria-labelledby="referenceModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h5
+                                class="modal-title"
+                                id="referenceModalLabel"
+                            ></h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Bezárás"
+                            ></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div
+                                id="referenceCarousel"
+                                class="carousel slide"
+                                data-bs-ride="false"
+                            >
+                                <div
+                                    class="carousel-inner"
+                                    id="referenceCarouselInner"
+                                >
+                                    <!-- Slides will be injected by JS -->
+                                </div>
+                                <button
+                                    class="carousel-control-prev"
+                                    type="button"
+                                    data-bs-target="#referenceCarousel"
+                                    data-bs-slide="prev"
+                                >
+                                    <span
+                                        class="carousel-control-prev-icon"
+                                        aria-hidden="true"
+                                    ></span>
+                                    <span class="visually-hidden">Előző</span>
+                                </button>
+                                <button
+                                    class="carousel-control-next"
+                                    type="button"
+                                    data-bs-target="#referenceCarousel"
+                                    data-bs-slide="next"
+                                >
+                                    <span
+                                        class="carousel-control-next-icon"
+                                        aria-hidden="true"
+                                    ></span>
+                                    <span class="visually-hidden"
+                                        >Következő</span
+                                    >
+                                </button>
+                            </div>
+                            <p
+                                id="referenceModalDesc"
+                                class="text-secondary mt-3"
+                            ></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center py-4 references-section fullpage-footer">
+            <small>
+                © 2025 StarkFix Austria. Minden jog fenntartva. |
+                <a href="legal.html" class="text-primary">Jogi nyilatkozat</a> |
+                <a
+                    href="#"
+                    id="openAnalyticsConsent"
+                    class="text-secondary text-decoration-underline"
+                    style="cursor: pointer"
+                    >Adatvédelmi beállítások</a
+                >
+            </small>
+        </footer>
+        <!-- Cookie Consent Modal (duplicate for fallback, can be removed if not needed) -->
+        <div
+            class="modal fade"
+            id="analyticsConsentModal"
+            tabindex="-1"
+            aria-labelledby="analyticsConsentLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow rounded-3">
+                    <div class="modal-header border-0">
+                        <h5
+                            class="modal-title w-100 text-center"
+                            id="analyticsConsentLabel"
+                        >
+                            Statisztikai adatgyűjtés
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>
+                            Az oldal népszerűségének méréséhez és fejlesztéséhez
+                            anonim, statisztikai adatokat gyűjtünk a Google
+                            Analytics szolgáltatással (adatfeldolgozó: Google
+                            Ireland Ltd.). Nem tárolunk személyes adatokat, csak
+                            összesített statisztikákat látunk arról, hány
+                            látogató mely oldalakat mennyi ideig használ, és
+                            mely külső linkekre kattintanak. Adatkezelő:
+                            StarkFix Austria (info@starkfixaustria.at).
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            Nem tárolunk személyes adatokat, így nincs törölhető
+                            adat. A Google Analytics-ben csak összesített
+                            statisztikákat látunk, személyes azonosítókat nem
+                            ismerünk. Ha mégis törlést szeretne kérni, kérjük,
+                            vegye fel velünk a kapcsolatot – segítünk a kérelem
+                            benyújtásában az adatfeldolgozóhoz (Google Ireland
+                            Ltd.).
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            A statisztikai méréshez adott hozzájárulása segít
+                            nekünk az oldal további fejlesztésében. Döntését
+                            bármikor módosíthatja a böngészőben a sütik
+                            törlésével vagy az oldal alján található
+                            „Adatvédelmi beállítások” linken keresztül.
+                        </p>
+                    </div>
+                    <div
+                        class="modal-footer border-0 justify-content-center gap-3"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="acceptAnalytics"
+                        >
+                            Elfogadom
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            id="declineAnalytics"
+                        >
+                            Elutasítom
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
+        <script src="javascript/common.js" defer></script>
+    </body>
+</html>

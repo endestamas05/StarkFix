@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Interior Shading – StarkFix Shading Technology</title>
+        <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/belso-arnyekolok.css" />
+    </head>
+    <body class="fullpage-flex">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index-en.html">StarkFix</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-label="Open navigation"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-en.html#about"
+                                >About Us</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-en.html#services"
+                                >Products</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-en.html#references"
+                                >References</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="index-en.html#contact"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                                       <div
+                        class="d-flex flex-column flex-md-row align-items-center ms-3 gap-2"
+                    >
+                        <button
+                            id="theme-toggle"
+                            class="btn nav-link theme-toggle rounded-circle"
+                            style="justify-self: center"
+                            aria-label="Téma váltása"
+                        >
+                            <span class="theme-icon">🌞</span>
+                        </button>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+                                type="button"
+                                id="langDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="Select language"
+                            >
+                                <span class="fw-bold">EN</span>
+                            </button>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
+                                aria-labelledby="langDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index.html"
+                                    >
+                                        <span role="img" aria-label="German"
+                                            >🇩🇪</span
+                                        >
+                                        Deutsch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        href="index-en.html"
+                                    >
+                                        <span role="img" aria-label="English"
+                                            >🇬🇧</span
+                                        >
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index-hu.html"
+                                    >
+                                        <span role="img" aria-label="Hungarian"
+                                            >🇭🇺</span
+                                        >
+                                        Magyar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="container-fluid p-3 p-md-5 reference-main fullpage-main">
+            <div class="row">
+                <div class="col-12 mb-3 d-flex back-btn-row">
+                    <a
+                        href="index-en.html#services"
+                        class="btn btn-outline-primary w-auto d-inline-block"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            class="me-2"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M15 19l-7-7 7-7"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        Back
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <h1 class="display-5 fw-bold mb-2">Interior Shading</h1>
+                </div>
+            </div>
+            <!-- Sticky type menu -->
+            <nav
+                class="belso-type-nav sticky-balso-nav d-flex justify-content-center"
+                aria-label="Interior shading type selector"
+            >
+                <div class="belso-type-nav-inner d-flex align-items-center">
+                    <a
+                        href="#belsozsaluzia"
+                        class="belso-type-link active"
+                        id="belsozsaluzia-link"
+                        aria-current="true"
+                        >Venetian Blind</a
+                    >
+                    <a href="#plisze" class="belso-type-link" id="plisze-link"
+                        >Pleated Blind</a
+                    >
+                    <a href="#rolo" class="belso-type-link" id="rolo-link"
+                        >Roller Blind</a
+                    >
+                    <a
+                        href="#szalagfuggony"
+                        class="belso-type-link"
+                        id="szalagfuggony-link"
+                        >Vertical Blind</a
+                    >
+                </div>
+            </nav>
+            <div class="row align-items-center mb-5" id="belsozsaluzia">
+                <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
+                    <img
+                        src="images/Wintergartenbeschattung/1.webp"
+                        alt="Venetian Blind"
+                        class="img-fluid rounded shadow"
+                        width="800"
+                        height="400"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-3">Venetian Blind</h2>
+                    <p>
+                        Venetian blinds provide excellent control over incoming light and offer a modern, clean look in any room. They are easy to operate, durable, and available in a wide range of colors and slat sizes.
+                    </p>
+                    <ul
+                        class="list-group list-group-flush mb-4 rounded"
+                        style="border: none"
+                    >
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Precise light control, glare-free workspace
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Modern, clean design
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Easy to use, simple to clean
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-divider mb-5"></div>
+            <div
+                class="row align-items-center mb-5 flex-lg-row-reverse d-flex justify-content-start"
+                id="plisze"
+            >
+                <div class="col-lg-6 mb-2 mb-lg-0">
+                    <img
+                        src="images/Wintergartenbeschattung/2.webp"
+                        alt="Pleated Blind"
+                        class="img-fluid rounded shadow"
+                        width="800"
+                        height="400"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-3">Pleated Blind</h2>
+                    <p>
+                        Pleated blinds offer a modern, elegant solution for any window. Thanks to their special pleated fabric, they can be flexibly moved from bottom to top or top to bottom. They are ideal for slanted, arched, or skylight windows as well.
+                    </p>
+                    <ul
+                        class="list-group list-group-flush mb-4 rounded"
+                        style="border: none"
+                    >
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Custom-made for almost any window shape
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Excellent light and heat control
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Easy to use, modern appearance
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-divider mb-5"></div>
+            <div class="row align-items-center mb-5" id="rolo">
+                <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
+                    <img
+                        src="images/Wintergartenbeschattung/1.webp"
+                        alt="Roller Blind"
+                        class="img-fluid rounded shadow"
+                        width="800"
+                        height="400"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-3">Roller Blind</h2>
+                    <p>
+                        Roller blinds are simple yet effective interior shading solutions, perfect for windows and doors. They are available in a variety of colors, patterns, and as light-filtering or blackout versions.
+                    </p>
+                    <ul
+                        class="list-group list-group-flush mb-4 rounded"
+                        style="border: none"
+                    >
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Available as light-filtering or blackout
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Simple, quick installation
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Wide range of colors and patterns
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-divider mb-5"></div>
+            <div
+                class="row align-items-center mb-5 flex-lg-row-reverse d-flex justify-content-end"
+                id="szalagfuggony"
+            >
+                <div class="col-lg-6 mb-2 mb-lg-0">
+                    <img
+                        src="images/Wintergartenbeschattung/1.webp"
+                        alt="Vertical Blind"
+                        class="img-fluid rounded shadow"
+                        width="800"
+                        height="400"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-3">Vertical Blind</h2>
+                    <p>
+                        Vertical blinds are an elegant and practical solution for large glass surfaces, offices, and meeting rooms. They are easy to operate, have a modern appearance, and are custom-made to size.
+                    </p>
+                    <ul
+                        class="list-group list-group-flush mb-4 rounded"
+                        style="border: none"
+                    >
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Ideal for large glass surfaces
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Custom size, wide color selection
+                        </li>
+                        <li
+                            class="list-group-item d-flex align-items-center reference-main"
+                            style="border: none"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="22"
+                                height="22"
+                                fill="#1565c0"
+                                class="me-2 flex-shrink-0"
+                                viewBox="0 0 16 16"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z"
+                                />
+                            </svg>
+                            Easy to use, modern appearance
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center py-4 references-section fullpage-footer">
+            <small
+                >© 2025 StarkFix Austria. All rights reserved. |
+                <a href="legal-en.html" class="text-primary"
+                    >Legal Notice</a
+                ></small
+            >
+        </footer>
+
+        <!-- Cookie Consent Modal -->
+        <div
+            class="modal fade"
+            id="analyticsConsentModal"
+            tabindex="-1"
+            aria-labelledby="analyticsConsentLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow rounded-3">
+                    <div class="modal-header border-0">
+                        <h5
+                            class="modal-title w-100 text-center"
+                            id="analyticsConsentLabel"
+                        >
+                            Collection of statistical data
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>
+                            To improve the operation and measure the popularity of the site, we collect anonymous, statistical data using Google Analytics (data processor: Google Ireland Ltd.). We do not store any personal data, we only see aggregated statistics about how many people use which pages, for how long and how, and which external links are clicked. Data controller: StarkFix Austria (info@starkfixaustria.at).
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            We do not store personal data, so there is no data that can actually be deleted. In Google Analytics, we only see aggregated statistics, we do not know any personal identifiers. If you still wish to submit a deletion request, please contact us and we will help you enforce your request with the data processor Google Ireland Ltd.
+                        </p>
+                        <p class="text-secondary small mb-0">
+                            Your consent to statistical measurement helps us make the site even better. You can change your decision at any time by deleting cookies in your browser or by clicking the "Data management settings" button at the bottom of the page.
+                        </p>
+                    </div>
+                    <div
+                        class="modal-footer border-0 justify-content-center gap-3"
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="acceptAnalytics"
+                        >
+                            Accept
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            id="declineAnalytics"
+                        >
+                            Decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
+        <script src="javascript/common.js" defer></script>
+        <script src="javascript/belso-arnyekolok.js" defer></script>
+    </body>
+</html>

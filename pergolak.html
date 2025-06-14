@@ -7,18 +7,17 @@
         <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/common.css" />
-        <!-- Google Analytics csak consent után töltődik be -->
     </head>
     <body class="fullpage-flex">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">StarkFix</a>
+                <a class="navbar-brand" href="#">StarkFix</a>
                 <button
                     class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
-                    aria-label="Navigáció megnyitása"
+                    aria-label="Open navigation"
                     aria-controls="navbarNav"
                     aria-expanded="false"
                 >
@@ -27,33 +26,88 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index.html#about"
+                            <a class="nav-link p-2" href="index-hu.html#about"
                                 >Rólunk</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index.html#services"
+                            <a class="nav-link p-2" href="index-hu.html#services"
                                 >Termékek</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index.html#references"
+                            <a class="nav-link p-2" href="index-hu.html#references"
                                 >Referenciák</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="index.html#contact"
+                            <a class="nav-link p-2" href="index-hu.html#contact"
                                 >Kapcsolat</a
                             >
                         </li>
                     </ul>
-                    <button
-                        id="theme-toggle"
-                        class="btn nav-link theme-toggle rounded-circle"
-                        aria-label="Téma váltása"
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center ms-3 gap-2"
                     >
-                        <span class="theme-icon">🌞</span>
-                    </button>
+                        <button
+                            id="theme-toggle"
+                            class="btn nav-link theme-toggle rounded-circle"
+                            style="justify-self: center"
+                            aria-label="Téma váltása"
+                        >
+                            <span class="theme-icon">🌞</span>
+                        </button>
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+                                type="button"
+                                id="langDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="Select language"
+                            >
+                                <span class="fw-bold">EN</span>
+                            </button>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
+                                aria-labelledby="langDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index.html"
+                                    >
+                                        <span role="img" aria-label="Német"
+                                            >🇩🇪</span
+                                        >
+                                        Deutsch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2 active"
+                                        href="index-en.html"
+                                    >
+                                        <span role="img" aria-label="Angol"
+                                            >🇬🇧</span
+                                        >
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item d-flex align-items-center gap-2"
+                                        href="index-hu.html"
+                                    >
+                                        <span role="img" aria-label="Magyar"
+                                            >🇭🇺</span
+                                        >
+                                        Magyar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -61,7 +115,7 @@
             <div class="row">
                 <div class="col-12 mb-4">
                     <a
-                        href="index.html#services"
+                        href="index-hu.html#services"
                         class="btn btn-outline-primary w-auto d-inline-block"
                     >
                         <svg
@@ -233,7 +287,20 @@
                 </div>
             </div>
         </main>
-        <!-- Cookie Consent Modal -->
+        <footer class="text-center py-4 references-section fullpage-footer">
+            <small>
+                © 2025 StarkFix Austria. Minden jog fenntartva. |
+                <a href="legal.html" class="text-primary">Impresszum</a> |
+                <a
+                    href="#"
+                    id="openAnalyticsConsent"
+                    class="text-secondary text-decoration-underline"
+                    style="cursor: pointer"
+                    >Adatvédelmi beállítások</a
+                >
+            </small>
+        </footer>
+        <!-- Cookie Consent Modal (magyar változat) -->
         <div
             class="modal fade"
             id="analyticsConsentModal"
@@ -248,18 +315,36 @@
                             class="modal-title w-100 text-center"
                             id="analyticsConsentLabel"
                         >
-                            Statisztikai adatok gyűjtése
+                            Statisztikai adatgyűjtés
                         </h5>
                     </div>
                     <div class="modal-body text-center">
                         <p>
-                            Az oldal működésének fejlesztése és népszerűségének mérése érdekében statisztikai célú, anonim adatokat gyűjtünk a Google Analytics szolgáltatás (adatfeldolgozó: Google Ireland Ltd.) segítségével. Ezekből személyes adatot nem tárolunk, kizárólag összesített statisztikákat látunk arról, hogy hányan, mely oldalakat, mennyi ideig és hogyan használják, illetve mely külső linkekre kattintanak. Az adatkezelő: StarkFix Austria (info@starkfixaustria.at).
+                            Az oldal népszerűségének mérése és fejlesztése
+                            érdekében anonim, statisztikai adatokat gyűjtünk a
+                            Google Analytics szolgáltatással (adatfeldolgozó:
+                            Google Ireland Ltd.). Személyes adatokat nem
+                            tárolunk, csak összesített statisztikákat látunk
+                            arról, hányan, mely oldalakat, mennyi ideig
+                            használják, illetve mely külső linkekre kattintanak.
+                            Adatkezelő: StarkFix Austria
+                            (info@starkfixaustria.at).
                         </p>
                         <p class="text-secondary small mb-0">
-                            Személyes adatot nem tárolunk, így törlési igény esetén ténylegesen nincs nálunk törölhető adat. A Google Analytics-ben csak összesített statisztikákat látunk, személyes azonosítót nem ismerünk. Ha mégis törlési igényt szeretnél benyújtani, írj nekünk, és segítünk a Google Analytics adatfeldolgozónál (Google Ireland Ltd.) érvényesíteni a kérelmet.
+                            Személyes adatokat nem tárolunk, így nálunk nincs
+                            törölhető adat. A Google Analytics-ben csak
+                            összesített statisztikákat látunk, személyes
+                            azonosítókat nem ismerünk. Ha mégis törlést szeretne
+                            kérni, kérjük, vegye fel velünk a kapcsolatot –
+                            segítünk a kérelem továbbításában az
+                            adatfeldolgozóhoz (Google Ireland Ltd.).
                         </p>
                         <p class="text-secondary small mb-0">
-                            A statisztikai méréshez való hozzájárulásod segít, hogy az oldal még jobb legyen. Döntésedet bármikor módosíthatod a böngésződben a sütik törlésével, vagy az oldal alján található „Adatkezelési beállítások” gombra kattintva.
+                            A statisztikai méréshez adott hozzájárulása segít
+                            nekünk a weboldal fejlesztésében. Döntését bármikor
+                            módosíthatja a böngésző sütik törlésével vagy az
+                            oldal alján található „Adatvédelmi beállítások”
+                            linken keresztül.
                         </p>
                     </div>
                     <div
@@ -277,21 +362,12 @@
                             class="btn btn-outline-secondary"
                             id="declineAnalytics"
                         >
-                            Nem kérem
+                            Elutasítom
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer class="text-center py-4 references-section fullpage-footer">
-            <small>
-                © 2025 StarkFix Austria. Minden jog fenntartva. |
-                <a href="legal.html" class="text-primary">Jogi nyilatkozat</a> |
-                <a href="#" id="openAnalyticsConsent" class="text-secondary text-decoration-underline" style="cursor:pointer;">Adatkezelési beállítások</a>
-            </small>
-        </footer>
-        <!-- Bootstrap JS -->
         <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
         <script src="javascript/common.js" defer></script>
     </body>
