@@ -327,6 +327,18 @@ nav {
     }
 }
 
+@media (max-width: 411px){
+    .wintergarten{
+        font-size: 1.6rem !important;
+    }
+}
+
+@media (max-width: 1210px) {
+    .wintergarten {
+        font-size: 2.2rem;
+    }
+}
+
 .fix-for-you {
     font-style: normal;
     transform: rotate(-5deg);
@@ -781,5 +793,4 @@ nav {
 #analyticsConsentModal{
     z-index: 3000;
 }
-
 /* --- VÉGE --- */
