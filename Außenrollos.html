@@ -147,14 +147,102 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
-                    <img
-                        src="images/Wintergartenbeschattung/1.webp"
-                        alt="Außenrollos"
-                        class="img-fluid rounded shadow"
-                        width="800"
-                        height="400"
-                        loading="lazy"
-                    />
+                    <!-- Bootstrap Carousel kezdete -->
+                    <div
+                        id="aussenrolosCarausel"
+                        class="carousel slide mb-4"
+                        data-bs-ride="carousel"
+                    >
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img
+                                    src="images/zoldrolo.webp"
+                                    class="d-block w-100 img-fluid rounded shadow"
+                                    alt="Außenrollos 1"
+                                    width="800"
+                                    height="400"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <div class="carousel-item">
+                                <img
+                                    src="images/szurkerolo.webp"
+                                    class="d-block w-100 img-fluid rounded shadow"
+                                    alt="Außenrollos 2"
+                                    width="800"
+                                    height="400"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </div>
+                        <!-- Indikatoren unten links -->
+                        <div class="carousel-indicators custom-indicators">
+                            <button
+                                type="button"
+                                data-bs-target="#aussenrolosCarausel"
+                                data-bs-slide-to="0"
+                                class="active"
+                                aria-current="true"
+                                aria-label="Bild 1"
+                                style="
+                                    min-width: 15px;
+                                    min-height: 15px;
+                                    margin: 4px;
+                                "
+                            ></button>
+                            <button
+                                type="button"
+                                data-bs-target="#aussenrolosCarausel"
+                                data-bs-slide-to="1"
+                                aria-label="Bild 2"
+                                style="
+                                    min-width: 15px;
+                                    min-height: 15px;
+                                    margin: 4px;
+                                "
+                            ></button>
+                        </div>
+                        <!-- Steuerung unten rechts -->
+                        <div class="carousel-controls-custom">
+                            <button
+                                class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#aussenrolosCarausel"
+                                data-bs-slide="prev"
+                                aria-label="Vorheriges Bild"
+                                style="
+                                    min-width: 50px;
+                                    min-height: 50px;
+                                    margin: 4px;
+                                "
+                            >
+                                <span
+                                    class="carousel-control-prev-icon"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="visually-hidden">Vorheriges</span>
+                            </button>
+                            <button
+                                class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#aussenrolosCarausel"
+                                data-bs-slide="next"
+                                aria-label="Nächstes Bild"
+                                style="
+                                    min-width: 50px;
+                                    min-height: 50px;
+                                    margin: 4px;
+                                "
+                            >
+                                <span
+                                    class="carousel-control-next-icon"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="visually-hidden">Nächstes</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Bootstrap Carousel vége -->
                 </div>
                 <div class="col-lg-6">
                     <h1 class="display-5 fw-bold mb-3">Außenrollos</h1>
