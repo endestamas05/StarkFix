@@ -33,7 +33,7 @@
 }
 .sticky-balso-nav {
   position: sticky;
-  top: 74px;
+  top: 90px;
   z-index: 1020;
   background: var(--card-bg);
   border-radius: var(--bs-border-radius);
