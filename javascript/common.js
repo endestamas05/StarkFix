@@ -308,4 +308,21 @@ document.addEventListener("DOMContentLoaded", function () {
       initConsentModal();
     }
   })();
+
+  // --- NAVBAR COLLAPSE: CLOSE ON OUTSIDE CLICK (mobile UX) ---
+  document.addEventListener('click', function (event) {
+    var navbarCollapse = document.getElementById('navbarNav');
+    var toggler = document.querySelector('.navbar-toggler');
+    if (!navbarCollapse || !toggler) return;
+    var isOpen = navbarCollapse.classList.contains('show');
+    if (!isOpen) return;
+    // If click is NOT inside the menu or toggler
+    if (
+        !navbarCollapse.contains(event.target) &&
+        !toggler.contains(event.target)
+    ) {
+        var collapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+        collapse.hide();
+    }
+  });
 });

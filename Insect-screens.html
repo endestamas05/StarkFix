@@ -11,7 +11,7 @@
         />
         <link rel="preload" as="style" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/common.min.css" />
         <link rel="stylesheet" href="css/szunyoghalok.css" />
     </head>
     <body class="fullpage-flex">
@@ -191,9 +191,9 @@
                         <img
                             src="images/szunyiplisze.webp"
                             srcset="
-                                images/szunyiplisze-400.webp 400w,
-                                images/szunyiplisze-800.webp 800w,
-                                images/szunyiplisze.webp 1200w
+                                images/szunyiplisze-400.webp  400w,
+                                images/szunyiplisze-800.webp  800w,
+                                images/szunyiplisze.webp     1200w
                             "
                             sizes="(max-width: 600px) 100vw, (max-width: 1200px) 800px, 1200px"
                             alt="Insect Screens"
@@ -296,9 +296,9 @@
                                     <img
                                         src="images/szunyogkeret.webp"
                                         srcset="
-                                            images/szunyogkeret-400.webp 400w,
-                                            images/szunyogkeret-800.webp 800w,
-                                            images/szunyogkeret.webp 1200w
+                                            images/szunyogkeret-400.webp  400w,
+                                            images/szunyogkeret-800.webp  800w,
+                                            images/szunyogkeret.webp     1200w
                                         "
                                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 800px, 1200px"
                                         class="d-block w-100 img-fluid rounded shadow"
@@ -311,15 +311,16 @@
                                     <img
                                         src="images/szunyikisablak.webp"
                                         srcset="
-                                            images/szunyikisablak-400.webp 400w,
-                                            images/szunyikisablak-800.webp 800w,
-                                            images/szunyikisablak.webp 1200w
+                                            images/szunyikisablak-400.webp  400w,
+                                            images/szunyikisablak-800.webp  800w,
+                                            images/szunyikisablak.webp     1200w
                                         "
                                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 800px, 1200px"
                                         class="d-block w-100 img-fluid rounded shadow"
                                         alt="Frame insect screen 2"
                                         width="800"
                                         height="400"
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>
@@ -388,9 +389,7 @@
                                         class="carousel-control-next-icon"
                                         aria-hidden="true"
                                     ></span>
-                                    <span class="visually-hidden"
-                                        >Next</span
-                                    >
+                                    <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
                         </div>
@@ -641,7 +640,7 @@
             </div>
         </div>
         <script src="bootstrap/js/bootstrap.bundle.min.js" defer></script>
-        <script src="javascript/common.js" defer></script>
+        <script src="javascript/common.min.js" defer></script>
         <script src="javascript/szunyoghalok.js" defer></script>
     </body>
 </html>
