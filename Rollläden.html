@@ -51,7 +51,7 @@
     />
   </head>
   <body class="fullpage-flex">
-    <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img
@@ -89,56 +89,61 @@
               <a class="nav-link p-2" href="index.html#contact">Kontakt</a>
             </li>
           </ul>
-          <button
-            id="theme-toggle"
-            class="btn nav-link theme-toggle rounded-circle"
-            aria-label="Thema wechseln"
+          <div
+            class="d-flex flex-row align-items-center ms-3 gap-2"
           >
-            <span class="theme-icon">🌞</span>
-          </button>
-          <div class="dropdown ms-2">
             <button
-              class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
-              type="button"
-              id="langDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              aria-label="Sprache wählen"
+              id="theme-toggle"
+              class="btn nav-link theme-toggle rounded-circle"
+              style="justify-self: center"
+              aria-label="Thema wechseln"
             >
-              <span class="fw-bold">DE</span>
+              <span class="theme-icon">🌞</span>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
-              aria-labelledby="langDropdown"
-            >
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center gap-2 active"
-                  href="#"
-                >
-                  <span role="img" aria-label="Deutsch">🇩🇪</span>
-                  Deutsch
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center gap-2"
-                  href="Shutters.html"
-                >
-                  <span role="img" aria-label="Englisch">🇬🇧</span>
-                  English
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center gap-2"
-                  href="redonyok.html"
-                >
-                  <span role="img" aria-label="Ungarisch">🇭🇺</span>
-                  Magyar
-                </a>
-              </li>
-            </ul>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+                type="button"
+                id="langDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Sprache wählen"
+              >
+                <span class="fw-bold">DE</span>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn"
+                aria-labelledby="langDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2 active"
+                    href="#"
+                  >
+                    <span role="img" aria-label="German">🇩🇪</span>
+                    Deutsch
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="Pergolas.html"
+                  >
+                    <span role="img" aria-label="English">🇬🇧</span>
+                    English
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    href="pergolak.html"
+                  >
+                    <span role="img" aria-label="Hungarian">🇭🇺</span>
+                    Magyar
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
