@@ -1,0 +1,79 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../BackButton.astro";
+import CheckList from "../CheckList.astro";
+import Picture from "../Picture.astro";
+import { t, type Lang } from "../../i18n";
+
+// Section ids are used by the sticky sub-navigation (javascript/belso-arnyekolok.js).
+// Every second section has its picture on the right.
+const layout = [
+  { id: "belsozsaluzia", picture: "/images/products/interior-venetian-blind.webp", row: "row align-items-center mb-5", imageCol: "col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end" },
+  { id: "plisze", picture: "placeholder", row: "row align-items-center mb-5 flex-lg-row-reverse d-flex justify-content-start", imageCol: "col-lg-6 mb-2 mb-lg-0" },
+  { id: "rolo", picture: "placeholder", row: "row align-items-center mb-5", imageCol: "col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end" },
+  { id: "szalagfuggony", picture: "placeholder", row: "row align-items-center mb-5 flex-lg-row-reverse d-flex justify-content-end", imageCol: "col-lg-6 mb-2 mb-lg-0" },
+];
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { ui, interiorShading: text } = t(lang);
+const sections = text.sections.map((section, i) => ({ ...section, ...layout[i] }));
+---
+
+<Layout
+  lang={lang}
+  page="interiorShading"
+  meta={text.meta}
+  styles={["/css/belso-arnyekolok.css"]}
+  scripts={["/javascript/belso-arnyekolok.js"]}
+>
+  <main class="container-fluid p-3 p-md-5 reference-main fullpage-main">
+    <BackButton lang={lang} sticky />
+    <div class="row">
+      <div class="col-12 text-center mb-2">
+        <h1 class="display-5 fw-bold mb-2">{text.heading}</h1>
+      </div>
+    </div>
+    <nav class="belso-type-nav sticky-balso-nav d-flex justify-content-center" aria-label={text.navAriaLabel}>
+      <div class="belso-type-nav-inner d-flex align-items-center">
+        {
+          sections.map((section, i) => (
+            <a
+              href={`#${section.id}`}
+              class={i === 0 ? "belso-type-link active" : "belso-type-link"}
+              id={`${section.id}-link`}
+              aria-current={i === 0 ? "true" : undefined}
+            >
+              {section.navLabel}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+    {
+      sections.map((section, i) => (
+        <>
+          {i > 0 && <div class="section-divider mb-5" />}
+          <div class={section.row} id={section.id}>
+            <div class={section.imageCol}>
+              <Picture
+                src={section.picture === "placeholder" ? ui.placeholderImage : section.picture}
+                alt={section.imageAlts[0]}
+                class="img-fluid rounded shadow"
+                lazy={i > 0}
+              />
+            </div>
+            <div class="col-lg-6">
+              <h2 class="display-6 fw-bold mb-3">{section.heading}</h2>
+              <p set:html={section.text} />
+              <CheckList items={section.items} />
+            </div>
+          </div>
+        </>
+      ))
+    }
+  </main>
+</Layout>

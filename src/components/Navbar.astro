@@ -1,0 +1,98 @@
+---
+import { languages, pageUrl, t, type Lang, type PageKey } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+
+const { lang, page } = Astro.props;
+const ui = t(lang).ui;
+
+// On the home page the menu scrolls within the page; elsewhere it goes back to it.
+const home = page === "home" ? "" : pageUrl("home", lang);
+
+const flags: Record<Lang, { flag: string; label: string }> = {
+  de: { flag: "🇩🇪", label: "German" },
+  en: { flag: "🇬🇧", label: "English" },
+  hu: { flag: "🇭🇺", label: "Hungarian" },
+};
+---
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href={home || "#"}>
+      <img src="/images/logo.svg" alt="StarkFix Logo" class="navbar-logo me-2 img-fluid" width="56" height="60" />
+      StarkFix</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-label={ui.openNavigation}
+      aria-controls="navbarNav"
+      aria-expanded="false"
+    >
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link p-2" href={`${home}#about`}>{ui.nav.about}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-2" href={`${home}#services`}>{ui.nav.products}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-2" href={`${home}#references`}>{ui.nav.references}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-2" href={`${home}#contact`}>{ui.nav.contact}</a>
+        </li>
+      </ul>
+      <div class="d-flex flex-row align-items-center ms-3 gap-2">
+        <button
+          id="theme-toggle"
+          class="btn nav-link theme-toggle rounded-circle"
+          style="justify-self: center"
+          aria-label={ui.toggleTheme}
+        >
+          <span class="theme-icon">🌞</span>
+        </button>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-info dropdown-toggle px-3 lang-switcher-light"
+            type="button"
+            id="langDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            aria-label={`${lang.toUpperCase()} – ${ui.selectLanguage}`}
+          >
+            <span class="fw-bold">{lang.toUpperCase()}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn" aria-labelledby="langDropdown">
+            {
+              languages.map((other) => (
+                <li>
+                  <a
+                    class={`dropdown-item d-flex align-items-center gap-2${other === lang ? " active" : ""}`}
+                    href={pageUrl(page, other)}
+                    hreflang={other}
+                    lang={other}
+                    data-lang-switch={other}
+                  >
+                    <span role="img" aria-label={flags[other].label}>
+                      {flags[other].flag}
+                    </span>
+                    {t(other).ui.languageName}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

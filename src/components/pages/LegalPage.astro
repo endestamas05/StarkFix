@@ -1,0 +1,106 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { company, hungarianCompany } from "../../data/company";
+import { t, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { ui, legal: text } = t(lang);
+const { labels } = text;
+
+const address = (a: { street: string; postalCity: string }) => `${a.street}, ${a.postalCity}, ${text.country}`;
+
+// [label, value as HTML]; details not filled in yet (null) are left out.
+type Row = [string, string | null];
+const imprint: Row[] = [
+  [labels.company, company.legalName],
+  [labels.representative, company.representative[lang]],
+  [labels.registeredAddress, address(company.registeredAddress)],
+  [labels.businessAddress, address(company.businessAddress)],
+  [labels.phone, `<a href="${company.phoneHref}">${company.phone}</a>`],
+  [labels.email, `<a href="mailto:${company.email}">${company.email}</a>`],
+  [labels.website, `<a href="${company.websiteHref}" rel="noopener">${company.website}</a>`],
+  [labels.registerNumber, company.registerNumber],
+  [labels.registerCourt, company.registerCourt],
+  [labels.vatId, company.vatId],
+  [labels.businessPurpose, text.businessPurpose],
+  [labels.tradeAuthority, company.tradeAuthority],
+  [labels.chamber, company.chamber],
+  [labels.tradeLaw, text.tradeLaw],
+];
+
+const hu = text.hungarianCompany;
+const hungarianImprint: Row[] = hu
+  ? [
+      [hu.company, hungarianCompany.legalName],
+      [hu.representative, hungarianCompany.representative],
+      [hu.address, hungarianCompany.address],
+      [hu.registerNumber, hungarianCompany.registerNumber],
+      [hu.registerCourt, hungarianCompany.registerCourt],
+      [hu.taxNumber, hungarianCompany.taxNumber],
+      [labels.email, `<a href="mailto:${hungarianCompany.email}">${hungarianCompany.email}</a>`],
+      [labels.phone, `<a href="${hungarianCompany.phoneHref}">${hungarianCompany.phone}</a>`],
+      [hu.hosting, hu.hostingValue],
+    ]
+  : [];
+---
+
+<Layout lang={lang} page="legal" meta={text.meta}>
+  <main class="container-fluid p-5 reference-main fullpage-main">
+    <h1 class="mb-4">{text.heading}</h1>
+    <p>{text.intro}</p>
+    <section class="mb-4 p-2">
+      <h2 class="h4">{text.imprintTitle}</h2>
+      <ul class="list-unstyled">
+        {
+          imprint
+            .filter(([, value]) => value)
+            .map(([label, value]) => (
+              <li>
+                <strong>{label}</strong> <Fragment set:html={value} />
+              </li>
+            ))
+        }
+      </ul>
+    </section>
+    <section class="mb-4 p-2">
+      <h2 class="h4">{text.mediaTitle}</h2>
+      <ul class="list-unstyled">
+        <li>
+          <strong>{text.mediaOwnerLabel}</strong>
+          {company.legalName}, {company.registeredAddress.street}, {company.registeredAddress.postalCity}
+        </li>
+        <li><strong>{text.mediaPolicyLabel}</strong> {text.mediaPolicy}</li>
+      </ul>
+    </section>
+    {
+      hu && (
+        <section class="mb-4 p-2">
+          <h2 class="h4">{hu.title}</h2>
+          <p>{hu.intro}</p>
+          <ul class="list-unstyled">
+            {hungarianImprint.map(([label, value]) => (
+              <li>
+                <strong>{label}</strong> <Fragment set:html={value} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+    <section class="mb-4 p-2">
+      <h2 class="h4">{text.copyrightTitle}</h2>
+      <p>
+        © 2025 StarkFix Austria. {ui.allRightsReserved}<br />
+        {text.copyrightText}
+      </p>
+    </section>
+    <section class="p-2">
+      <h2 class="h4">{text.disclaimerTitle}</h2>
+      <p>{text.disclaimerText}</p>
+    </section>
+  </main>
+</Layout>

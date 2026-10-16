@@ -1,0 +1,52 @@
+---
+// starkfixaustria.at/ → the visitor's language: the one they chose earlier,
+// otherwise the browser's language, otherwise German.
+import { defaultLang, languages, pageUrl, t } from "../i18n";
+
+const absolute = (path: string) => new URL(path, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={defaultLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      (function () {
+        var supported = ["de", "en", "hu"];
+        var lang = null;
+        try {
+          lang = localStorage.getItem("starkfix-language");
+        } catch (e) {}
+        if (supported.indexOf(lang) === -1) {
+          lang = null;
+          var preferred = navigator.languages || [navigator.language];
+          for (var i = 0; i < preferred.length && !lang; i++) {
+            var code = String(preferred[i] || "").slice(0, 2).toLowerCase();
+            if (supported.indexOf(code) !== -1) lang = code;
+          }
+        }
+        location.replace("/" + (lang || "de") + "/" + location.hash);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content={`0; url=${pageUrl("home", defaultLang)}`} /></noscript>
+    <title>StarkFix Austria</title>
+    <meta name="description" content={t(defaultLang).home.meta.description} />
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    {languages.map((lang) => <link rel="alternate" hreflang={lang} href={absolute(pageUrl("home", lang))} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute("/")} />
+  </head>
+  <body>
+    <ul>
+      {
+        languages.map((lang) => (
+          <li>
+            <a href={pageUrl("home", lang)} hreflang={lang}>
+              {t(lang).ui.languageName}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>

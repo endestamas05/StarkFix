@@ -1,0 +1,30 @@
+---
+import { pageUrl, t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  /** Pages with a sticky sub-navigation use the "back-btn-row" variant. */
+  sticky?: boolean;
+}
+
+const { lang, sticky = false } = Astro.props;
+---
+
+<div class="row">
+  <div class={sticky ? "col-12 mb-3 d-flex back-btn-row" : "col-12 mb-4"}>
+    <a href={`${pageUrl("home", lang)}#services`} class="btn btn-outline-primary w-auto d-inline-block">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        class="me-2"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      {t(lang).ui.back}
+    </a>
+  </div>
+</div>

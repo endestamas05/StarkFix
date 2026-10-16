@@ -1,0 +1,84 @@
+---
+// Bootstrap image carousel with the site's custom indicators (bottom left) and controls (bottom right).
+import Picture from "./Picture.astro";
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  id: string;
+  images: { src: string; alt: string }[];
+  class?: string;
+  imageClass?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  lang,
+  id,
+  images,
+  class: className = "carousel slide mb-4",
+  imageClass = "d-block w-100 img-fluid rounded shadow",
+  width = 800,
+  height = 400,
+} = Astro.props;
+const ui = t(lang).ui;
+---
+
+<div id={id} class={className} data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {
+      images.map((image, i) => (
+        <div class={i === 0 ? "carousel-item active" : "carousel-item"}>
+          <Picture
+            src={image.src}
+            alt={image.alt}
+            class={imageClass}
+            width={width}
+            height={height}
+            lazy={i > 0}
+          />
+        </div>
+      ))
+    }
+  </div>
+  <div class="carousel-indicators custom-indicators">
+    {
+      images.map((_, i) => (
+        <button
+          type="button"
+          data-bs-target={`#${id}`}
+          data-bs-slide-to={i}
+          class={i === 0 ? "active" : undefined}
+          aria-current={i === 0 ? "true" : undefined}
+          aria-label={ui.image(i + 1)}
+          style="min-width: 15px; min-height: 15px; margin: 4px"
+        />
+      ))
+    }
+  </div>
+  <div class="carousel-controls-custom">
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target={`#${id}`}
+      data-bs-slide="prev"
+      aria-label={ui.previousImage}
+      style="min-width: 50px; min-height: 50px; margin: 4px"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">{ui.previous}</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target={`#${id}`}
+      data-bs-slide="next"
+      aria-label={ui.nextImage}
+      style="min-width: 50px; min-height: 50px; margin: 4px"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">{ui.next}</span>
+    </button>
+  </div>
+</div>
