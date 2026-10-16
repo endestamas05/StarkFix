@@ -29,7 +29,8 @@ function purgeBootstrapCss() {
 }
 
 export default defineConfig({
-  site: "https://starkfixaustria.at",
+  // Must match the custom domain in the repository's Settings → Pages (and public/CNAME).
+  site: "https://www.starkfixaustria.at",
   trailingSlash: "always",
   build: {
     format: "directory",
