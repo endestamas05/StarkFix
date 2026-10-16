@@ -1,0 +1,63 @@
+---
+// Shutters, venetian blinds, outdoor roller blinds, pergolas, awnings, service.
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../BackButton.astro";
+import Carousel from "../Carousel.astro";
+import CheckList from "../CheckList.astro";
+import Picture from "../Picture.astro";
+import { t, type Lang } from "../../i18n";
+
+export type ProductPageKey =
+  | "shutters"
+  | "venetianBlinds"
+  | "outdoorRollerBlinds"
+  | "pergolas"
+  | "awnings"
+  | "service";
+
+// Pictures of each page; "placeholder" = the "picture coming soon" image in the page's language.
+const pictures: Record<ProductPageKey, string[]> = {
+  shutters: ["/images/products/shutters.webp"],
+  venetianBlinds: ["/images/references/venetian-blind-conversion/venetian-blind-conversion-1.webp"],
+  outdoorRollerBlinds: ["/images/products/outdoor-roller-blind-green.webp", "/images/products/outdoor-roller-blind-grey.webp"],
+  pergolas: ["/images/products/pergola.webp"],
+  awnings: ["placeholder"],
+  service: ["/images/products/service.webp"],
+};
+
+interface Props {
+  lang: Lang;
+  page: ProductPageKey;
+}
+
+const { lang, page } = Astro.props;
+const { ui } = t(lang);
+const text = t(lang)[page];
+const images = pictures[page].map((src, i) => ({
+  src: src === "placeholder" ? ui.placeholderImage : src,
+  alt: text.imageAlts[i],
+}));
+---
+
+<Layout lang={lang} page={page} meta={text.meta}>
+  <main class="container-fluid p-3 p-md-5 reference-main fullpage-main">
+    <BackButton lang={lang} />
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-2 mb-lg-0 d-flex justify-content-end">
+        {
+          images.length > 1 ? (
+            <Carousel lang={lang} id={`${page}Carousel`} images={images} />
+          ) : (
+            <Picture src={images[0].src} alt={images[0].alt} class="img-fluid rounded shadow" />
+          )
+        }
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">{text.heading}</h1>
+        <p set:html={text.intro} />
+        <h2 class="h4 fw-bold mb-3 mt-4">{text.advantagesTitle}</h2>
+        <CheckList items={text.advantages} />
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,30 @@
+---
+// List with the blue check-mark icon in front of every item.
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className = "list-group list-group-flush mb-4 rounded" } = Astro.props;
+---
+
+<ul class={className} style="border: none">
+  {
+    items.map((item) => (
+      <li class="list-group-item d-flex align-items-center reference-main" style="border: none">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="#1565c0"
+          class="me-2 flex-shrink-0"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z" />
+        </svg>
+        {item}
+      </li>
+    ))
+  }
+</ul>

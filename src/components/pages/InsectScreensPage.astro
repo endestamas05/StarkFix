@@ -1,0 +1,103 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../BackButton.astro";
+import Carousel from "../Carousel.astro";
+import CheckList from "../CheckList.astro";
+import Picture from "../Picture.astro";
+import { t, type Lang } from "../../i18n";
+
+// Section ids are used by the sticky sub-navigation (javascript/szunyoghalok.js).
+// The middle section has its pictures (a carousel) on the right.
+const layout = [
+  { id: "plisze", pictures: ["/images/products/insect-screen-pleated.webp"], reversed: false },
+  { id: "keret", pictures: ["/images/products/insect-screen-frame-1.webp", "/images/products/insect-screen-frame-2.webp"], reversed: true },
+  { id: "rolok", pictures: ["placeholder"], reversed: false },
+];
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { ui, insectScreens: text } = t(lang);
+const sections = text.sections.map((section, i) => ({
+  ...section,
+  ...layout[i],
+  images: layout[i].pictures.map((src, j) => ({
+    src: src === "placeholder" ? ui.placeholderImage : src,
+    alt: section.imageAlts[j],
+  })),
+}));
+---
+
+<Layout
+  lang={lang}
+  page="insectScreens"
+  meta={text.meta}
+  styles={["/css/szunyoghalok.css"]}
+  scripts={["/javascript/szunyoghalok.js"]}
+>
+  <main class="container-fluid p-3 p-md-5 reference-main fullpage-main">
+    <BackButton lang={lang} sticky />
+    <div class="row">
+      <div class="col-12 text-center mb-2">
+        <h1 class="display-5 fw-bold mb-2">{text.heading}</h1>
+      </div>
+    </div>
+    <nav
+      class="mosquito-type-nav sticky-mosquito-nav d-flex justify-content-center align-items-center"
+      aria-label={text.navAriaLabel}
+    >
+      <div class="mosquito-type-nav-inner">
+        {
+          sections.map((section, i) => (
+            <a
+              href={`#${section.id}`}
+              class={i === 0 ? "mosquito-type-link active" : "mosquito-type-link"}
+              id={`${section.id}-link`}
+              aria-current={i === 0 ? "true" : undefined}
+            >
+              {section.navLabel}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+    {
+      sections.map((section, i) => (
+        <>
+          {i > 0 && <div class="section-divider mb-5" />}
+          <div id={section.id} class="mb-5" tabindex="-1">
+            <div
+              class={
+                section.reversed
+                  ? "row align-items-center flex-md-row-reverse d-flex justify-content-start"
+                  : "row align-items-center"
+              }
+            >
+              <div class={section.reversed ? "col-md-6 mb-3 mb-md-0" : "col-md-6 mb-3 mb-md-0 d-flex justify-content-end"}>
+                {
+                  section.images.length > 1 ? (
+                    <Carousel lang={lang} id={`${section.id}Carousel`} images={section.images} />
+                  ) : (
+                    <Picture
+                      src={section.images[0].src}
+                      alt={section.images[0].alt}
+                      class="img-fluid rounded shadow"
+                      lazy={i > 0}
+                    />
+                  )
+                }
+              </div>
+              <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h2 class="h4 fw-bold mb-3">{section.heading}</h2>
+                <p set:html={section.text} />
+                <CheckList items={section.items} class="list-group list-group-flush mb-0" />
+              </div>
+            </div>
+          </div>
+        </>
+      ))
+    }
+  </main>
+</Layout>

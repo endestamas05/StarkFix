@@ -1,0 +1,53 @@
+---
+// Full-size picture viewer with zoom. Filled by javascript/common.min.js (reference cards)
+// and javascript/site.js (product pictures and carousels).
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { ui } = t(Astro.props.lang);
+---
+
+<div class="modal fade" id="referenceModal" tabindex="-1" aria-labelledby="referenceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="referenceModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label={ui.close}></button>
+      </div>
+      <div class="modal-body text-center">
+        <div id="referenceCarousel" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner" id="referenceCarouselInner"></div>
+          <div class="carousel-indicators custom-indicators"></div>
+          <div class="carousel-controls-custom">
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#referenceCarousel"
+              data-bs-slide="prev"
+              aria-label={ui.previousImage}
+              style="min-width: 50px; min-height: 50px; margin: 4px; display: flex; align-items: center; justify-content: center;"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 15px; height: 15px"></span>
+              <span class="visually-hidden">{ui.previous}</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#referenceCarousel"
+              data-bs-slide="next"
+              aria-label={ui.nextImage}
+              style="min-width: 50px; min-height: 50px; margin: 4px; display: flex; align-items: center; justify-content: center;"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true" style="width: 15px; height: 15px"></span>
+              <span class="visually-hidden">{ui.next}</span>
+            </button>
+          </div>
+        </div>
+        <p id="referenceModalDesc" class="text-secondary mt-3"></p>
+      </div>
+    </div>
+  </div>
+</div>

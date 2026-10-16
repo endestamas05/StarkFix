@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { company } from "../../data/company";
+import { t, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { legal, privacy: text } = t(lang);
+
+const { street, postalCity } = company.businessAddress;
+---
+
+<Layout lang={lang} page="privacy" meta={text.meta}>
+  <main class="container-fluid p-5 reference-main fullpage-main">
+    <h1 class="mb-4">{text.heading}</h1>
+    <p>{text.intro}</p>
+    <section class="mb-4 p-2">
+      <h2 class="h4">{text.controllerTitle}</h2>
+      <p>{text.controllerText}</p>
+      <ul class="list-unstyled">
+        <li><strong>{company.legalName}</strong></li>
+        <li>{legal.labels.representative} {company.representative[lang]}</li>
+        <li>{street}, {postalCity}, {legal.country}</li>
+        <li>
+          <strong>{legal.labels.email}</strong>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+        </li>
+        <li>
+          <strong>{legal.labels.phone}</strong>
+          <a href={company.phoneHref}>{company.phone}</a>
+        </li>
+      </ul>
+    </section>
+    {
+      text.sections.map((section) => (
+        <section class="mb-4 p-2">
+          <h2 class="h4">{section.title}</h2>
+          {section.paragraphs.map((paragraph) => (
+            <p set:html={paragraph} />
+          ))}
+        </section>
+      ))
+    }
+    <p class="p-2 text-secondary">{text.updated}</p>
+  </main>
+</Layout>

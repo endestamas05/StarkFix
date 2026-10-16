@@ -1,0 +1,299 @@
+/* ============================================================
+   Additions on top of public/css/common.min.css.
+   Astro inlines this file into every page.
+   ============================================================ */
+
+/* --- Carousels: every picture in the same 4:3 frame, so the carousel
+       keeps its height while sliding between pictures of different shapes. --- */
+.carousel:not(#heroCarousel):not(#referenceCarousel) .carousel-item img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* --- Picture viewer (modal) --- */
+
+/* Above the sticky navbar (z-index 2000), not under it. */
+.modal {
+    --bs-modal-zindex: 2050;
+}
+.modal-backdrop {
+    --bs-backdrop-zindex: 2040;
+}
+
+/* Fixed-height frame, whole picture visible, so it doesn't jump between pictures. */
+#referenceCarousel .carousel-inner {
+    border-radius: var(--bs-border-radius);
+    background-color: #000;
+}
+#referenceCarousel .carousel-item img {
+    aspect-ratio: auto;
+    height: min(75vh, 900px);
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: pan-y; /* horizontal swipes go to the carousel */
+}
+/* Zoomed: grab and drag it around (see javascript/site.js). */
+#referenceCarousel .carousel-item img.zoomed {
+    cursor: grab;
+    touch-action: none; /* the finger moves the picture instead of scrolling */
+}
+#referenceCarousel .carousel-item img.zoomed.dragging {
+    cursor: grabbing;
+    transition: none;
+}
+@media (max-width: 767.98px) {
+    #referenceCarousel .carousel-item img {
+        height: calc(100vh - 12rem);
+    }
+}
+
+/* A single picture needs no slider controls. */
+#referenceCarousel.single .carousel-indicators,
+#referenceCarousel.single .carousel-controls-custom {
+    display: none;
+}
+
+/* Pictures on the page that open in the viewer. */
+img.zoomable {
+    cursor: zoom-in;
+}
+
+/* --- Carousels (except the hero): smoother slide; the pictures shrink and fade
+       slightly while moving, for a sense of depth. --- */
+.carousel:not(#heroCarousel) .carousel-item {
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.carousel:not(#heroCarousel) .carousel-item > img {
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.7s ease;
+}
+.carousel:not(#heroCarousel) .carousel-item-next:not(.carousel-item-start) > img,
+.carousel:not(#heroCarousel) .carousel-item-prev:not(.carousel-item-end) > img,
+.carousel:not(#heroCarousel) .active.carousel-item-start > img,
+.carousel:not(#heroCarousel) .active.carousel-item-end > img {
+    transform: scale(0.92);
+    opacity: 0.5;
+}
+
+/* --- Hero: slow cross-fade between pictures (the slow zoom of each picture
+       is in common.min.css). The old picture fades out at the same pace as the
+       new one fades in, so the brightness doesn't jump at the end. --- */
+#heroCarousel.carousel-fade .carousel-item {
+    transition: opacity 1.4s ease-in-out;
+}
+#heroCarousel.carousel-fade .active.carousel-item-start,
+#heroCarousel.carousel-fade .active.carousel-item-end {
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+}
+
+/* --- Menu links scroll to their section just below the sticky navbar
+       (the smooth scrolling itself is in javascript/site.js). --- */
+main section[id] {
+    scroll-margin-top: 90px;
+}
+
+/* --- Dark mode: links light enough to read on the dark background
+       (Bootstrap's default blue is too dark there). --- */
+[data-theme="dark"] .contact-info a,
+[data-theme="dark"] .reference-main a:not(.btn):not(.belso-type-link):not(.mosquito-type-link) {
+    color: #90caf9;
+}
+[data-theme="dark"] .belso-type-link,
+[data-theme="dark"] .mosquito-type-link {
+    color: #90caf9;
+}
+[data-theme="dark"] .belso-type-link.active,
+[data-theme="dark"] .belso-type-link[aria-current="true"],
+[data-theme="dark"] .mosquito-type-link.active,
+[data-theme="dark"] .mosquito-type-link[aria-current="true"] {
+    color: #e3f2fd !important;
+    border-bottom-color: #42a5f5 !important;
+}
+
+/* --- Language switcher: the filled blue dark-mode look in both themes
+       (in light mode it used to fall back to Bootstrap's outline style). --- */
+.lang-switcher-light {
+    background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%) !important;
+    color: #fff !important;
+    border-color: #42a5f5 !important;
+    text-shadow: 0 2px 8px #000b;
+    filter: brightness(1.08) drop-shadow(0 0 8px #42a5f5cc);
+}
+.lang-switcher-light:hover,
+.lang-switcher-light:focus-visible {
+    background: linear-gradient(90deg, #42a5f5 60%, #90caf9 100%) !important;
+    color: #222 !important;
+    text-shadow: 0 2px 8px #fff8;
+    filter: brightness(1.12) drop-shadow(0 0 12px #90caf9cc);
+}
+.lang-switcher-light:active {
+    background: #1565c0 !important;
+    color: #fff !important;
+    filter: brightness(1.18) drop-shadow(0 0 16px #42a5f5cc);
+}
+
+/* --- Hamburger icon: the three lines turn into an X while the menu is open --- */
+.hamburger {
+    position: relative;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+}
+.hamburger span {
+    position: absolute;
+    left: 13%;
+    right: 13%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s ease;
+}
+.hamburger span:nth-child(1) {
+    top: calc(23% - 1px);
+}
+.hamburger span:nth-child(2) {
+    top: calc(50% - 1px);
+}
+.hamburger span:nth-child(3) {
+    top: calc(77% - 1px);
+}
+.navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(1) {
+    top: calc(50% - 1px);
+    transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(3) {
+    top: calc(50% - 1px);
+    transform: rotate(-45deg);
+}
+
+/* --- Mobile menu: opens over the page instead of pushing the content down --- */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 0 1rem;
+        background-color: var(--navbar-bg);
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Layout: full-width rows lined up with the logo, thin separators,
+       theme + language in their own bar at the bottom. */
+    .navbar-collapse .navbar-nav {
+        padding: 0.25rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .navbar-collapse .nav-item + .nav-item {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .navbar-collapse .navbar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.15rem 0;
+        padding: 0.7rem 0.75rem !important;
+        border-radius: 0.6rem;
+        font-size: 1.1rem;
+    }
+    .navbar-collapse .navbar-nav .nav-link::after {
+        content: "›";
+        font-size: 1.4rem;
+        line-height: 1;
+        opacity: 0.6;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .navbar-collapse .navbar-nav .nav-link:hover::after,
+    .navbar-collapse .navbar-nav .nav-link:focus::after {
+        opacity: 1;
+        transform: translateX(3px);
+    }
+    .navbar-collapse > :last-child .theme-toggle {
+        margin-left: 0;
+    }
+    .navbar-collapse > :last-child {
+        justify-content: space-between;
+        margin: 0 !important;
+        padding: 0.75rem 0.75rem 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* The panel unfolds while sliding down and fading in, and the reverse when closing.
+       (The toggler's aria-expanded flips as soon as opening or closing starts.) */
+    .navbar-collapse,
+    .navbar-collapse.collapsing {
+        transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease,
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .navbar-toggler[aria-expanded="false"] ~ .navbar-collapse {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Menu items slide in one after the other while the panel unfolds,
+       and fade out together as it closes. */
+    .navbar-collapse .nav-item,
+    .navbar-collapse > :last-child {
+        transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .navbar-toggler[aria-expanded="false"] ~ .navbar-collapse .nav-item,
+    .navbar-toggler[aria-expanded="false"] ~ .navbar-collapse > :last-child {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse > :last-child {
+        transition-delay: 0.25s;
+    }
+
+    /* Starting point of the opening animation: the menu was hidden (display: none)
+       just before, so tell the browser what to animate from. */
+    @starting-style {
+        .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse {
+            opacity: 0;
+            transform: translateY(-12px);
+        }
+        .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item,
+        .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse > :last-child {
+            opacity: 0;
+            transform: translateX(-12px);
+        }
+    }
+}
+
+/* --- Animations always on ---
+   Bootstrap switches its transitions off when the system asks for reduced motion;
+   the site keeps its (short) animations for everyone. The menu, carousel and hero
+   rules above already win over Bootstrap's; these are for the picture viewer. */
+.modal.fade,
+.modal-backdrop.fade {
+    transition: opacity 0.15s linear;
+}
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}

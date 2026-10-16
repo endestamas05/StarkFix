@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../BackButton.astro";
+import Carousel from "../Carousel.astro";
+import CheckList from "../CheckList.astro";
+import { t, type Lang } from "../../i18n";
+
+const pictures = [
+  "/images/references/conservatory-slanted-windows/conservatory-slanted-windows-1.webp",
+  "/images/references/conservatory-slanted-windows/conservatory-slanted-windows-2.webp",
+  "/images/references/conservatory-slanted-windows/conservatory-slanted-windows-3.webp",
+  "/images/products/conservatory-shading-1.webp",
+  "/images/products/conservatory-shading-2.webp",
+];
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const text = t(lang).conservatoryShading;
+const images = pictures.map((src, i) => ({ src, alt: text.imageAlts[i] }));
+---
+
+<Layout lang={lang} page="conservatoryShading" meta={text.meta}>
+  <main class="container-fluid p-3 p-md-5 reference-main fullpage-main">
+    <BackButton lang={lang} />
+    <div class="row align-items-center g-4 wintergarten-content" style="justify-self: center">
+      <div class="col-12 col-lg-6">
+        <Carousel
+          lang={lang}
+          id="conservatoryCarousel"
+          images={images}
+          class="carousel slide mb-4 wintergarten-carousel"
+          imageClass="d-block w-100 img-fluid rounded shadow wintergarten-image"
+          width={1200}
+          height={600}
+        />
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="wintergarten-text">
+          <h1 class="display-5 fw-bold mb-3 wintergarten">{text.heading}</h1>
+          <p set:html={text.intro} />
+          <h2 class="h4 fw-bold mb-3 mt-4">{text.advantagesTitle}</h2>
+          <CheckList items={text.advantages} />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

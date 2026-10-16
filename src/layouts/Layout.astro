@@ -1,0 +1,62 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ImageViewer from "../components/ImageViewer.astro";
+import { defaultLang, languages, pageUrl, type Lang, type PageKey } from "../i18n";
+import type { Meta } from "../i18n/types";
+import "../styles/site.css";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  meta: Meta;
+  /** Page-specific stylesheets and scripts, e.g. "/css/belso-arnyekolok.css". */
+  styles?: string[];
+  scripts?: string[];
+}
+
+const { lang, page, meta, styles = [], scripts = [] } = Astro.props;
+const absolute = (path: string) => new URL(path, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={lang} data-language={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      // Apply the light/dark theme before the first paint, so dark-mode visitors see no white flash.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (theme !== "dark" && theme !== "light") {
+          theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <title>StarkFix Austria - {meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/common.min.css" />
+    {styles.map((href) => <link rel="stylesheet" href={href} />)}
+
+    <link rel="canonical" href={absolute(pageUrl(page, lang))} />
+    {languages.map((other) => <link rel="alternate" hreflang={other} href={absolute(pageUrl(page, other))} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute(pageUrl(page, defaultLang))} />
+  </head>
+  <body class="fullpage-flex">
+    <Navbar lang={lang} page={page} />
+    <slot />
+    <Footer lang={lang} />
+    <ImageViewer lang={lang} />
+    <script is:inline src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script is:inline src="/javascript/common.min.js" defer></script>
+    <script is:inline src="/javascript/site.js" defer></script>
+    {scripts.map((src) => <script is:inline src={src} defer />)}
+    <script is:inline src="/javascript/language.js" defer></script>
+  </body>
+</html>
