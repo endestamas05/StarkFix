@@ -25,7 +25,10 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      - run: node --version && npm --version
+      # "npm install" instead of "npm ci": the lock file is written on Windows, and
+      # "npm ci" is strict about small differences between npm versions.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
