@@ -382,7 +382,7 @@ const de: Translation = {
       "Information über die Produkte und Dienstleistungen von StarkFix Austria im Bereich Sonnenschutztechnik.",
     disclaimerTitle: "Haftungsausschluss",
     disclaimerText:
-      "Die auf dieser Website bereitgestellten Informationen dienen ausschließlich der allgemeinen Information. Für die Richtigkeit und Vollständigkeit der Inhalte wird keine Haftung übernommen. StarkFix Austria übernimmt keine Haftung für Schäden, die aus der Nutzung der Website entstehen.",
+      "Die auf dieser Website bereitgestellten Informationen dienen ausschließlich der allgemeinen Information. Für die Richtigkeit und Vollständigkeit der Inhalte wird keine Haftung übernommen. Soweit gesetzlich zulässig, übernimmt StarkFix Austria keine Haftung für Schäden, die aus der Nutzung der Website entstehen.",
   },
 
   // ------------------------------------------------------------
@@ -404,20 +404,20 @@ const de: Translation = {
         title: "Hosting und Server-Logfiles",
         paragraphs: [
           "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten, insbesondere Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, den Browsertyp sowie die zuvor besuchte Seite (Referrer). Diese Daten sind erforderlich, um die Website auszuliefern und ihre Sicherheit und Stabilität zu gewährleisten.",
-          'Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht (Art. 45 DSGVO). Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.',
+          'Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht (Art. 45 DSGVO). Auf diese Logfiles haben wir keinen Zugriff; ihre Speicherdauer richtet sich nach den Richtlinien von GitHub. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.',
         ],
       },
       {
         title: "Kontaktaufnahme",
         paragraphs: [
-          "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten und Ihr Anliegen), um Ihre Anfrage zu bearbeiten und gegebenenfalls ein Angebot zu erstellen. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO) bzw. unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO).",
-          "Wir speichern diese Daten, solange es für die Bearbeitung Ihrer Anfrage erforderlich ist. Kommt ein Vertrag zustande, bewahren wir die Daten im Rahmen der gesetzlichen Aufbewahrungspflichten auf (in der Regel sieben Jahre gemäß § 132 BAO). Ohne Ihre Einwilligung geben wir Ihre Daten nicht an Dritte weiter.",
+          "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten und Ihr Anliegen), um Ihre Anfrage zu bearbeiten und gegebenenfalls ein Angebot zu erstellen. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO) bzw. unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). E-Mails an info@starkfixaustria.at werden in unserem Auftrag von unserem E-Mail-Anbieter Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaka, Zypern, als Auftragsverarbeiter (Art. 28 DSGVO) verarbeitet.",
+          "Wir speichern diese Daten, solange es für die Bearbeitung Ihrer Anfrage erforderlich ist. Kommt ein Vertrag zustande, bewahren wir die Daten im Rahmen der gesetzlichen Aufbewahrungspflichten auf (in der Regel sieben Jahre gemäß § 132 BAO). Darüber hinaus geben wir Ihre Daten ohne Ihre Einwilligung nicht an Dritte weiter.",
         ],
       },
       {
         title: "Cookies und lokale Speicherung",
         paragraphs: [
-          "Diese Website verwendet keine Cookies. Um Ihre Einstellungen zu merken, speichert die Website im lokalen Speicher Ihres Browsers (localStorage) lediglich die von Ihnen gewählte Sprache und das gewählte Farbschema (hell/dunkel) – und zwar nur, wenn Sie diese Einstellung selbst ändern. Diese Angaben verbleiben auf Ihrem Gerät, werden nicht an uns übermittelt und dienen nicht der Nachverfolgung.",
+          "Diese Website verwendet keine Cookies. Um Ihre Einstellungen zu merken, speichert die Website im lokalen Speicher Ihres Browsers (localStorage) lediglich die von Ihnen gewählte Sprache und das gewählte Farbschema (hell/dunkel) – und zwar nur, wenn Sie diese Einstellung selbst ändern. Beim Sprachwechsel wird zusätzlich kurzzeitig die Scrollposition im Sitzungsspeicher (sessionStorage) abgelegt und nach dem Laden der neuen Seite sofort wieder gelöscht. Diese Angaben verbleiben auf Ihrem Gerät, werden nicht an uns übermittelt und dienen nicht der Nachverfolgung.",
           "Diese Speicherung ist für die von Ihnen ausdrücklich gewünschte Funktion unbedingt erforderlich und daher ohne Einwilligung zulässig (§ 165 Abs. 3 TKG 2021). Sie können diese Daten jederzeit über die Einstellungen Ihres Browsers löschen.",
         ],
       },
@@ -425,6 +425,12 @@ const de: Translation = {
         title: "Keine Analyse- und Trackingdienste",
         paragraphs: [
           "Wir setzen keine Analyse-, Tracking- oder Werbedienste ein und binden keine Inhalte von Drittanbietern (z. B. Schriftarten, Karten oder Videos) ein. Alle Dateien der Website werden direkt von unserem Hosting-Anbieter geladen.",
+        ],
+      },
+      {
+        title: "Widerspruchsrecht",
+        paragraphs: [
+          '<strong>Soweit wir Ihre Daten auf Grundlage unseres berechtigten Interesses verarbeiten (Art. 6 Abs. 1 lit. f DSGVO), haben Sie das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen diese Verarbeitung Widerspruch einzulegen (Art. 21 DSGVO). Wenden Sie sich dazu einfach an <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.</strong>',
         ],
       },
       {
