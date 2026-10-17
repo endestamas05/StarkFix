@@ -389,7 +389,7 @@ const hu: Translation = {
       "Tájékoztatás a StarkFix Austria árnyékolástechnikai termékeiről és szolgáltatásairól.",
     disclaimerTitle: "Felelősség kizárása",
     disclaimerText:
-      "A weboldalon található információk tájékoztató jellegűek, azok pontosságáért, teljességéért felelősséget nem vállalunk. A weboldal használatából eredő esetleges károkért a StarkFix Austria nem vállal felelősséget.",
+      "A weboldalon található információk tájékoztató jellegűek, azok pontosságáért, teljességéért felelősséget nem vállalunk. A jogszabályok által megengedett mértékben a weboldal használatából eredő esetleges károkért a StarkFix Austria nem vállal felelősséget.",
     hungarianCompany: {
       title: "Magyarországi cég",
       intro: "A StarkFix magyarországi cégének adatai:",
@@ -424,20 +424,20 @@ const hu: Translation = {
         title: "Tárhely és szervernaplók",
         paragraphs: [
           "A weboldalt a GitHub Pages szolgáltatás biztosítja (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). A weboldal megnyitásakor a GitHub a működéshez szükséges adatokat kezeli, különösen az IP-címét, a látogatás dátumát és időpontját, a megnyitott oldalt, a böngésző típusát és az előzőleg meglátogatott oldalt (referrer). Ezek az adatok a weboldal kiszolgálásához, valamint biztonságának és stabilitásának biztosításához szükségesek.",
-          'Az adatkezelés jogalapja a weboldal biztonságos és megbízható működtetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Ennek során adatok kerülhetnek az Egyesült Államokba. A GitHub rendelkezik az EU–USA adatvédelmi keretrendszer (Data Privacy Framework) szerinti tanúsítással, amelyre az Európai Bizottság megfelelőségi határozata vonatkozik (GDPR 45. cikk). További információ: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">a GitHub adatvédelmi nyilatkozata</a>.',
+          'Az adatkezelés jogalapja a weboldal biztonságos és megbízható működtetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Ennek során adatok kerülhetnek az Egyesült Államokba. A GitHub rendelkezik az EU–USA adatvédelmi keretrendszer (Data Privacy Framework) szerinti tanúsítással, amelyre az Európai Bizottság megfelelőségi határozata vonatkozik (GDPR 45. cikk). Ezekhez a naplókhoz nincs hozzáférésünk; megőrzési idejüket a GitHub szabályai határozzák meg. További információ: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">a GitHub adatvédelmi nyilatkozata</a>.',
         ],
       },
       {
         title: "Kapcsolatfelvétel",
         paragraphs: [
-          "Ha e-mailben vagy telefonon felveszi velünk a kapcsolatot, az Ön által megadott adatokat (például nevét, elérhetőségeit és kérését) a megkeresés feldolgozása és szükség esetén árajánlat készítése céljából kezeljük. Az adatkezelés jogalapja a szerződéskötést megelőző lépések megtétele (GDPR 6. cikk (1) bekezdés b) pont), illetve a megkeresések megválaszolásához fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont).",
-          "Az adatokat addig őrizzük, ameddig a megkeresés feldolgozásához szükséges. Szerződéskötés esetén a törvényes megőrzési kötelezettségnek megfelelően tároljuk őket (általában hét évig, az osztrák adórendtartás, BAO 132. §-a alapján). Adatait az Ön hozzájárulása nélkül nem adjuk át harmadik félnek.",
+          "Ha e-mailben vagy telefonon felveszi velünk a kapcsolatot, az Ön által megadott adatokat (például nevét, elérhetőségeit és kérését) a megkeresés feldolgozása és szükség esetén árajánlat készítése céljából kezeljük. Az adatkezelés jogalapja a szerződéskötést megelőző lépések megtétele (GDPR 6. cikk (1) bekezdés b) pont), illetve a megkeresések megválaszolásához fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Az info@starkfixaustria.at címre érkező e-maileket megbízásunkból e-mail-szolgáltatónk, a Hostinger International Ltd. (61 Lordou Vironos Street, 6023 Lárnaka, Ciprus) kezeli adatfeldolgozóként (GDPR 28. cikk).",
+          "Az adatokat addig őrizzük, ameddig a megkeresés feldolgozásához szükséges. Szerződéskötés esetén a törvényes megőrzési kötelezettségnek megfelelően tároljuk őket (általában hét évig, az osztrák adórendtartás, BAO 132. §-a alapján). Ezen túlmenően adatait az Ön hozzájárulása nélkül nem adjuk át harmadik félnek.",
         ],
       },
       {
         title: "Sütik és helyi tárolás",
         paragraphs: [
-          "A weboldal nem használ sütiket (cookie-kat). A beállítások megjegyzéséhez a weboldal a böngésző helyi tárolójában (localStorage) csak a választott nyelvet és színsémát (világos/sötét) menti el, és csak akkor, ha ezt a beállítást Ön maga módosítja. Ezek az adatok az Ön eszközén maradnak, nem jutnak el hozzánk, és nem szolgálnak követésre.",
+          "A weboldal nem használ sütiket (cookie-kat). A beállítások megjegyzéséhez a weboldal a böngésző helyi tárolójában (localStorage) csak a választott nyelvet és színsémát (világos/sötét) menti el, és csak akkor, ha ezt a beállítást Ön maga módosítja. Nyelvváltáskor emellett a görgetési pozíció rövid időre a böngésző munkamenet-tárolójába (sessionStorage) kerül, és az új oldal betöltése után azonnal törlődik. Ezek az adatok az Ön eszközén maradnak, nem jutnak el hozzánk, és nem szolgálnak követésre.",
           "Ez a tárolás az Ön által kifejezetten kért funkcióhoz feltétlenül szükséges, ezért hozzájárulás nélkül megengedett (TKG 2021 165. § (3) bekezdés). Ezeket az adatokat bármikor törölheti a böngésző beállításaiban.",
         ],
       },
@@ -445,6 +445,12 @@ const hu: Translation = {
         title: "Nincs látogatottságmérés és követés",
         paragraphs: [
           "Nem használunk látogatottságmérő, követő vagy hirdetési szolgáltatásokat, és nem ágyazunk be harmadik féltől származó tartalmat (például betűtípust, térképet vagy videót). A weboldal minden fájlja közvetlenül a tárhelyszolgáltatótól töltődik be.",
+        ],
+      },
+      {
+        title: "Tiltakozási jog",
+        paragraphs: [
+          '<strong>Ha adatait jogos érdekünk alapján kezeljük (GDPR 6. cikk (1) bekezdés f) pont), Ön jogosult arra, hogy a saját helyzetével kapcsolatos okokból bármikor tiltakozzon az adatkezelés ellen (GDPR 21. cikk). Ehhez elég írnia nekünk: <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.</strong>',
         ],
       },
       {

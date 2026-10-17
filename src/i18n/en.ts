@@ -382,7 +382,7 @@ const en: Translation = {
       "Information about the products and services of StarkFix Austria in the field of sun protection technology.",
     disclaimerTitle: "Disclaimer",
     disclaimerText:
-      "The information provided on this website is for general information purposes only. No liability is accepted for the accuracy or completeness of the content. StarkFix Austria accepts no liability for any damages resulting from the use of the website.",
+      "The information provided on this website is for general information purposes only. No liability is accepted for the accuracy or completeness of the content. To the extent permitted by law, StarkFix Austria accepts no liability for any damages resulting from the use of the website.",
   },
 
   // ------------------------------------------------------------
@@ -404,20 +404,20 @@ const en: Translation = {
         title: "Hosting and server log files",
         paragraphs: [
           "This website is provided via GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. When you visit the website, GitHub processes technically necessary data, in particular your IP address, the date and time of access, the page requested, your browser type and the previously visited page (referrer). This data is required to deliver the website and to ensure its security and stability.",
-          'The legal basis is our legitimate interest in providing the website securely and reliably (Art. 6(1)(f) GDPR). Data may be transferred to the USA in the process. GitHub is certified under the EU-U.S. Data Privacy Framework, for which an adequacy decision of the European Commission exists (Art. 45 GDPR). For more information, see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.',
+          'The legal basis is our legitimate interest in providing the website securely and reliably (Art. 6(1)(f) GDPR). Data may be transferred to the USA in the process. GitHub is certified under the EU-U.S. Data Privacy Framework, for which an adequacy decision of the European Commission exists (Art. 45 GDPR). We have no access to these log files; their retention period is governed by GitHub’s policies. For more information, see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.',
         ],
       },
       {
         title: "Contacting us",
         paragraphs: [
-          "If you contact us by e-mail or phone, we process the data you provide (e.g. your name, contact details and your request) in order to handle your enquiry and, where applicable, to prepare a quotation. The legal basis is the performance of pre-contractual measures (Art. 6(1)(b) GDPR) or our legitimate interest in responding to enquiries (Art. 6(1)(f) GDPR).",
-          "We store this data for as long as necessary to handle your enquiry. If a contract is concluded, we retain the data in accordance with the statutory retention obligations (generally seven years under § 132 of the Austrian Federal Fiscal Code). We do not pass your data on to third parties without your consent.",
+          "If you contact us by e-mail or phone, we process the data you provide (e.g. your name, contact details and your request) in order to handle your enquiry and, where applicable, to prepare a quotation. The legal basis is the performance of pre-contractual measures (Art. 6(1)(b) GDPR) or our legitimate interest in responding to enquiries (Art. 6(1)(f) GDPR). E-mails sent to info@starkfixaustria.at are processed on our behalf by our e-mail provider Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Cyprus, acting as a processor (Art. 28 GDPR).",
+          "We store this data for as long as necessary to handle your enquiry. If a contract is concluded, we retain the data in accordance with the statutory retention obligations (generally seven years under § 132 of the Austrian Federal Fiscal Code). Beyond this, we do not pass your data on to third parties without your consent.",
         ],
       },
       {
         title: "Cookies and local storage",
         paragraphs: [
-          "This website does not use cookies. To remember your settings, the website only stores your chosen language and colour scheme (light/dark) in your browser's local storage (localStorage) – and only if you change this setting yourself. This information stays on your device, is not transmitted to us and is not used for tracking.",
+          "This website does not use cookies. To remember your settings, the website only stores your chosen language and colour scheme (light/dark) in your browser's local storage (localStorage) – and only if you change this setting yourself. When you switch languages, the scroll position is also briefly stored in your browser's session storage (sessionStorage) and deleted immediately after the new page has loaded. This information stays on your device, is not transmitted to us and is not used for tracking.",
           "This storage is strictly necessary for the function you have expressly requested and is therefore permitted without consent (§ 165(3) of the Austrian Telecommunications Act 2021). You can delete this data at any time in your browser settings.",
         ],
       },
@@ -425,6 +425,12 @@ const en: Translation = {
         title: "No analytics or tracking services",
         paragraphs: [
           "We do not use any analytics, tracking or advertising services and do not embed any third-party content (e.g. fonts, maps or videos). All files of the website are loaded directly from our hosting provider.",
+        ],
+      },
+      {
+        title: "Right to object",
+        paragraphs: [
+          '<strong>Where we process your data on the basis of our legitimate interest (Art. 6(1)(f) GDPR), you have the right to object to this processing at any time on grounds relating to your particular situation (Art. 21 GDPR). To do so, simply contact <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.</strong>',
         ],
       },
       {
