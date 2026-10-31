@@ -39,12 +39,14 @@ export interface Translation {
     openNavigation: string;
     toggleTheme: string;
     selectLanguage: string;
+    languageStorageNote: string;
     languageName: string;
     nav: { about: string; products: string; references: string; contact: string };
     back: string;
     allRightsReserved: string;
     legalLink: string;
     privacyLink: string;
+    cookiesLink: string;
     image: (n: number) => string;
     previousImage: string;
     previous: string;
@@ -61,7 +63,7 @@ export interface Translation {
     aboutText: string;
     productsTitle: string;
     products: Record<
-      Exclude<import("./routes").PageKey, "home" | "legal" | "privacy">,
+      Exclude<import("./routes").PageKey, "home" | "legal" | "privacy" | "cookies">,
       { title: string; tagline: string }
     >;
     referencesTitle: string;
@@ -100,12 +102,14 @@ export interface Translation {
       registerCourt: string;
       vatId: string;
       businessPurpose: string;
+      professionalTitle: string;
       tradeAuthority: string;
       chamber: string;
       tradeLaw: string;
     };
     country: string;
     businessPurpose: string;
+    professionalTitle: string;
     /** May contain a link. */
     tradeLaw: string;
     mediaTitle: string;
@@ -134,6 +138,35 @@ export interface Translation {
     intro: string;
     controllerTitle: string;
     controllerText: string;
+    /** Paragraphs may contain links. */
+    sections: { title: string; paragraphs: string[] }[];
+    updated: string;
+  };
+  cookies: {
+    meta: Meta;
+    heading: string;
+    /** May contain links. */
+    intro: string;
+    tableTitle: string;
+    tableIntro: string;
+    columns: {
+      name: string;
+      storage: string;
+      provider: string;
+      purpose: string;
+      lifetime: string;
+      type: string;
+      legalBasis: string;
+    };
+    rows: {
+      name: string;
+      storage: string;
+      provider: string;
+      purpose: string;
+      lifetime: string;
+      type: string;
+      legalBasis: string;
+    }[];
     /** Paragraphs may contain links. */
     sections: { title: string; paragraphs: string[] }[];
     updated: string;

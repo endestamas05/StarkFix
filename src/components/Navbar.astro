@@ -90,6 +90,11 @@ const flags: Record<Lang, { flag: string; label: string }> = {
                 </li>
               ))
             }
+            <li><hr class="dropdown-divider" /></li>
+            <li class="lang-storage-note px-3 py-1 small">
+              {ui.languageStorageNote}
+              <a href={pageUrl("cookies", lang)}>{ui.cookiesLink}</a>
+            </li>
           </ul>
         </div>
       </div>

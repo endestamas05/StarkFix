@@ -5,6 +5,7 @@ const en: Translation = {
     openNavigation: "Open navigation",
     toggleTheme: "Toggle theme",
     selectLanguage: "Select language",
+    languageStorageNote: "Your language choice is saved in this browser.",
     languageName: "English",
     nav: {
       about: "About Us",
@@ -16,6 +17,7 @@ const en: Translation = {
     allRightsReserved: "All rights reserved.",
     legalLink: "Legal Notice",
     privacyLink: "Privacy Policy",
+    cookiesLink: "Cookies",
     image: (n) => `Image ${n}`,
     previousImage: "Previous image",
     previous: "Previous",
@@ -366,6 +368,7 @@ const en: Translation = {
       registerCourt: "Company register court:",
       vatId: "VAT ID:",
       businessPurpose: "Business activity:",
+      professionalTitle: "Trade / professional title:",
       tradeAuthority: "Trade authority:",
       chamber: "Chamber membership:",
       tradeLaw: "Applicable trade law:",
@@ -375,6 +378,7 @@ const en: Translation = {
       "Sun protection technology – sale, installation, maintenance and repair of shading systems",
     tradeLaw:
       'Austrian Trade Regulation Act (Gewerbeordnung, GewO), available at <a href="https://www.ris.bka.gv.at" rel="noopener">www.ris.bka.gv.at</a>',
+    professionalTitle: "Joiner, restricted to building joinery (Tischler, eingeschränkt auf Bautischler); trade, excluding regulated trades (Handelsgewerbe mit Ausnahme der reglementierten Handelsgewerbe) (Austria)",
     mediaTitle: "Disclosure pursuant to § 25 of the Austrian Media Act",
     mediaOwnerLabel: "Media owner:",
     mediaPolicyLabel: "Editorial policy:",
@@ -404,27 +408,34 @@ const en: Translation = {
         title: "Hosting and server log files",
         paragraphs: [
           "This website is provided via GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. When you visit the website, GitHub processes technically necessary data, in particular your IP address, the date and time of access, the page requested, your browser type and the previously visited page (referrer). This data is required to deliver the website and to ensure its security and stability.",
-          'The legal basis is our legitimate interest in providing the website securely and reliably (Art. 6(1)(f) GDPR). Data may be transferred to the USA in the process. GitHub is certified under the EU-U.S. Data Privacy Framework, for which an adequacy decision of the European Commission exists (Art. 45 GDPR). We have no access to these log files; their retention period is governed by GitHub’s policies. For more information, see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.',
+          'The legal basis is our legitimate interest in providing the website securely and reliably (Art. 6(1)(f) GDPR). Data may be transferred to the USA in the process. According to GitHub, it participates in the EU-U.S. Data Privacy Framework, for which an adequacy decision of the European Commission exists (Art. 45 GDPR), and generally relies on the European Commission’s standard contractual clauses for transfers to other countries without an adequacy decision (Art. 46 GDPR). We have no access to these log files. GitHub does not publish a specific retention period for them; according to GitHub, retention depends on the purpose of collection and on legal obligations. For more information, see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.',
         ],
       },
       {
         title: "Contacting us",
         paragraphs: [
-          "If you contact us by e-mail or phone, we process the data you provide (e.g. your name, contact details and your request) in order to handle your enquiry and, where applicable, to prepare a quotation. The legal basis is the performance of pre-contractual measures (Art. 6(1)(b) GDPR) or our legitimate interest in responding to enquiries (Art. 6(1)(f) GDPR). E-mails sent to info@starkfixaustria.at are processed on our behalf by our e-mail provider Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Cyprus, acting as a processor (Art. 28 GDPR).",
-          "We store this data for as long as necessary to handle your enquiry. If a contract is concluded, we retain the data in accordance with the statutory retention obligations (generally seven years under § 132 of the Austrian Federal Fiscal Code). Beyond this, we do not pass your data on to third parties without your consent.",
+          "If you contact us by e-mail or phone, we process the data you provide (e.g. your name, contact details and your request) in order to handle your enquiry and, where applicable, to prepare a quotation. The legal basis is the performance of pre-contractual measures (Art. 6(1)(b) GDPR) or our legitimate interest in responding to enquiries (Art. 6(1)(f) GDPR). E-mails sent to info@starkfixaustria.at are processed on our behalf by our e-mail provider Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Cyprus, acting as a processor (Art. 28 GDPR). According to Hostinger, servers and sub-processors outside the EEA may also be used; for such transfers Hostinger provides for the European Commission’s standard contractual clauses (Art. 46 GDPR).",
+          "We store this data for as long as necessary to handle your enquiry. If a contract is concluded, we retain the data in accordance with the statutory retention obligations (generally seven years under § 132 of the Austrian Federal Fiscal Code). Beyond this, we only pass on your data without your consent where this is necessary to perform a contract, where we are legally obliged to do so (e.g. to authorities) or, if we engage one, to our tax adviser. Telecommunications providers are also technically involved in phone calls and e-mails.",
         ],
       },
       {
         title: "Cookies and local storage",
         paragraphs: [
-          "This website does not use cookies. To remember your settings, the website only stores your chosen language and colour scheme (light/dark) in your browser's local storage (localStorage) – and only if you change this setting yourself. When you switch languages, the scroll position is also briefly stored in your browser's session storage (sessionStorage) and deleted immediately after the new page has loaded. This information stays on your device, is not transmitted to us and is not used for tracking.",
-          "This storage is strictly necessary for the function you have expressly requested and is therefore permitted without consent (§ 165(3) of the Austrian Telecommunications Act 2021). You can delete this data at any time in your browser settings.",
+          "This website does not use cookies. If you choose the language yourself, the website stores this choice in your browser's local storage (localStorage); the language menu tells you about this. It remains stored until you change or delete it; there is no automatic expiry. If you change the colour scheme (light/dark) yourself, it is stored in your browser's session storage (sessionStorage) and deleted when you close the tab or window. When you switch languages, the scroll position is also briefly stored in sessionStorage and deleted immediately after the new page has loaded. This information stays on your device, is not transmitted to us and is not used for tracking.",
+          "We store your language with your consent, which you give by choosing it in the language menu. The short-term storage in sessionStorage is strictly necessary for the function you have requested (§ 165(3) of the Austrian Telecommunications Act 2021). You can delete this data at any time in your browser settings, which also withdraws your consent; the website also works without it.",
+          'For details, see our <a href="/en/cookies/">Cookie Notice</a>.',
         ],
       },
       {
         title: "No analytics or tracking services",
         paragraphs: [
           "We do not use any analytics, tracking or advertising services and do not embed any third-party content (e.g. fonts, maps or videos). All files of the website are loaded directly from our hosting provider.",
+        ],
+      },
+      {
+        title: "Provision of data and automated decisions",
+        paragraphs: [
+          "You are not required by law or contract to provide your data. However, the website cannot be delivered without the technically necessary data (in particular your IP address). Contacting us is voluntary; without your contact details we cannot respond to your enquiry, and without the necessary information we cannot prepare a quotation or perform a contract. We do not use automated decision-making, including profiling (Art. 22 GDPR).",
         ],
       },
       {
@@ -437,7 +448,76 @@ const en: Translation = {
         title: "Your rights",
         paragraphs: [
           'You have the right to access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR). To exercise your rights, please contact <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.',
-          'If you believe that the processing of your data violates data protection law, you can lodge a complaint with the supervisory authority. In Austria, this is the Data Protection Authority (Datenschutzbehörde), Barichgasse 40–42, 1030 Vienna, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>.',
+          'If you believe that the processing of your data violates data protection law, you can lodge a complaint with the supervisory authority. In Austria, this is the Data Protection Authority (Datenschutzbehörde), Barichgasse 40–42, 1030 Vienna, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>. You can also contact the supervisory authority of your habitual residence or place of work in the EU (Art. 77 GDPR) and seek a judicial remedy (Art. 79 GDPR).',
+        ],
+      },
+    ],
+    updated: "Last updated: October 2026",
+  },
+
+  // ------------------------------------------------------------
+  // COOKIES
+  // ------------------------------------------------------------
+  cookies: {
+    meta: {
+      title: "Cookie Notice",
+      description: "Cookie notice of StarkFix Austria: this website does not use cookies. What your browser stores for your settings.",
+    },
+    heading: "Cookie Notice",
+    intro:
+      'This website does not use cookies or any analytics, tracking or advertising services. That is why you do not see a cookie banner. For more information, see our <a href="/en/privacy-policy/">Privacy Policy</a>.',
+    tableTitle: "What is stored in your browser",
+    tableIntro:
+      "The following items are only stored if you change the language or colour scheme yourself. They stay on your device, are not transmitted to us and are not used for tracking.",
+    columns: {
+      name: "Name",
+      storage: "Location",
+      provider: "Provider",
+      purpose: "Purpose",
+      lifetime: "Storage period",
+      type: "Type",
+      legalBasis: "Legal basis",
+    },
+    rows: [
+      {
+        name: "theme",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (this website)",
+        purpose: "Remembers your chosen colour scheme (light/dark).",
+        lifetime: "Until you close the tab or window",
+        type: "Necessary for the requested function, only after your choice",
+        legalBasis: "§ 165(3) of the Austrian Telecommunications Act 2021 (strictly necessary)",
+      },
+      {
+        name: "starkfix-language",
+        storage: "localStorage",
+        provider: "StarkFix e.U. (this website)",
+        purpose: "Remembers your chosen language for your next visit to the start address.",
+        lifetime: "Until you change or delete it; no automatic expiry",
+        type: "Consent through your choice in the language menu",
+        legalBasis: "§ 165(3) of the Austrian Telecommunications Act 2021 (consent)",
+      },
+      {
+        name: "starkfix-language-position",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (this website)",
+        purpose: "Keeps your place on the page when you switch languages.",
+        lifetime: "Deleted immediately after the new page has loaded",
+        type: "Technical, only when switching languages",
+        legalBasis: "§ 165(3) of the Austrian Telecommunications Act 2021 (strictly necessary)",
+      },
+    ],
+    sections: [
+      {
+        title: "How to delete this data",
+        paragraphs: [
+          "You can delete this data at any time in your browser settings (site data for this website). The website also works without it; the default settings then apply again.",
+        ],
+      },
+      {
+        title: "Changes",
+        paragraphs: [
+          "If we use cookies or third-party services in the future, we will update this page beforehand and, where necessary, ask for your consent.",
         ],
       },
     ],

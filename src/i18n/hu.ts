@@ -5,6 +5,7 @@ const hu: Translation = {
     openNavigation: "Navigáció megnyitása",
     toggleTheme: "Téma váltása",
     selectLanguage: "Nyelv kiválasztása",
+    languageStorageNote: "A választott nyelvet ez a böngésző megjegyzi.",
     languageName: "Magyar",
     nav: {
       about: "Rólunk",
@@ -16,6 +17,7 @@ const hu: Translation = {
     allRightsReserved: "Minden jog fenntartva.",
     legalLink: "Jogi nyilatkozat",
     privacyLink: "Adatvédelem",
+    cookiesLink: "Sütik",
     image: (n) => `${n}. kép`,
     previousImage: "Előző kép",
     previous: "Előző",
@@ -373,6 +375,7 @@ const hu: Translation = {
       registerCourt: "Cégbíróság:",
       vatId: "Közösségi adószám (UID):",
       businessPurpose: "Tevékenységi kör:",
+      professionalTitle: "Iparengedély / foglalkozás:",
       tradeAuthority: "Iparhatóság:",
       chamber: "Kamarai tagság:",
       tradeLaw: "Irányadó szakmai jogszabály:",
@@ -382,6 +385,7 @@ const hu: Translation = {
       "Árnyékolástechnika – árnyékoló rendszerek értékesítése, szerelése, karbantartása és javítása",
     tradeLaw:
       'Osztrák iparűzési törvény (Gewerbeordnung, GewO), elérhető: <a href="https://www.ris.bka.gv.at" rel="noopener">www.ris.bka.gv.at</a>',
+    professionalTitle: "Asztalos, épületasztalosra korlátozva (Tischler, eingeschränkt auf Bautischler); kereskedelem, a szabályozott kereskedelmi tevékenységek kivételével (Handelsgewerbe mit Ausnahme der reglementierten Handelsgewerbe) (Ausztria)",
     mediaTitle: "Közzététel az osztrák médiatörvény (MedienG) 25. §-a alapján",
     mediaOwnerLabel: "Médiatulajdonos:",
     mediaPolicyLabel: "Alapvető irányvonal:",
@@ -401,7 +405,7 @@ const hu: Translation = {
       taxNumber: "Adószám:",
       hosting: "Tárhelyszolgáltató:",
       hostingValue:
-        'GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, <a href="https://support.github.com" rel="noopener">support.github.com</a>',
+        'GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, <a href="https://support.github.com" rel="noopener">support.github.com</a>, adatvédelmi megkeresésekre: <a href="mailto:privacy@github.com">privacy@github.com</a>',
     },
   },
 
@@ -424,27 +428,34 @@ const hu: Translation = {
         title: "Tárhely és szervernaplók",
         paragraphs: [
           "A weboldalt a GitHub Pages szolgáltatás biztosítja (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). A weboldal megnyitásakor a GitHub a működéshez szükséges adatokat kezeli, különösen az IP-címét, a látogatás dátumát és időpontját, a megnyitott oldalt, a böngésző típusát és az előzőleg meglátogatott oldalt (referrer). Ezek az adatok a weboldal kiszolgálásához, valamint biztonságának és stabilitásának biztosításához szükségesek.",
-          'Az adatkezelés jogalapja a weboldal biztonságos és megbízható működtetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Ennek során adatok kerülhetnek az Egyesült Államokba. A GitHub rendelkezik az EU–USA adatvédelmi keretrendszer (Data Privacy Framework) szerinti tanúsítással, amelyre az Európai Bizottság megfelelőségi határozata vonatkozik (GDPR 45. cikk). Ezekhez a naplókhoz nincs hozzáférésünk; megőrzési idejüket a GitHub szabályai határozzák meg. További információ: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">a GitHub adatvédelmi nyilatkozata</a>.',
+          'Az adatkezelés jogalapja a weboldal biztonságos és megbízható működtetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Ennek során adatok kerülhetnek az Egyesült Államokba. A GitHub saját közlése szerint részt vesz az EU–USA adatvédelmi keretrendszerben (Data Privacy Framework), amelyre az Európai Bizottság megfelelőségi határozata vonatkozik (GDPR 45. cikk), és a megfelelőségi határozattal nem rendelkező más országokba történő továbbításnál általában az Európai Bizottság általános adatvédelmi kikötéseire támaszkodik (GDPR 46. cikk). Ezekhez a naplókhoz nincs hozzáférésünk. A GitHub nem tesz közzé konkrét megőrzési időt; közlése szerint ez az adatgyűjtés céljától és a jogi kötelezettségektől függ. További információ: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">a GitHub adatvédelmi nyilatkozata</a>.',
         ],
       },
       {
         title: "Kapcsolatfelvétel",
         paragraphs: [
-          "Ha e-mailben vagy telefonon felveszi velünk a kapcsolatot, az Ön által megadott adatokat (például nevét, elérhetőségeit és kérését) a megkeresés feldolgozása és szükség esetén árajánlat készítése céljából kezeljük. Az adatkezelés jogalapja a szerződéskötést megelőző lépések megtétele (GDPR 6. cikk (1) bekezdés b) pont), illetve a megkeresések megválaszolásához fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Az info@starkfixaustria.at címre érkező e-maileket megbízásunkból e-mail-szolgáltatónk, a Hostinger International Ltd. (61 Lordou Vironos Street, 6023 Lárnaka, Ciprus) kezeli adatfeldolgozóként (GDPR 28. cikk).",
-          "Az adatokat addig őrizzük, ameddig a megkeresés feldolgozásához szükséges. Szerződéskötés esetén a törvényes megőrzési kötelezettségnek megfelelően tároljuk őket (általában hét évig, az osztrák adórendtartás, BAO 132. §-a alapján). Ezen túlmenően adatait az Ön hozzájárulása nélkül nem adjuk át harmadik félnek.",
+          "Ha e-mailben vagy telefonon felveszi velünk a kapcsolatot, az Ön által megadott adatokat (például nevét, elérhetőségeit és kérését) a megkeresés feldolgozása és szükség esetén árajánlat készítése céljából kezeljük. Az adatkezelés jogalapja a szerződéskötést megelőző lépések megtétele (GDPR 6. cikk (1) bekezdés b) pont), illetve a megkeresések megválaszolásához fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). Az info@starkfixaustria.at címre érkező e-maileket megbízásunkból e-mail-szolgáltatónk, a Hostinger International Ltd. (61 Lordou Vironos Street, 6023 Lárnaka, Ciprus) kezeli adatfeldolgozóként (GDPR 28. cikk). A Hostinger közlése szerint az EGT-n kívüli szerverek és további adatfeldolgozók is igénybe vehetők; az ilyen továbbításokra a Hostinger az Európai Bizottság általános adatvédelmi kikötéseit írja elő (GDPR 46. cikk).",
+          "Az adatokat addig őrizzük, ameddig a megkeresés feldolgozásához szükséges. Szerződéskötés esetén a törvényes megőrzési kötelezettségnek megfelelően tároljuk őket (általában hét évig, az osztrák adórendtartás, BAO 132. §-a alapján). Ezen túlmenően adatait az Ön hozzájárulása nélkül csak akkor adjuk tovább, ha ez a szerződés teljesítéséhez szükséges, ha jogszabály kötelez rá (például hatóság felé), vagy ha igénybe veszünk ilyet, az adótanácsadónknak, könyvelőnknek. A telefonhívásokban és az e-mailek továbbításában a távközlési szolgáltatók is technikailag részt vesznek.",
         ],
       },
       {
         title: "Sütik és helyi tárolás",
         paragraphs: [
-          "A weboldal nem használ sütiket (cookie-kat). A beállítások megjegyzéséhez a weboldal a böngésző helyi tárolójában (localStorage) csak a választott nyelvet és színsémát (világos/sötét) menti el, és csak akkor, ha ezt a beállítást Ön maga módosítja. Nyelvváltáskor emellett a görgetési pozíció rövid időre a böngésző munkamenet-tárolójába (sessionStorage) kerül, és az új oldal betöltése után azonnal törlődik. Ezek az adatok az Ön eszközén maradnak, nem jutnak el hozzánk, és nem szolgálnak követésre.",
-          "Ez a tárolás az Ön által kifejezetten kért funkcióhoz feltétlenül szükséges, ezért hozzájárulás nélkül megengedett (TKG 2021 165. § (3) bekezdés). Ezeket az adatokat bármikor törölheti a böngésző beállításaiban.",
+          "A weboldal nem használ sütiket (cookie-kat). Ha Ön maga választ nyelvet, a weboldal ezt a böngésző helyi tárolójába (localStorage) menti; erre a nyelvmenüben felhívjuk a figyelmét. A választás addig marad tárolva, amíg meg nem változtatja vagy nem törli; automatikus lejárata nincs. Ha Ön maga módosítja a színsémát (világos/sötét), az a böngésző munkamenet-tárolójába (sessionStorage) kerül, és a lap vagy az ablak bezárásakor törlődik. Nyelvváltáskor emellett a görgetési pozíció rövid időre a sessionStorage-ba kerül, és az új oldal betöltése után azonnal törlődik. Ezek az adatok az Ön eszközén maradnak, nem jutnak el hozzánk, és nem szolgálnak követésre.",
+          "A nyelvet az Ön hozzájárulásával tároljuk, amelyet a nyelvmenüben történő választással ad meg. A sessionStorage-ban történő rövid idejű tárolás az Ön által kért funkcióhoz feltétlenül szükséges (TKG 2021 165. § (3) bekezdés). Ezeket az adatokat bármikor törölheti a böngésző beállításaiban, ezzel a hozzájárulását is visszavonja; a weboldal nélkülük is működik.",
+          'A részleteket a <a href="/hu/sutik/">süti-tájékoztató</a> tartalmazza.',
         ],
       },
       {
         title: "Nincs látogatottságmérés és követés",
         paragraphs: [
           "Nem használunk látogatottságmérő, követő vagy hirdetési szolgáltatásokat, és nem ágyazunk be harmadik féltől származó tartalmat (például betűtípust, térképet vagy videót). A weboldal minden fájlja közvetlenül a tárhelyszolgáltatótól töltődik be.",
+        ],
+      },
+      {
+        title: "Az adatok megadása és az automatizált döntéshozatal",
+        paragraphs: [
+          "Adatai megadását jogszabály vagy szerződés nem írja elő. A működéshez szükséges adatok (különösen az IP-cím) nélkül azonban a weboldal nem tölthető be. A kapcsolatfelvétel önkéntes; elérhetőségei nélkül nem tudunk válaszolni a megkeresésére, a szükséges adatok nélkül pedig nem tudunk árajánlatot készíteni és szerződést teljesíteni. Automatizált döntéshozatal, ideértve a profilalkotást is (GDPR 22. cikk), nem történik.",
         ],
       },
       {
@@ -457,7 +468,76 @@ const hu: Translation = {
         title: "Az Ön jogai",
         paragraphs: [
           'Önt megilleti a hozzáférés, a helyesbítés, a törlés, az adatkezelés korlátozása, az adathordozhatóság és a tiltakozás joga (GDPR 15–21. cikk). Jogai gyakorlásához kérjük, írjon nekünk: <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.',
-          'Ha úgy véli, hogy adatainak kezelése sérti az adatvédelmi jogszabályokat, panaszt tehet a felügyeleti hatóságnál. Ausztriában ez az osztrák adatvédelmi hatóság (Datenschutzbehörde), Barichgasse 40–42, 1030 Bécs, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>.',
+          'Ha úgy véli, hogy adatainak kezelése sérti az adatvédelmi jogszabályokat, panaszt tehet a felügyeleti hatóságnál. Ausztriában ez az osztrák adatvédelmi hatóság (Datenschutzbehörde), Barichgasse 40–42, 1030 Bécs, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>. Panaszt tehet a szokásos tartózkodási helye vagy munkahelye szerinti uniós felügyeleti hatóságnál is (GDPR 77. cikk), és bírósághoz is fordulhat (GDPR 79. cikk). Magyarországon a felügyeleti hatóság a Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9–11., levelezési cím: 1363 Budapest, Pf. 9., <a href="https://www.naih.hu" rel="noopener">www.naih.hu</a>.',
+        ],
+      },
+    ],
+    updated: "Hatályos: 2026. október",
+  },
+
+  // ------------------------------------------------------------
+  // SÜTIK
+  // ------------------------------------------------------------
+  cookies: {
+    meta: {
+      title: "Süti-tájékoztató",
+      description: "A StarkFix Austria süti-tájékoztatója: a weboldal nem használ sütiket. Mit tárol a böngésző a beállításaihoz.",
+    },
+    heading: "Süti-tájékoztató",
+    intro:
+      'A weboldal nem használ sütiket (cookie-kat), sem látogatottságmérő, követő vagy hirdetési szolgáltatásokat. Ezért nem jelenik meg süti-sáv sem. További információ az <a href="/hu/adatvedelem/">adatvédelmi tájékoztatóban</a> található.',
+    tableTitle: "Mit tárol a böngészője",
+    tableIntro:
+      "Az alábbi adatok csak akkor tárolódnak, ha Ön maga módosítja a nyelvet vagy a színsémát. Az Ön eszközén maradnak, nem jutnak el hozzánk, és nem szolgálnak követésre.",
+    columns: {
+      name: "Név",
+      storage: "Tárolás helye",
+      provider: "Szolgáltató",
+      purpose: "Cél",
+      lifetime: "Tárolás ideje",
+      type: "Típus",
+      legalBasis: "Jogalap",
+    },
+    rows: [
+      {
+        name: "theme",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (ez a weboldal)",
+        purpose: "Megjegyzi a választott színsémát (világos/sötét).",
+        lifetime: "A lap vagy az ablak bezárásáig",
+        type: "A kért funkcióhoz szükséges, csak az Ön választása után",
+        legalBasis: "TKG 2021 165. § (3) bekezdés (osztrák távközlési törvény; feltétlenül szükséges)",
+      },
+      {
+        name: "starkfix-language",
+        storage: "localStorage",
+        provider: "StarkFix e.U. (ez a weboldal)",
+        purpose: "Megjegyzi a választott nyelvet a kezdőcím következő megnyitásához.",
+        lifetime: "Amíg meg nem változtatja vagy nem törli; automatikus lejárata nincs",
+        type: "Hozzájárulás a nyelvmenüben történő választással",
+        legalBasis: "TKG 2021 165. § (3) bekezdés (osztrák távközlési törvény; hozzájárulás)",
+      },
+      {
+        name: "starkfix-language-position",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (ez a weboldal)",
+        purpose: "Nyelvváltáskor megtartja a helyét az oldalon.",
+        lifetime: "Az új oldal betöltése után azonnal törlődik",
+        type: "Technikai, csak nyelvváltáskor",
+        legalBasis: "TKG 2021 165. § (3) bekezdés (osztrák távközlési törvény; feltétlenül szükséges)",
+      },
+    ],
+    sections: [
+      {
+        title: "Hogyan törölheti ezeket az adatokat",
+        paragraphs: [
+          "Ezeket az adatokat bármikor törölheti a böngésző beállításaiban (a weboldal webhelyadatai). A weboldal nélkülük is működik, ilyenkor ismét az alapbeállítások érvényesek.",
+        ],
+      },
+      {
+        title: "Változások",
+        paragraphs: [
+          "Ha a jövőben sütiket vagy külső szolgáltatásokat használnánk, előtte frissítjük ezt az oldalt, és ha szükséges, kikérjük az Ön hozzájárulását.",
         ],
       },
     ],

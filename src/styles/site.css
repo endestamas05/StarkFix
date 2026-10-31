@@ -113,6 +113,45 @@ main section[id] {
     border-bottom-color: #42a5f5 !important;
 }
 
+/* --- Cookie page table: follows the dark theme, and on phones every row
+       becomes a small card (label from data-label) instead of seven columns. --- */
+[data-theme="dark"] .storage-table,
+[data-theme="dark"] .storage-table th,
+[data-theme="dark"] .storage-table td {
+    color: inherit;
+    background-color: transparent;
+    border-color: #3a4556;
+}
+[data-theme="dark"] .storage-table code {
+    color: #f48fb1;
+}
+@media (max-width: 767.98px) {
+    .storage-table thead {
+        display: none;
+    }
+    .storage-table,
+    .storage-table tbody,
+    .storage-table tr,
+    .storage-table td {
+        display: block;
+        width: 100%;
+    }
+    .storage-table tr {
+        margin-bottom: 1rem;
+    }
+    .storage-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+    }
+}
+
+/* Note in the language menu: the browser remembers the choice. */
+.lang-storage-note {
+    min-width: 14rem;
+    white-space: normal;
+}
+
 /* --- Language switcher: the filled blue dark-mode look in both themes
        (in light mode it used to fall back to Bootstrap's outline style). --- */
 .lang-switcher-light {

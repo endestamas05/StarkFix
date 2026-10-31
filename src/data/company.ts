@@ -12,7 +12,7 @@ export const company = {
   /** Owner (e.U. = sole proprietorship), in each language's name order. */
   representative: { de: "László Stark", en: "László Stark", hu: "Stark László" } as Record<Lang, string>,
   /** Registered office as in the company register (Firmenbuch). */
-  registeredAddress: { street: "Schickmayrstraße 14/2. Stock/7", postalCity: "4030 Linz" },
+  registeredAddress: { street: "Schickmayrstraße 14/2. OG/7", postalCity: "4030 Linz" },
   /** Where customers can reach the company (also shown in the Contact section). */
   businessAddress: { street: "Denkstraße 29/6", postalCity: "4030 Linz" },
   phone: "+43 699 18391466",
@@ -23,7 +23,7 @@ export const company = {
   registerNumber: "FN 449857 f" as string | null,
   registerCourt: "Landesgericht Linz" as string | null,
   vatId: "ATU70433257" as string | null,
-  tradeAuthority: "Magistrat der Landeshauptstadt Linz" as string | null,
+  tradeAuthority: "Magistrat der Stadt Linz" as string | null,
   chamber: "Wirtschaftskammer Oberösterreich" as string | null,
 };
 

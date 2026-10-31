@@ -29,7 +29,9 @@ const absolute = (path: string) => new URL(path, Astro.site).href;
       (function () {
         var theme = null;
         try {
-          theme = localStorage.getItem("theme");
+          theme = sessionStorage.getItem("theme");
+          // Older visits kept the theme permanently; it now lasts only for the session.
+          localStorage.removeItem("theme");
         } catch (e) {}
         if (theme !== "dark" && theme !== "light") {
           theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";

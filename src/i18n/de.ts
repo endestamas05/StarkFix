@@ -5,6 +5,7 @@ const de: Translation = {
     openNavigation: "Navigation öffnen",
     toggleTheme: "Thema wechseln",
     selectLanguage: "Sprache wählen",
+    languageStorageNote: "Ihre Sprachauswahl wird in diesem Browser gespeichert.",
     languageName: "Deutsch",
     nav: {
       about: "Über uns",
@@ -16,6 +17,7 @@ const de: Translation = {
     allRightsReserved: "Alle Rechte vorbehalten.",
     legalLink: "Impressum",
     privacyLink: "Datenschutz",
+    cookiesLink: "Cookies",
     image: (n) => `Bild ${n}`,
     previousImage: "Vorheriges Bild",
     previous: "Vorheriges",
@@ -366,6 +368,7 @@ const de: Translation = {
       registerCourt: "Firmenbuchgericht:",
       vatId: "UID-Nummer:",
       businessPurpose: "Unternehmensgegenstand:",
+      professionalTitle: "Gewerbe / Berufsbezeichnung:",
       tradeAuthority: "Gewerbebehörde:",
       chamber: "Kammerzugehörigkeit:",
       tradeLaw: "Berufsrecht:",
@@ -375,6 +378,7 @@ const de: Translation = {
       "Sonnenschutztechnik – Verkauf, Montage, Wartung und Reparatur von Sonnenschutzsystemen",
     tradeLaw:
       'Gewerbeordnung (GewO), abrufbar unter <a href="https://www.ris.bka.gv.at" rel="noopener">www.ris.bka.gv.at</a>',
+    professionalTitle: "Tischler, eingeschränkt auf Bautischler; Handelsgewerbe mit Ausnahme der reglementierten Handelsgewerbe (Österreich)",
     mediaTitle: "Offenlegung gemäß § 25 Mediengesetz",
     mediaOwnerLabel: "Medieninhaber:",
     mediaPolicyLabel: "Grundlegende Richtung:",
@@ -404,27 +408,34 @@ const de: Translation = {
         title: "Hosting und Server-Logfiles",
         paragraphs: [
           "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten, insbesondere Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, den Browsertyp sowie die zuvor besuchte Seite (Referrer). Diese Daten sind erforderlich, um die Website auszuliefern und ihre Sicherheit und Stabilität zu gewährleisten.",
-          'Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht (Art. 45 DSGVO). Auf diese Logfiles haben wir keinen Zugriff; ihre Speicherdauer richtet sich nach den Richtlinien von GitHub. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.',
+          'Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden. Nach eigenen Angaben nimmt GitHub am EU-U.S. Data Privacy Framework teil, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht (Art. 45 DSGVO), und stützt sich bei Übermittlungen in andere Länder ohne Angemessenheitsbeschluss in der Regel auf die Standardvertragsklauseln der Europäischen Kommission (Art. 46 DSGVO). Auf diese Logfiles haben wir keinen Zugriff. GitHub veröffentlicht dafür keine konkrete Speicherdauer; laut GitHub hängt sie vom Zweck der Erhebung und von rechtlichen Verpflichtungen ab. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.',
         ],
       },
       {
         title: "Kontaktaufnahme",
         paragraphs: [
-          "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten und Ihr Anliegen), um Ihre Anfrage zu bearbeiten und gegebenenfalls ein Angebot zu erstellen. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO) bzw. unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). E-Mails an info@starkfixaustria.at werden in unserem Auftrag von unserem E-Mail-Anbieter Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaka, Zypern, als Auftragsverarbeiter (Art. 28 DSGVO) verarbeitet.",
-          "Wir speichern diese Daten, solange es für die Bearbeitung Ihrer Anfrage erforderlich ist. Kommt ein Vertrag zustande, bewahren wir die Daten im Rahmen der gesetzlichen Aufbewahrungspflichten auf (in der Regel sieben Jahre gemäß § 132 BAO). Darüber hinaus geben wir Ihre Daten ohne Ihre Einwilligung nicht an Dritte weiter.",
+          "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten und Ihr Anliegen), um Ihre Anfrage zu bearbeiten und gegebenenfalls ein Angebot zu erstellen. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO) bzw. unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). E-Mails an info@starkfixaustria.at werden in unserem Auftrag von unserem E-Mail-Anbieter Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaka, Zypern, als Auftragsverarbeiter (Art. 28 DSGVO) verarbeitet. Nach den Angaben von Hostinger können Server und Unterauftragsverarbeiter auch außerhalb des EWR eingesetzt werden; für solche Übermittlungen sieht Hostinger die Standardvertragsklauseln der Europäischen Kommission vor (Art. 46 DSGVO).",
+          "Wir speichern diese Daten, solange es für die Bearbeitung Ihrer Anfrage erforderlich ist. Kommt ein Vertrag zustande, bewahren wir die Daten im Rahmen der gesetzlichen Aufbewahrungspflichten auf (in der Regel sieben Jahre gemäß § 132 BAO). Darüber hinaus geben wir Ihre Daten ohne Ihre Einwilligung nur weiter, wenn dies zur Durchführung eines Vertrags erforderlich ist, wenn wir gesetzlich dazu verpflichtet sind (z. B. gegenüber Behörden) oder, soweit wir eine solche beauftragen, an unsere steuerliche Vertretung. Bei Anrufen und E-Mails sind außerdem die jeweiligen Telekommunikationsanbieter technisch beteiligt.",
         ],
       },
       {
         title: "Cookies und lokale Speicherung",
         paragraphs: [
-          "Diese Website verwendet keine Cookies. Um Ihre Einstellungen zu merken, speichert die Website im lokalen Speicher Ihres Browsers (localStorage) lediglich die von Ihnen gewählte Sprache und das gewählte Farbschema (hell/dunkel) – und zwar nur, wenn Sie diese Einstellung selbst ändern. Beim Sprachwechsel wird zusätzlich kurzzeitig die Scrollposition im Sitzungsspeicher (sessionStorage) abgelegt und nach dem Laden der neuen Seite sofort wieder gelöscht. Diese Angaben verbleiben auf Ihrem Gerät, werden nicht an uns übermittelt und dienen nicht der Nachverfolgung.",
-          "Diese Speicherung ist für die von Ihnen ausdrücklich gewünschte Funktion unbedingt erforderlich und daher ohne Einwilligung zulässig (§ 165 Abs. 3 TKG 2021). Sie können diese Daten jederzeit über die Einstellungen Ihres Browsers löschen.",
+          "Diese Website verwendet keine Cookies. Wenn Sie die Sprache selbst wählen, speichert die Website diese Auswahl im lokalen Speicher Ihres Browsers (localStorage); darauf weisen wir Sie im Sprachmenü hin. Sie bleibt gespeichert, bis Sie sie ändern oder löschen; eine automatische Ablauffrist gibt es nicht. Wenn Sie das Farbschema (hell/dunkel) selbst ändern, wird es im Sitzungsspeicher (sessionStorage) abgelegt und beim Schließen des Tabs oder Fensters gelöscht. Beim Sprachwechsel wird zusätzlich kurzzeitig die Scrollposition im sessionStorage abgelegt und nach dem Laden der neuen Seite sofort wieder gelöscht. Diese Angaben verbleiben auf Ihrem Gerät, werden nicht an uns übermittelt und dienen nicht der Nachverfolgung.",
+          "Die Sprache speichern wir mit Ihrer Einwilligung, die Sie mit der Auswahl im Sprachmenü erteilen. Die kurzzeitige Speicherung im sessionStorage ist für die von Ihnen gewünschte Funktion unbedingt erforderlich (§ 165 Abs. 3 TKG 2021). Sie können diese Daten jederzeit über die Einstellungen Ihres Browsers löschen und damit auch Ihre Einwilligung widerrufen; die Website funktioniert auch ohne sie.",
+          'Die Details finden Sie in unseren <a href="/de/cookies/">Cookie-Hinweisen</a>.',
         ],
       },
       {
         title: "Keine Analyse- und Trackingdienste",
         paragraphs: [
           "Wir setzen keine Analyse-, Tracking- oder Werbedienste ein und binden keine Inhalte von Drittanbietern (z. B. Schriftarten, Karten oder Videos) ein. Alle Dateien der Website werden direkt von unserem Hosting-Anbieter geladen.",
+        ],
+      },
+      {
+        title: "Bereitstellung der Daten und automatisierte Entscheidungen",
+        paragraphs: [
+          "Die Bereitstellung Ihrer Daten ist gesetzlich oder vertraglich nicht vorgeschrieben. Ohne die technisch notwendigen Daten (insbesondere die IP-Adresse) kann die Website jedoch nicht ausgeliefert werden. Die Kontaktaufnahme ist freiwillig; ohne Ihre Kontaktdaten können wir Ihre Anfrage nicht beantworten, und ohne die erforderlichen Angaben können wir kein Angebot erstellen und keinen Vertrag durchführen. Eine automatisierte Entscheidungsfindung einschließlich Profiling (Art. 22 DSGVO) findet nicht statt.",
         ],
       },
       {
@@ -437,7 +448,76 @@ const de: Translation = {
         title: "Ihre Rechte",
         paragraphs: [
           'Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch zu (Art. 15–21 DSGVO). Zur Ausübung Ihrer Rechte wenden Sie sich bitte an <a href="mailto:info@starkfixaustria.at">info@starkfixaustria.at</a>.',
-          'Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde, Barichgasse 40–42, 1030 Wien, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>.',
+          'Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde, Barichgasse 40–42, 1030 Wien, <a href="https://www.dsb.gv.at" rel="noopener">www.dsb.gv.at</a>. Sie können sich auch an die Aufsichtsbehörde Ihres gewöhnlichen Aufenthaltsorts oder Arbeitsplatzes in der EU wenden (Art. 77 DSGVO) und gerichtlichen Rechtsschutz in Anspruch nehmen (Art. 79 DSGVO).',
+        ],
+      },
+    ],
+    updated: "Stand: Oktober 2026",
+  },
+
+  // ------------------------------------------------------------
+  // COOKIES
+  // ------------------------------------------------------------
+  cookies: {
+    meta: {
+      title: "Cookie-Hinweise",
+      description: "Cookie-Hinweise von StarkFix Austria: Diese Website verwendet keine Cookies. Welche Einstellungen Ihr Browser speichert.",
+    },
+    heading: "Cookie-Hinweise",
+    intro:
+      'Diese Website verwendet keine Cookies und keine Analyse-, Tracking- oder Werbedienste. Deshalb sehen Sie auch kein Cookie-Banner. Weitere Informationen finden Sie in unserer <a href="/de/datenschutz/">Datenschutzerklärung</a>.',
+    tableTitle: "Was in Ihrem Browser gespeichert wird",
+    tableIntro:
+      "Die folgenden Angaben werden nur gespeichert, wenn Sie die Sprache oder das Farbschema selbst ändern. Sie bleiben auf Ihrem Gerät, werden nicht an uns übermittelt und dienen nicht der Nachverfolgung.",
+    columns: {
+      name: "Name",
+      storage: "Speicherort",
+      provider: "Anbieter",
+      purpose: "Zweck",
+      lifetime: "Speicherdauer",
+      type: "Art",
+      legalBasis: "Rechtsgrundlage",
+    },
+    rows: [
+      {
+        name: "theme",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (diese Website)",
+        purpose: "Merkt sich das gewählte Farbschema (hell/dunkel).",
+        lifetime: "Bis zum Schließen des Tabs oder Fensters",
+        type: "Notwendig für die gewünschte Funktion, nur nach Ihrer Auswahl",
+        legalBasis: "§ 165 Abs. 3 TKG 2021 (unbedingt erforderlich)",
+      },
+      {
+        name: "starkfix-language",
+        storage: "localStorage",
+        provider: "StarkFix e.U. (diese Website)",
+        purpose: "Merkt sich die gewählte Sprache für den nächsten Besuch der Startadresse.",
+        lifetime: "Bis Sie es ändern oder löschen; kein automatischer Ablauf",
+        type: "Einwilligung durch Ihre Auswahl im Sprachmenü",
+        legalBasis: "§ 165 Abs. 3 TKG 2021 (Einwilligung)",
+      },
+      {
+        name: "starkfix-language-position",
+        storage: "sessionStorage",
+        provider: "StarkFix e.U. (diese Website)",
+        purpose: "Behält beim Sprachwechsel Ihre Position auf der Seite.",
+        lifetime: "Wird nach dem Laden der neuen Seite sofort gelöscht",
+        type: "Technisch, nur beim Sprachwechsel",
+        legalBasis: "§ 165 Abs. 3 TKG 2021 (unbedingt erforderlich)",
+      },
+    ],
+    sections: [
+      {
+        title: "So löschen Sie diese Daten",
+        paragraphs: [
+          "Sie können diese Daten jederzeit über die Einstellungen Ihres Browsers löschen (Websitedaten dieser Website). Die Website funktioniert auch ohne sie; es gelten dann wieder die Standardeinstellungen.",
+        ],
+      },
+      {
+        title: "Änderungen",
+        paragraphs: [
+          "Sollten wir künftig Cookies oder Dienste von Drittanbietern einsetzen, aktualisieren wir diese Seite vorab und holen, soweit erforderlich, Ihre Einwilligung ein.",
         ],
       },
     ],

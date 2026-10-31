@@ -1,5 +1,6 @@
 ---
 import ConservatoryPage from "../../components/pages/ConservatoryPage.astro";
+import CookiesPage from "../../components/pages/CookiesPage.astro";
 import InsectScreensPage from "../../components/pages/InsectScreensPage.astro";
 import InteriorShadingPage from "../../components/pages/InteriorShadingPage.astro";
 import LegalPage from "../../components/pages/LegalPage.astro";
@@ -30,6 +31,8 @@ const { page } = Astro.props as { page: Exclude<PageKey, "home"> };
     <LegalPage lang={lang} />
   ) : page === "privacy" ? (
     <PrivacyPage lang={lang} />
+  ) : page === "cookies" ? (
+    <CookiesPage lang={lang} />
   ) : (
     <ProductPage lang={lang} page={page as ProductPageKey} />
   )

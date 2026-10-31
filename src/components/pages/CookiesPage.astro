@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { cookies: text } = t(lang);
+const { columns } = text;
+---
+
+<Layout lang={lang} page="cookies" meta={text.meta}>
+  <main class="container-fluid p-5 reference-main fullpage-main">
+    <h1 class="mb-4">{text.heading}</h1>
+    <p set:html={text.intro} />
+    <section class="mb-4 p-2">
+      <h2 class="h4">{text.tableTitle}</h2>
+      <p>{text.tableIntro}</p>
+      <div class="table-responsive">
+        <table class="table table-bordered storage-table">
+          <thead>
+            <tr>
+              <th scope="col">{columns.name}</th>
+              <th scope="col">{columns.storage}</th>
+              <th scope="col">{columns.provider}</th>
+              <th scope="col">{columns.purpose}</th>
+              <th scope="col">{columns.lifetime}</th>
+              <th scope="col">{columns.type}</th>
+              <th scope="col">{columns.legalBasis}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              text.rows.map((row) => (
+                <tr>
+                  <td data-label={columns.name}><code>{row.name}</code></td>
+                  <td data-label={columns.storage}>{row.storage}</td>
+                  <td data-label={columns.provider}>{row.provider}</td>
+                  <td data-label={columns.purpose}>{row.purpose}</td>
+                  <td data-label={columns.lifetime}>{row.lifetime}</td>
+                  <td data-label={columns.type}>{row.type}</td>
+                  <td data-label={columns.legalBasis}>{row.legalBasis}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {
+      text.sections.map((section) => (
+        <section class="mb-4 p-2">
+          <h2 class="h4">{section.title}</h2>
+          {section.paragraphs.map((paragraph) => (
+            <p set:html={paragraph} />
+          ))}
+        </section>
+      ))
+    }
+    <p class="p-2 text-secondary">{text.updated}</p>
+  </main>
+</Layout>

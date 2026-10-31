@@ -23,6 +23,7 @@ export const pageKeys = [
   "service",
   "legal",
   "privacy",
+  "cookies",
 ] as const;
 export type PageKey = (typeof pageKeys)[number];
 
@@ -56,6 +57,7 @@ export const slugs: Record<PageKey, Record<Lang, string>> = {
   service: { de: "service", en: "service", hu: "szervizeles" },
   legal: { de: "impressum", en: "legal-notice", hu: "jogi-nyilatkozat" },
   privacy: { de: "datenschutz", en: "privacy-policy", hu: "adatvedelem" },
+  cookies: { de: "cookies", en: "cookies", hu: "sutik" },
 };
 
 // Old file names, so links already indexed by Google keep working.
