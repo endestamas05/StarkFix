@@ -24,6 +24,7 @@ export const pageKeys = [
   "legal",
   "privacy",
   "cookies",
+  "gallery",
 ] as const;
 export type PageKey = (typeof pageKeys)[number];
 
@@ -58,6 +59,7 @@ export const slugs: Record<PageKey, Record<Lang, string>> = {
   legal: { de: "impressum", en: "legal-notice", hu: "jogi-nyilatkozat" },
   privacy: { de: "datenschutz", en: "privacy-policy", hu: "adatvedelem" },
   cookies: { de: "cookies", en: "cookies", hu: "sutik" },
+  gallery: { de: "galerie", en: "gallery", hu: "galeria" },
 };
 
 // Old file names, so links already indexed by Google keep working.
@@ -98,6 +100,10 @@ export const legacyFiles: Partial<Record<PageKey, Record<Lang, string>>> = {
   service: { de: "Service.html", en: "Service-en.html", hu: "szervizeles.html" },
   legal: { de: "legal.html", en: "legal-en.html", hu: "legal-hu.html" },
 };
+
+// Jogi oldalak: a keresők ne indexeljék őket (Layout: noindex, sitemap: kimarad).
+// A robots.txt-ben nem szabad tiltani, különben a kereső nem látja a noindex jelzést.
+export const noindexPages: readonly PageKey[] = ["legal", "privacy", "cookies"];
 
 /** Site-relative URL of a page, e.g. pageUrl("shutters", "de") → "/de/rolllaeden/". */
 export function pageUrl(page: PageKey, lang: Lang): string {

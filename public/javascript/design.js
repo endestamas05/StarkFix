@@ -34,6 +34,8 @@
         const photos = Array.prototype.slice.call(document.querySelectorAll(".window-photo"));
         const dots = Array.prototype.slice.call(document.querySelectorAll(".window-dot"));
         const caption = document.querySelector(".window-caption");
+        // A feliratok rövid nevek; a képek részletes leírása az alt szövegben van.
+        const captions = caption ? JSON.parse(caption.dataset.captions) : [];
         let current = 0;
         let pending = null;
         let closing = false;
@@ -69,7 +71,7 @@
 
             caption.classList.add("swapping");
             setTimeout(function () {
-                caption.textContent = photos[current].alt;
+                caption.textContent = captions[current];
                 caption.classList.remove("swapping");
             }, 120);
         }
@@ -175,17 +177,21 @@
             });
 
             if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-                figure.addEventListener("pointerenter", function () {
+                // Csak a vezérlők fölött áll meg: a nagy kép fölött pihenő egér ne állítsa le.
+                const bar = figure.querySelector(".window-bar");
+                bar.addEventListener("pointerenter", function () {
                     hovering = true;
                     syncPause();
                 });
-                figure.addEventListener("pointerleave", function () {
+                bar.addEventListener("pointerleave", function () {
                     hovering = false;
                     syncPause();
                 });
             }
-            figure.addEventListener("focusin", function () {
-                focused = true;
+            // Csak billentyűzetes fókusznál áll meg: kattintás után a gombon marad a fókusz,
+            // és attól még mennie kell a léptetésnek.
+            figure.addEventListener("focusin", function (event) {
+                focused = event.target.matches(":focus-visible");
                 syncPause();
             });
             figure.addEventListener("focusout", function () {
@@ -399,6 +405,139 @@
             });
         });
     }
+
+    // --------------------------------------------------------
+    // Galéria: szűrés termék szerint, kattintásra a képnéző a látható képekkel.
+    // A cím lapozáskor az aktuális kép nevére vált.
+    // --------------------------------------------------------
+
+    const galleryItems = Array.prototype.slice.call(document.querySelectorAll(".gallery-item"));
+
+    if (galleryItems.length) {
+        const filters = document.querySelectorAll(".gallery-filter");
+
+        filters.forEach(function (filter) {
+            filter.addEventListener("click", function () {
+                filters.forEach(function (other) {
+                    const on = other === filter;
+                    other.classList.toggle("is-active", on);
+                    other.setAttribute("aria-pressed", on ? "true" : "false");
+                });
+                const wanted = filter.dataset.filter;
+                galleryItems.forEach(function (item) {
+                    item.hidden = wanted !== "all" && item.dataset.category !== wanted;
+                    // A szűrés után előkerülő kép ne a görgetésre várjon.
+                    if (!item.hidden) {
+                        item.style.transitionDelay = "0ms";
+                        item.classList.add("in");
+                    }
+                });
+            });
+        });
+
+        galleryItems.forEach(function (item) {
+            item.addEventListener("click", function () {
+                const pictures = galleryItems
+                    .filter(function (other) {
+                        return !other.hidden;
+                    })
+                    .map(function (other) {
+                        return other.querySelector("img");
+                    });
+                const picture = item.querySelector("img");
+                viewerPictures = pictures;
+                window.openPictureViewer(pictures, pictures.indexOf(picture), "");
+                describeViewerPicture(pictures.indexOf(picture));
+            });
+        });
+
+        // A címben a kép rövid neve; lapozáskor frissül. Szöveg a kép alatt nincs.
+        let viewerPictures = [];
+
+        function describeViewerPicture(index) {
+            const picture = viewerPictures[index];
+            if (!picture) return;
+            document.getElementById("referenceModalLabel").textContent =
+                picture.closest(".gallery-item").querySelector(".gallery-caption").textContent;
+        }
+
+        document.getElementById("referenceCarousel").addEventListener("slid.bs.carousel", function (event) {
+            describeViewerPicture(event.to);
+        });
+    }
+
+    // --------------------------------------------------------
+    // Referenciák képnézője: minden kép a saját leírását kapja.
+    // A kártyát a common.min.js tölti be, ezért közvetlenül utána írjuk át.
+    // --------------------------------------------------------
+
+    document.querySelectorAll(".reference-card[data-alts]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            setTimeout(function () {
+                const alts = JSON.parse(card.dataset.alts);
+                document.querySelectorAll("#referenceCarouselInner img").forEach(function (img, i) {
+                    img.alt = alts[i] || img.alt;
+                });
+                document.querySelectorAll("#referenceCarousel .carousel-indicators button").forEach(function (dot, i) {
+                    dot.setAttribute("aria-label", alts[i] || "");
+                });
+            }, 0);
+        });
+    });
+
+    // --------------------------------------------------------
+    // Lapozósáv: a nyilak és az elhalványuló szélek jelzik, ha van még mit görgetni.
+    // A nyilak csak egérnek és érintésnek valók: billentyűzettel a gombokon lehet végigmenni.
+    // --------------------------------------------------------
+
+    document.querySelectorAll(".scroll-nav").forEach(function (nav) {
+        const track = nav.querySelector(".scroll-track");
+        const behavior = reduceMotion ? "auto" : "smooth";
+
+        function makeArrow(side, path) {
+            const arrow = document.createElement("button");
+            arrow.type = "button";
+            arrow.className = "scroll-arrow scroll-arrow--" + side;
+            arrow.tabIndex = -1;
+            arrow.setAttribute("aria-hidden", "true");
+            arrow.innerHTML =
+                '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="' + path +
+                '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            arrow.addEventListener("click", function () {
+                track.scrollBy({ left: (side === "left" ? -1 : 1) * track.clientWidth * 0.7, behavior: behavior });
+            });
+            nav.appendChild(arrow);
+        }
+
+        function update() {
+            const max = track.scrollWidth - track.clientWidth;
+            nav.classList.toggle("can-left", track.scrollLeft > 4);
+            nav.classList.toggle("can-right", track.scrollLeft < max - 4);
+        }
+
+        makeArrow("left", "M10 3 5 8l5 5");
+        makeArrow("right", "m6 3 5 5-5 5");
+        track.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update, { passive: true });
+        update();
+
+        // A választott elem középre kerül, így látszik, mi van mellette.
+        track.addEventListener("click", function (event) {
+            const chosen = event.target.closest("a, button");
+            if (!chosen) return;
+            track.scrollTo({ left: chosen.offsetLeft - (track.clientWidth - chosen.offsetWidth) / 2, behavior: behavior });
+        });
+
+        // Ha nem fér ki, egyszer megmozdul: ebből is látszik, hogy görgethető.
+        if (!reduceMotion && nav.classList.contains("can-right")) {
+            setTimeout(function () {
+                track.scrollBy({ left: 48, behavior: "smooth" });
+                setTimeout(function () {
+                    track.scrollTo({ left: 0, behavior: "smooth" });
+                }, 420);
+            }, 900);
+        }
+    });
 
     // --------------------------------------------------------
     // E-mail másolása: a felirat rövid időre átvált, utána visszaáll.

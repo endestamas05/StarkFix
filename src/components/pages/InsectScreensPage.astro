@@ -48,7 +48,8 @@ const sections = text.sections.map((section, i) => ({
       class="mosquito-type-nav sticky-mosquito-nav d-flex justify-content-center align-items-center"
       aria-label={text.navAriaLabel}
     >
-      <div class="mosquito-type-nav-inner">
+      <div class="scroll-nav">
+      <div class="mosquito-type-nav-inner scroll-track">
         {
           sections.map((section, i) => (
             <a
@@ -61,6 +62,7 @@ const sections = text.sections.map((section, i) => ({
             </a>
           ))
         }
+      </div>
       </div>
     </nav>
     {

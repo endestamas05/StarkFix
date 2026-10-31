@@ -1,31 +1,13 @@
-/* Belső árnyékolók típusválasztója: tapadó, szegmentált sáv a menü alatt. */
+/* Belső árnyékolók típusválasztója: a sáv kinézete közös (redesign.css, .scroll-nav). */
 .belso-type-nav {
     position: sticky;
     top: 74px;
     z-index: 1020;
     margin-bottom: 2.5rem !important;
-    pointer-events: none;
-}
-.belso-type-nav-inner {
-    display: flex;
-    max-width: 100%;
-    gap: 2px;
-    padding: 4px;
-    overflow-x: auto;
-    border-radius: 999px;
-    background-color: var(--glass);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    box-shadow: 0 0 0 1px var(--hair), var(--shadow-sm);
-    scrollbar-width: none;
-    pointer-events: auto;
 }
 .belso-type-link {
-    flex: none;
-    padding: 0.45rem 1rem;
     border-radius: 999px;
     color: var(--ink);
-    font-size: 0.95rem;
     font-weight: 550;
     text-decoration: none;
     transition: background-color 160ms ease, color 160ms ease;

@@ -38,7 +38,8 @@ const sections = text.sections.map((section, i) => ({ ...section, ...layout[i] }
       </div>
     </div>
     <nav class="belso-type-nav sticky-balso-nav d-flex justify-content-center" aria-label={text.navAriaLabel}>
-      <div class="belso-type-nav-inner d-flex align-items-center">
+      <div class="scroll-nav">
+      <div class="belso-type-nav-inner scroll-track">
         {
           sections.map((section, i) => (
             <a
@@ -51,6 +52,7 @@ const sections = text.sections.map((section, i) => ({ ...section, ...layout[i] }
             </a>
           ))
         }
+      </div>
       </div>
     </nav>
     {

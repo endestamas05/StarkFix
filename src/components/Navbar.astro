@@ -48,6 +48,9 @@ const flags: Record<Lang, { flag: string; label: string }> = {
           <a class="nav-link p-2" href={`${home}#references`}>{ui.nav.references}</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link p-2" href={pageUrl("gallery", lang)} aria-current={page === "gallery" ? "page" : undefined}>{ui.nav.gallery}</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link p-2" href={`${home}#contact`}>{ui.nav.contact}</a>
         </li>
       </ul>

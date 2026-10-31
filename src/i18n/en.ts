@@ -11,6 +11,7 @@ const en: Translation = {
       about: "About Us",
       products: "Products",
       references: "References",
+      gallery: "Gallery",
       contact: "Contact",
     },
     back: "Back",
@@ -463,6 +464,21 @@ const en: Translation = {
       },
     ],
     updated: "Last updated: October 2026",
+  },
+
+  // ------------------------------------------------------------
+  // GALLERY
+  // ------------------------------------------------------------
+  gallery: {
+    meta: {
+      title: "Gallery",
+      description: "Picture gallery of StarkFix Austria: photos of our shading solutions and reference projects.",
+    },
+    heading: "Gallery",
+    intro: "All our photos in one place. Choose a product, or click a picture to see it large.",
+    all: "All",
+    filterLabel: "Filter pictures by product",
+    linkText: "View all pictures",
   },
 
   // ------------------------------------------------------------

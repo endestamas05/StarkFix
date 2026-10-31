@@ -11,6 +11,7 @@ const de: Translation = {
       about: "Über uns",
       products: "Produkte",
       references: "Referenzen",
+      gallery: "Galerie",
       contact: "Kontakt",
     },
     back: "Zurück",
@@ -463,6 +464,21 @@ const de: Translation = {
       },
     ],
     updated: "Stand: Oktober 2026",
+  },
+
+  // ------------------------------------------------------------
+  // GALERIE
+  // ------------------------------------------------------------
+  gallery: {
+    meta: {
+      title: "Galerie",
+      description: "Bildergalerie von StarkFix Austria: Fotos unserer Sonnenschutzlösungen und Referenzprojekte.",
+    },
+    heading: "Galerie",
+    intro: "Alle unsere Fotos an einem Ort. Wählen Sie ein Produkt oder klicken Sie auf ein Bild, um es groß anzusehen.",
+    all: "Alle",
+    filterLabel: "Bilder nach Produkt filtern",
+    linkText: "Alle Bilder ansehen",
   },
 
   // ------------------------------------------------------------

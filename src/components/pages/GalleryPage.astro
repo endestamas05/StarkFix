@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Picture from "../Picture.astro";
+import { galleryCategories, galleryPictures } from "../../data/gallery";
+import { t, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { gallery: text, home } = t(lang);
+
+// A kép neve: referenciánál a referencia címe, egyébként a termék neve.
+const pictures = galleryPictures.map((picture) => ({
+  ...picture,
+  title: picture.reference === undefined ? home.products[picture.category].title : home.references[picture.reference].title,
+}));
+---
+
+<Layout lang={lang} page="gallery" meta={text.meta}>
+  <main class="gallery fullpage-main">
+    <header class="gallery-head">
+      <h1 class="gallery-title">{text.heading}</h1>
+      <p class="gallery-intro">{text.intro}</p>
+    </header>
+
+    <!-- Szűrők: a kiválasztott termék képei maradnak látszani (javascript/design.js). -->
+    <div class="scroll-nav">
+    <div class="gallery-filters scroll-track" role="group" aria-label={text.filterLabel}>
+      <button type="button" class="gallery-filter is-active" data-filter="all" aria-pressed="true">{text.all}</button>
+      {
+        galleryCategories.map((category) => (
+          <button type="button" class="gallery-filter" data-filter={category} aria-pressed="false">
+            {home.products[category].title}
+          </button>
+        ))
+      }
+    </div>
+    </div>
+
+    <div class="gallery-grid">
+      {
+        pictures.map((picture) => (
+          <button type="button" class="gallery-item reveal" data-category={picture.category}>
+            <Picture
+              src={picture.src}
+              alt={picture.title}
+              class="gallery-photo"
+              sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 400px"
+              width={800}
+              height={600}
+              lazy
+            />
+            <span class="gallery-caption" aria-hidden="true">{picture.title}</span>
+          </button>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

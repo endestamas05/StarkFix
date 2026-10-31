@@ -205,6 +205,9 @@ a {
 .navbar :focus-visible {
     outline-color: #fff;
 }
+.nav-link[aria-current="page"] {
+    background-color: rgba(255, 255, 255, 0.18);
+}
 .navbar-toggler {
     border: 0;
     box-shadow: none !important;
@@ -795,18 +798,20 @@ a {
     line-height: 0.95;
     letter-spacing: -0.045em;
 }
+/* Sima blokk, nem rács: így a kártyák a teljes sor magasságában tapadnak, minden böngészőben. */
 .stack {
-    display: grid;
-    gap: 1.5rem;
     width: min(var(--page), 100%);
     margin: 0 auto;
+}
+.stack-card + .stack-card {
+    margin-top: 1.5rem;
 }
 .stack-card {
     position: sticky;
     top: 84px;
     display: block;
     width: 100%;
-    height: min(74vh, 680px);
+    height: max(min(74vh, 680px), 420px);
     padding: 0;
     border: 0;
     border-radius: var(--radius-lg);
@@ -920,6 +925,215 @@ a {
 }
 .louver.in i {
     transform: scaleY(0);
+}
+
+.references-more {
+    width: min(var(--page), 100%);
+    margin: 2rem auto 0;
+    text-align: center;
+}
+.pill--white {
+    background-color: #fff;
+    color: var(--brand);
+}
+
+/* --- Galéria: fejléc, szűrők, egyforma képkockák --- */
+.gallery {
+    width: min(var(--page), 100%);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 5rem);
+}
+.gallery-title {
+    margin: 0;
+    color: var(--accent);
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.gallery-intro {
+    max-width: 58ch;
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.4;
+}
+/* Lapozósáv (galéria szűrői, típusválasztók): mindig teljes szélességű, egy sorban.
+   Ha nem fér ki, a szélek elhalványulnak, és nyíl jelzi, hogy merre lehet görgetni. */
+.scroll-nav {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 999px;
+    background-color: var(--glass);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 0 0 1px var(--hair), var(--shadow-sm);
+}
+.gallery > .scroll-nav {
+    position: sticky;
+    top: 74px;
+    z-index: 1020;
+    margin: 1.75rem 0;
+}
+.scroll-track {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    padding: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.scroll-track::-webkit-scrollbar {
+    display: none;
+}
+.scroll-track > * {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 1.2rem;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+/* Nagy kijelzőn szűkebb térköz, hogy lehetőleg görgetés nélkül kiférjen. */
+@media (min-width: 992px) {
+    .scroll-track > * {
+        padding: 0 0.75rem;
+        font-size: 0.95rem;
+    }
+}
+/* A görgethető sávban a keret befelé rajzolódik, így nem vágódik le. */
+.scroll-track > :focus-visible {
+    outline-offset: -3px;
+    border-radius: 999px;
+}
+.scroll-nav.can-right .scroll-track {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 84px), transparent calc(100% - 20px));
+    mask-image: linear-gradient(to right, #000 calc(100% - 84px), transparent calc(100% - 20px));
+}
+.scroll-nav.can-left .scroll-track {
+    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 84px), transparent calc(100% - 20px));
+    mask-image: linear-gradient(to left, #000 calc(100% - 84px), transparent calc(100% - 20px));
+}
+.scroll-nav.can-left.can-right .scroll-track {
+    -webkit-mask-image: linear-gradient(to right, transparent 20px, #000 84px, #000 calc(100% - 84px), transparent calc(100% - 20px));
+    mask-image: linear-gradient(to right, transparent 20px, #000 84px, #000 calc(100% - 84px), transparent calc(100% - 20px));
+}
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 160ms var(--ease-out);
+}
+.scroll-arrow--left {
+    left: 8px;
+}
+.scroll-arrow--right {
+    right: 8px;
+}
+.scroll-arrow:active {
+    transform: scale(0.92);
+}
+.scroll-nav.can-left .scroll-arrow--left,
+.scroll-nav.can-right .scroll-arrow--right {
+    opacity: 1;
+    pointer-events: auto;
+}
+.gallery-filter {
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--ink);
+    font-weight: 550;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
+}
+.gallery-filter:active {
+    transform: scale(0.97);
+}
+.gallery-filter.is-active {
+    background-color: var(--accent);
+    color: var(--on-accent);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 12px;
+}
+.gallery-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-md);
+    background-color: var(--surface-2);
+    color: #fff;
+    cursor: zoom-in;
+}
+.gallery-item[hidden] {
+    display: none;
+}
+.js .gallery-item.reveal.in:active {
+    transform: scale(0.985);
+    transition: transform 160ms var(--ease-out);
+    transition-delay: 0ms !important;
+}
+.gallery-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--ease-out);
+}
+.gallery-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2.25rem 0.95rem 0.75rem;
+    background: linear-gradient(transparent, rgba(9, 38, 84, 0.84));
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+}
+@media (hover: hover) and (pointer: fine) {
+    .gallery-item:hover .gallery-photo {
+        transform: scale(1.04);
+    }
+    /* Egérrel a felirat csak rámutatáskor jön elő, így a kép tisztán látszik. */
+    .gallery-caption {
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+    }
+    .gallery-item:hover .gallery-caption,
+    .gallery-item:focus-visible .gallery-caption {
+        opacity: 1;
+        transform: none;
+    }
+}
+#referenceModalDesc:empty {
+    display: none;
+}
+#referenceCarousel.many .carousel-indicators {
+    display: none;
 }
 
 /* --- Kapcsolat: kék panel, nagy, kattintható elérhetőségek --- */
@@ -1117,6 +1331,15 @@ a {
 [data-page="cookies"] .reference-main {
     max-width: 1040px;
 }
+/* A hosszú német cím (Wintergartenbeschattung) se lógjon ki a hasábjából. */
+.wintergarten {
+    font-size: clamp(1.9rem, 3.2vw, 3rem);
+}
+.reference-main h1,
+.reference-main h2 {
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
 .img-fluid.rounded.shadow,
 .carousel .carousel-inner {
     border-radius: var(--radius-md) !important;
@@ -1284,7 +1507,7 @@ footer a.text-primary:hover {
         grid-column: auto;
     }
     .stack-card {
-        height: 72vh;
+        height: max(72vh, 440px);
     }
     .window-caption {
         font-size: 0.82rem;

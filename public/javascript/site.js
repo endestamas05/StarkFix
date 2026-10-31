@@ -133,6 +133,9 @@
         bootstrap.Modal.getOrCreateInstance(modal).show();
     }
 
+    // A galéria is ezt a képnézőt használja (javascript/design.js).
+    window.openPictureViewer = openViewer;
+
     if (modal && viewer) {
         document
             .querySelectorAll("main .carousel-item img, main img.img-fluid.rounded.shadow")
@@ -154,7 +157,10 @@
         // No slider controls for a single picture. (Watch the picture list itself:
         // Bootstrap opens the modal before common.min.js fills in the reference pictures.)
         new MutationObserver(function () {
-            viewer.classList.toggle("single", viewer.querySelectorAll(".carousel-item").length < 2);
+            const count = viewer.querySelectorAll(".carousel-item").length;
+            viewer.classList.toggle("single", count < 2);
+            // Sok képnél a pöttysor nem férne el, ilyenkor a nyilakkal lehet lapozni.
+            viewer.classList.toggle("many", count > 10);
         }).observe(document.getElementById("referenceCarouselInner"), { childList: true });
 
         // ----------------------------------------------------

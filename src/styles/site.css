@@ -260,8 +260,11 @@ main section[id] {
     .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(4) {
         transition-delay: 0.2s;
     }
-    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse > :last-child {
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse .nav-item:nth-child(5) {
         transition-delay: 0.25s;
+    }
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse > :last-child {
+        transition-delay: 0.3s;
     }
 
     /* Starting point of the opening animation: the menu was hidden (display: none)

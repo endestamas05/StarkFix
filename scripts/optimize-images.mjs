@@ -5,7 +5,7 @@
 //
 //   node scripts/optimize-images.mjs
 //
-// The -400 / -800 variants are left as they are.
+// Existing -400 / -800 variants are left as they are; missing ones are created.
 // ============================================================
 
 import fs from "node:fs";
@@ -47,4 +47,15 @@ for (const file of files) {
     .toBuffer();
   fs.writeFileSync(file, output);
   console.log(`${relative}: ${Math.round(before / 1024)} KB → ${Math.round(output.length / 1024)} KB`);
+}
+
+// A hiányzó kisebb méretek pótlása (a galéria és a kártyák ezeket töltik be).
+for (const file of files) {
+  for (const width of [400, 800]) {
+    const variant = file.replace(/\.webp$/, `-${width}.webp`);
+    if (fs.existsSync(variant)) continue;
+    const output = await sharp(fs.readFileSync(file)).resize({ width, withoutEnlargement: true }).webp({ quality: QUALITY, effort: 6 }).toBuffer();
+    fs.writeFileSync(variant, output);
+    console.log(`${variant}: ${Math.round(output.length / 1024)} KB`);
+  }
 }

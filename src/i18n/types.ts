@@ -41,7 +41,7 @@ export interface Translation {
     selectLanguage: string;
     languageStorageNote: string;
     languageName: string;
-    nav: { about: string; products: string; references: string; contact: string };
+    nav: { about: string; products: string; references: string; gallery: string; contact: string };
     back: string;
     allRightsReserved: string;
     legalLink: string;
@@ -63,7 +63,7 @@ export interface Translation {
     aboutText: string;
     productsTitle: string;
     products: Record<
-      Exclude<import("./routes").PageKey, "home" | "legal" | "privacy" | "cookies">,
+      Exclude<import("./routes").PageKey, "home" | "legal" | "privacy" | "cookies" | "gallery">,
       { title: string; tagline: string }
     >;
     referencesTitle: string;
@@ -151,6 +151,15 @@ export interface Translation {
     /** Paragraphs may contain links. */
     sections: { title: string; paragraphs: string[] }[];
     updated: string;
+  };
+  gallery: {
+    meta: Meta;
+    heading: string;
+    intro: string;
+    all: string;
+    filterLabel: string;
+    /** Link a referenciák alatt a kezdőlapon. */
+    linkText: string;
   };
   cookies: {
     meta: Meta;

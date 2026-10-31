@@ -11,6 +11,7 @@ const hu: Translation = {
       about: "Rólunk",
       products: "Termékek",
       references: "Referenciák",
+      gallery: "Galéria",
       contact: "Kapcsolat",
     },
     back: "Vissza",
@@ -483,6 +484,21 @@ const hu: Translation = {
       },
     ],
     updated: "Hatályos: 2026. október",
+  },
+
+  // ------------------------------------------------------------
+  // GALÉRIA
+  // ------------------------------------------------------------
+  gallery: {
+    meta: {
+      title: "Galéria",
+      description: "A StarkFix Austria képgalériája: fotók árnyékolási megoldásainkról és referenciamunkáinkról.",
+    },
+    heading: "Galéria",
+    intro: "Minden fotónk egy helyen. Válasszon terméket, vagy kattintson egy képre a nagyításhoz.",
+    all: "Összes",
+    filterLabel: "Képek szűrése termék szerint",
+    linkText: "Az összes kép megtekintése",
   },
 
   // ------------------------------------------------------------

@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Picture from "../Picture.astro";
 import { company } from "../../data/company";
+import { pictureAlt } from "../../data/pictureAlts";
 import { pageUrl, t, type Lang } from "../../i18n";
 
 // A nyitókép előtti zsalu lamelláinak száma (javascript/design.js mozgatja őket).
@@ -51,7 +52,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const { ui, home: text } = t(lang);
+const { ui, home: text, gallery } = t(lang);
 
 // A képek neve: ez az alt szöveg és a kép bal alsó sarkában látható felirat is.
 const heroTitles = [
@@ -111,7 +112,7 @@ const heroTitles = [
       <!-- Képléptető: a kitöltődő pötty mutatja, mikor jön a következő kép. -->
       <div class="window-bar">
         <div class="window-info">
-          <span class="window-caption" aria-hidden="true">{heroTitles[0]}</span>
+          <span class="window-caption" aria-hidden="true" data-captions={JSON.stringify(heroTitles)}>{heroTitles[0]}</span>
           <div class="window-dots">
             {
               heroPictures.map((_, i) => (
@@ -236,6 +237,7 @@ const heroTitles = [
               data-bs-target="#referenceModal"
               data-title={reference.title}
               data-images={referencePictures[i].join(",")}
+              data-alts={JSON.stringify(referencePictures[i].map((src) => pictureAlt(src, lang)))}
               data-desc={reference.description}
             >
               <span class="stack-inner">
@@ -267,6 +269,9 @@ const heroTitles = [
             </button>
           ))
         }
+      </div>
+      <div class="references-more reveal">
+        <a class="pill pill--white" href={pageUrl("gallery", lang)}>{gallery.linkText}</a>
       </div>
     </section>
 
