@@ -78,6 +78,13 @@ const de: Translation = {
     phoneLabel: "Telefon:",
     addressLabel: "Adresse:",
     contactNote: "Bei Fragen kontaktieren Sie uns gerne!",
+    heroTitle: "Licht, genau so viel Sie möchten.",
+    lightLabel: "Lamellen verstellen",
+    lightOpen: "Offen",
+    lightClosed: "Zu",
+    lightHint: "Probieren Sie es aus: Bewegen Sie die Lamellen.",
+    copyEmail: "E-Mail kopieren",
+    copied: "Kopiert",
   },
 
   // ------------------------------------------------------------

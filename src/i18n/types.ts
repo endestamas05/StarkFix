@@ -72,6 +72,13 @@ export interface Translation {
     phoneLabel: string;
     addressLabel: string;
     contactNote: string;
+    heroTitle: string;
+    lightLabel: string;
+    lightOpen: string;
+    lightClosed: string;
+    lightHint: string;
+    copyEmail: string;
+    copied: string;
   };
   shutters: ProductText;
   venetianBlinds: ProductText;

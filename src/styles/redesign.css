@@ -1,0 +1,1013 @@
+/* ============================================================
+   Új design (test ág): fény és árnyék.
+   Ez váltja ki a public/css/common.min.css fájlt. Színek, térközök,
+   mozgásgörbék egy helyen, a sötét mód ugyanezeket a változókat cseréli.
+   ============================================================ */
+
+:root {
+    --bg: #fbfbfd;
+    --surface: #ffffff;
+    --surface-2: #f2f2f5;
+    --ink: #1d1d1f;
+    --muted: #63636a;
+    --hair: rgba(0, 0, 0, 0.1);
+    --accent: #0a5bc4;
+    --sun: #ff9f0a;
+    --glass: rgba(251, 251, 253, 0.72);
+    --slat-a: #f4f4f1;
+    --slat-b: #cfcfca;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.06), 0 24px 60px rgba(0, 0, 0, 0.14);
+    --sun-strength: 0.32;
+
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --gutter: clamp(1rem, 4vw, 3rem);
+    --page: 1200px;
+
+    /* Erős ease-out: azonnal reagál, finoman áll meg. */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Display", "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+    --bg: #0b0b0d;
+    --surface: #161618;
+    --surface-2: #1d1d20;
+    --ink: #f5f5f7;
+    --muted: #a6a6ad;
+    --hair: rgba(255, 255, 255, 0.13);
+    --accent: #5aaeff;
+    --glass: rgba(22, 22, 24, 0.68);
+    --slat-a: #55555a;
+    --slat-b: #2f2f33;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 60px rgba(0, 0, 0, 0.55);
+    --sun-strength: 0.13;
+}
+
+/* --- Alapok --- */
+body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+.fullpage-flex {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: clip;
+}
+.fullpage-main {
+    flex-grow: 1;
+}
+h1,
+h2,
+h3,
+.h4,
+.display-5,
+.display-6 {
+    color: var(--ink);
+    font-weight: 650;
+    letter-spacing: -0.022em;
+}
+a {
+    color: var(--accent);
+    text-underline-offset: 0.18em;
+}
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+.text-secondary {
+    color: var(--muted) !important;
+}
+.text-primary {
+    color: var(--accent) !important;
+}
+
+.eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 550;
+    letter-spacing: -0.005em;
+}
+
+/* --- Pirula gombok: nyomásra enyhén összehúzódnak --- */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 1.35rem;
+    border-radius: 999px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease;
+}
+.pill:active {
+    transform: scale(0.97);
+}
+.pill--solid {
+    background-color: var(--accent);
+    color: #fff;
+}
+[data-theme="dark"] .pill--solid {
+    color: #06121f;
+}
+.pill--quiet {
+    background-color: var(--surface-2);
+    color: var(--ink);
+}
+@media (hover: hover) and (pointer: fine) {
+    .pill--quiet:hover {
+        background-color: var(--hair);
+    }
+}
+
+.btn {
+    /* A vissza gombon lévő d-inline-block osztály ellen kell az !important. */
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1.1rem 0 0.8rem;
+    border: 0;
+    border-radius: 999px;
+    background-color: var(--surface-2);
+    color: var(--ink);
+    font-weight: 550;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease;
+}
+.btn:hover,
+.btn:focus-visible {
+    background-color: var(--hair);
+    color: var(--ink);
+}
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* --- Lebegő, üveg hatású menüsáv --- */
+.navbar {
+    position: sticky;
+    top: 10px;
+    z-index: 2000;
+    align-self: center;
+    width: min(var(--page), calc(100% - 20px));
+    margin-top: 10px;
+    padding: 0.3rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--glass);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 0 0 1px var(--hair);
+    transition: box-shadow 200ms ease;
+}
+.navbar.scrolled {
+    box-shadow: 0 0 0 1px var(--hair), var(--shadow-sm);
+}
+.navbar-brand {
+    color: var(--ink);
+    font-size: 1.1rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+}
+.navbar-brand:hover {
+    color: var(--ink);
+}
+.navbar-logo {
+    width: auto;
+    height: 34px;
+    max-height: 34px;
+}
+/* A logó fehér rajz, világos sávon sötétre váltjuk. */
+[data-theme="light"] .navbar-logo {
+    filter: brightness(0);
+}
+.nav-link {
+    margin: 0 0.1rem;
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 0.95rem;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+    background-color: var(--surface-2);
+    color: var(--ink);
+}
+.navbar-toggler {
+    border: 0;
+    box-shadow: none !important;
+}
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--surface-2);
+    font-size: 1rem;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease;
+}
+.theme-toggle:hover {
+    background-color: var(--hair);
+}
+.theme-toggle:active {
+    transform: scale(0.94);
+}
+.lang-switcher-light {
+    min-height: 38px;
+    padding: 0 0.9rem;
+    background-color: var(--surface-2);
+    font-size: 0.9rem;
+}
+/* A Bootstrap türkiz gombszíne helyett nyitva is a saját semleges szín marad. */
+.lang-switcher-light:hover,
+.lang-switcher-light:focus-visible,
+.lang-switcher-light:active,
+.lang-switcher-light.show {
+    background-color: var(--hair) !important;
+    color: var(--ink) !important;
+}
+.dropdown-menu {
+    overflow: hidden;
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    background-color: var(--surface);
+    box-shadow: var(--shadow-lg);
+    /* A menü a gombjából nyílik, nem a saját közepéből. */
+    transform-origin: top right;
+    transition: opacity 160ms var(--ease-out), scale 160ms var(--ease-out);
+}
+@starting-style {
+    .dropdown-menu.show {
+        opacity: 0;
+        scale: 0.96;
+    }
+}
+.dropdown-item {
+    color: var(--ink);
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--surface-2);
+    color: var(--ink);
+}
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--accent);
+    color: #fff;
+}
+[data-theme="dark"] .dropdown-item.active,
+[data-theme="dark"] .dropdown-item:active {
+    color: #06121f;
+}
+.dropdown-divider {
+    border-color: var(--hair);
+    opacity: 1;
+}
+.lang-storage-note {
+    color: var(--muted);
+}
+
+/* --- Nyitókép: cím, majd az ablak a mozgatható lamellákkal --- */
+.hero {
+    width: min(var(--page), calc(100% - var(--gutter) * 2));
+    margin: 0 auto;
+    padding-top: clamp(3rem, 7vw, 5.5rem);
+    text-align: center;
+}
+.hero-title {
+    max-width: 16ch;
+    margin: 0 auto;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+}
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+}
+
+.window {
+    position: relative;
+    margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    background-color: var(--surface-2);
+    box-shadow: var(--shadow-lg);
+}
+.window-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.blinds {
+    display: none;
+}
+.js .blinds {
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+/* Csukott zsalunál a szobába kevesebb fény jut: a kép mögöttük sötétedik. */
+.blinds-dim {
+    position: absolute;
+    inset: 0;
+    background-color: #000;
+    opacity: 0.45;
+}
+.blinds-rail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 12px;
+    background: linear-gradient(var(--slat-a), var(--slat-b));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.blinds-cord {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.28);
+}
+.blinds-cord--left {
+    left: 18%;
+}
+.blinds-cord--right {
+    right: 18%;
+}
+.blinds-slats {
+    position: absolute;
+    inset: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+.slat {
+    flex: 1 1 0;
+    /* Hajszálnyi átfedés, hogy zárt állapotban ne látsszon rés. */
+    margin-bottom: -1px;
+    background: linear-gradient(var(--slat-a) 0%, var(--slat-a) 42%, var(--slat-b) 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
+    will-change: transform;
+}
+
+/* A csúszka: a kitöltés a JS-ből jön (--fill), a napszín a beengedett fényt jelzi. */
+.light-control {
+    display: none;
+}
+.js .light-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+.light-end {
+    min-width: 3.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.light-end:first-child {
+    text-align: right;
+}
+.light-end:last-child {
+    text-align: left;
+}
+.light-slider {
+    --fill: 72%;
+    flex: 0 1 340px;
+    min-width: 0;
+    height: 44px;
+    margin: 0;
+    background: transparent;
+    cursor: grab;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.light-slider:active {
+    cursor: grabbing;
+}
+.light-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--sun) var(--fill), var(--surface-2) var(--fill));
+    box-shadow: inset 0 0 0 1px var(--hair);
+}
+.light-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--hair);
+}
+.light-slider::-moz-range-progress {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--sun);
+}
+.light-slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    margin-top: -11px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 160ms var(--ease-out);
+    -webkit-appearance: none;
+    appearance: none;
+}
+.light-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+.light-slider:active::-webkit-slider-thumb {
+    transform: scale(1.08);
+}
+.light-hint {
+    display: none;
+}
+.js .light-hint {
+    display: block;
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* --- Rólunk: nagy betűs szöveg, rajta a beengedett fény csíkjai --- */
+.about {
+    position: relative;
+    margin-top: clamp(3rem, 8vw, 6rem);
+    padding: clamp(3.5rem, 9vw, 7rem) var(--gutter);
+    overflow: hidden;
+}
+.sun-band {
+    position: absolute;
+    inset: -20% -5%;
+    opacity: 0;
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 176, 70, var(--sun-strength)) 0 46px,
+        transparent 46px 74px
+    );
+    transform: skewY(-7deg);
+    -webkit-mask-image: linear-gradient(100deg, transparent 0%, #000 45%, transparent 100%);
+    mask-image: linear-gradient(100deg, transparent 0%, #000 45%, transparent 100%);
+    pointer-events: none;
+    will-change: transform;
+}
+.about-inner {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+}
+.about-text {
+    margin: 0;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 550;
+    line-height: 1.32;
+    letter-spacing: -0.018em;
+    text-wrap: pretty;
+}
+
+/* --- Szakaszok közös fejléce --- */
+.section-head {
+    width: min(var(--page), 100%);
+    margin: 0 auto 1.75rem;
+}
+.section-head h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+/* --- Termékek: különböző méretű képkártyák --- */
+.products,
+.references {
+    padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
+}
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: clamp(280px, 30vw, 380px);
+    gap: 14px;
+    width: min(var(--page), 100%);
+    margin: 0 auto;
+}
+.tile {
+    position: relative;
+    display: flex;
+    grid-column: span 2;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--surface-2);
+    color: #fff;
+    text-decoration: none;
+    /* A kép lekerekítése Safariban is a kártyához igazodjon nagyítás közben. */
+    isolation: isolate;
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.tile--wide {
+    grid-column: span 3;
+}
+.tile.in:active {
+    transform: scale(0.985);
+    transition: transform 160ms var(--ease-out);
+    transition-delay: 0ms !important;
+}
+.tile-photo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--ease-out);
+}
+/* Sötétítés a szöveg alatt, hogy minden fotón olvasható maradjon. */
+.tile:not(.tile--drawn)::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    z-index: -1;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+}
+.tile-text {
+    padding: 1.35rem 4rem 1.35rem 1.5rem;
+}
+.tile-title {
+    margin: 0 0 0.2rem;
+    color: inherit;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 650;
+}
+.tile-tagline {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    opacity: 0.92;
+}
+.tile-arrow {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: transform 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+    .tile:hover .tile-photo {
+        transform: scale(1.035);
+    }
+    .tile:hover .tile-arrow {
+        transform: translateX(3px);
+    }
+}
+/* Fotó nélküli kártya: rajzolt napellenző, napsütötte háttérrel. */
+.tile--drawn {
+    color: var(--ink);
+    background: linear-gradient(170deg, #fff4dd, var(--surface-2) 70%);
+}
+[data-theme="dark"] .tile--drawn {
+    background: linear-gradient(170deg, #3a2f1c, var(--surface-2) 70%);
+}
+.tile--drawn .tile-arrow {
+    background-color: var(--hair);
+}
+.tile-awning {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 46%;
+    fill: var(--accent);
+    filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.18));
+}
+
+/* --- Referenciák: oldalra görgethető sor, kattintásra megnyílik a képnéző --- */
+.rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(290px, 1fr);
+    gap: 14px;
+    width: min(var(--page), 100%);
+    margin: 0 auto;
+    padding-bottom: 0.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.rail::-webkit-scrollbar {
+    display: none;
+}
+.rail-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    text-align: left;
+    scroll-snap-align: start;
+    transition: transform 160ms var(--ease-out);
+}
+.rail-card:active {
+    transform: scale(0.985);
+}
+.rail-frame {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 0.9rem;
+    border-radius: var(--radius-md);
+    background-color: var(--surface-2);
+}
+.rail-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+    .rail-card:hover .rail-photo {
+        transform: scale(1.035);
+    }
+}
+.rail-title {
+    font-size: 1.15rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+}
+.rail-desc {
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* --- Kapcsolat: sötét panel, nagy, kattintható elérhetőségek --- */
+.contact {
+    padding: clamp(2rem, 5vw, 4rem) var(--gutter) clamp(3rem, 7vw, 5rem);
+}
+.contact-panel {
+    --panel-ink: #f5f5f7;
+    --panel-muted: #a6a6ad;
+    position: relative;
+    width: min(var(--page), 100%);
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 5rem);
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: #131316;
+    color: var(--panel-ink);
+}
+/* Nappali fény a panel sarkában. */
+.contact-panel::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(closest-side, rgba(255, 159, 10, 0.24), transparent);
+    pointer-events: none;
+}
+.contact-panel > * {
+    position: relative;
+}
+.contact-panel .eyebrow,
+.contact-label {
+    color: var(--panel-muted);
+}
+.contact-title {
+    max-width: 18ch;
+    margin: 0 0 2.25rem;
+    color: inherit;
+    font-size: clamp(1.9rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+.contact-links {
+    display: grid;
+    gap: 1.25rem;
+}
+.contact-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+.contact-link {
+    display: inline-block;
+    color: inherit;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    transition: opacity 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .contact-link:hover {
+        opacity: 0.72;
+    }
+}
+.contact-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.75rem 1rem;
+}
+.copy-button {
+    min-height: 38px;
+    padding: 0 1rem;
+    border: 0;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: inherit;
+    font-size: 0.9rem;
+    font-weight: 550;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease;
+}
+.copy-button:active {
+    transform: scale(0.97);
+}
+.copy-button.done {
+    background-color: rgba(255, 159, 10, 0.3);
+}
+.copy-label {
+    display: inline-block;
+    transition: opacity 120ms ease, filter 120ms ease;
+}
+/* Felirat cseréje közben enyhe elmosás, így egy dolognak látszik a váltás. */
+.copy-button.swapping .copy-label {
+    opacity: 0;
+    filter: blur(2px);
+}
+.contact-address {
+    margin: 2rem 0 0;
+    font-size: 1.05rem;
+}
+
+/* --- Megjelenés görgetésre (csak ha fut a JS) --- */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.js .reveal.in {
+    opacity: 1;
+    transform: none;
+}
+/* A referenciaképek alulról felfelé tárulnak fel, mint egy felhúzott redőny. */
+.js .reveal-image {
+    clip-path: inset(0 0 100% 0 round var(--radius-md));
+    transition: clip-path 800ms var(--ease-out);
+}
+.js .reveal-image.in {
+    clip-path: inset(0 0 0 0 round var(--radius-md));
+}
+
+/* --- Aloldalak: termékek és jogi szövegek --- */
+.reference-main {
+    width: min(var(--page), 100%);
+    margin: 0 auto;
+    background: none;
+    color: var(--ink);
+}
+[data-page="legal"] .reference-main,
+[data-page="privacy"] .reference-main {
+    max-width: 800px;
+}
+[data-page="cookies"] .reference-main {
+    max-width: 1040px;
+}
+.img-fluid.rounded.shadow,
+.carousel .carousel-inner {
+    border-radius: var(--radius-md) !important;
+}
+.img-fluid.rounded.shadow {
+    box-shadow: var(--shadow-sm) !important;
+}
+.carousel .img-fluid.rounded.shadow {
+    box-shadow: none !important;
+}
+img.zoomable {
+    cursor: zoom-in;
+}
+.list-group-item {
+    padding-left: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    line-height: 1.4;
+}
+.check-icon {
+    color: var(--sun);
+}
+
+/* Szakaszelválasztó: elhalványuló lamellasor a sima vonal helyett. */
+.section-divider {
+    height: 22px;
+    background: repeating-linear-gradient(180deg, var(--hair) 0 1px, transparent 1px 6px);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
+}
+
+/* --- Képlapozó vezérlők: visszafogott üveg körök --- */
+.carousel-indicators.custom-indicators {
+    left: 1rem;
+    right: auto;
+    bottom: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+}
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px !important;
+    border: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    background-clip: border-box;
+    opacity: 0.5;
+    transition: opacity 200ms ease;
+}
+.carousel-indicators .active {
+    opacity: 1;
+}
+.carousel-controls-custom {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.4rem;
+}
+.carousel-controls-custom .carousel-control-prev,
+.carousel-controls-custom .carousel-control-next {
+    position: static;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* Fekete háttéren (képnéző) és világos fotón is látszódjon. */
+    background-color: rgba(70, 70, 76, 0.72);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    transition: transform 160ms var(--ease-out);
+}
+.carousel-controls-custom .carousel-control-prev:active,
+.carousel-controls-custom .carousel-control-next:active {
+    transform: scale(0.94);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* --- Képnéző --- */
+.modal-content {
+    border: 0;
+    border-radius: var(--radius-lg);
+    background-color: var(--surface);
+    color: var(--ink);
+}
+.modal-dialog {
+    transition: transform 240ms var(--ease-out) !important;
+}
+.modal.fade .modal-dialog {
+    transform: scale(0.97);
+}
+.modal.show .modal-dialog {
+    transform: none;
+}
+[data-theme="dark"] .btn-close {
+    filter: invert(1);
+}
+
+/* --- Lábléc --- */
+footer {
+    width: min(var(--page), calc(100% - var(--gutter) * 2));
+    margin: auto auto 0;
+    padding: 1.75rem 0 2rem;
+    border-top: 1px solid var(--hair);
+    color: var(--muted);
+}
+footer a.text-primary {
+    color: var(--muted) !important;
+    text-underline-offset: 0.18em;
+}
+footer a.text-primary:hover {
+    color: var(--ink) !important;
+}
+
+/* --- Táblázat a cookie-oldalon --- */
+.storage-table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--ink);
+    --bs-table-border-color: var(--hair);
+    color: var(--ink);
+}
+
+/* --- Kisebb kijelzők --- */
+@media (max-width: 991.98px) {
+    .navbar {
+        border-radius: 22px;
+    }
+    /* Üveg sáv alatt a panel teljesen tömör, hogy olvasható maradjon. */
+    .nav-link:hover,
+    .nav-link:focus-visible {
+        background-color: var(--surface-2);
+    }
+}
+@media (max-width: 1000px) {
+    .tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .tile,
+    .tile--wide {
+        grid-column: span 1;
+    }
+    .tile:first-child {
+        grid-column: span 2;
+    }
+}
+@media (max-width: 640px) {
+    .window {
+        aspect-ratio: 4 / 5;
+    }
+    .tile-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: 300px;
+    }
+    .tile,
+    .tile--wide,
+    .tile:first-child {
+        grid-column: auto;
+    }
+    .rail {
+        grid-auto-columns: 84%;
+    }
+    .reference-main {
+        padding-top: 1.25rem !important;
+    }
+}
+
+/* --- Kevesebb mozgást kérő látogatók: helyzetváltozás nincs, a tartalom azonnal látszik --- */
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal,
+    .js .reveal-image {
+        opacity: 1;
+        clip-path: none;
+        transform: none;
+        transition: none;
+    }
+    .tile-photo,
+    .rail-photo {
+        transition: none;
+    }
+    .sun-band {
+        transform: skewY(-7deg);
+    }
+}

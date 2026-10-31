@@ -77,22 +77,10 @@ img.zoomable {
     opacity: 0.5;
 }
 
-/* --- Hero: slow cross-fade between pictures (the slow zoom of each picture
-       is in common.min.css). The old picture fades out at the same pace as the
-       new one fades in, so the brightness doesn't jump at the end. --- */
-#heroCarousel.carousel-fade .carousel-item {
-    transition: opacity 1.4s ease-in-out;
-}
-#heroCarousel.carousel-fade .active.carousel-item-start,
-#heroCarousel.carousel-fade .active.carousel-item-end {
-    opacity: 0;
-    transition: opacity 1.4s ease-in-out;
-}
-
 /* --- Menu links scroll to their section just below the sticky navbar
        (the smooth scrolling itself is in javascript/site.js). --- */
 main section[id] {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 72px;
 }
 
 /* --- Dark mode: links light enough to read on the dark background
@@ -100,17 +88,6 @@ main section[id] {
 [data-theme="dark"] .contact-info a,
 [data-theme="dark"] .reference-main a:not(.btn):not(.belso-type-link):not(.mosquito-type-link) {
     color: #90caf9;
-}
-[data-theme="dark"] .belso-type-link,
-[data-theme="dark"] .mosquito-type-link {
-    color: #90caf9;
-}
-[data-theme="dark"] .belso-type-link.active,
-[data-theme="dark"] .belso-type-link[aria-current="true"],
-[data-theme="dark"] .mosquito-type-link.active,
-[data-theme="dark"] .mosquito-type-link[aria-current="true"] {
-    color: #e3f2fd !important;
-    border-bottom-color: #42a5f5 !important;
 }
 
 /* --- Cookie page table: follows the dark theme, and on phones every row
@@ -120,7 +97,7 @@ main section[id] {
 [data-theme="dark"] .storage-table td {
     color: inherit;
     background-color: transparent;
-    border-color: #3a4556;
+    border-color: var(--hair);
 }
 [data-theme="dark"] .storage-table code {
     color: #f48fb1;
@@ -152,28 +129,6 @@ main section[id] {
     white-space: normal;
 }
 
-/* --- Language switcher: the filled blue dark-mode look in both themes
-       (in light mode it used to fall back to Bootstrap's outline style). --- */
-.lang-switcher-light {
-    background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%) !important;
-    color: #fff !important;
-    border-color: #42a5f5 !important;
-    text-shadow: 0 2px 8px #000b;
-    filter: brightness(1.08) drop-shadow(0 0 8px #42a5f5cc);
-}
-.lang-switcher-light:hover,
-.lang-switcher-light:focus-visible {
-    background: linear-gradient(90deg, #42a5f5 60%, #90caf9 100%) !important;
-    color: #222 !important;
-    text-shadow: 0 2px 8px #fff8;
-    filter: brightness(1.12) drop-shadow(0 0 12px #90caf9cc);
-}
-.lang-switcher-light:active {
-    background: #1565c0 !important;
-    color: #fff !important;
-    filter: brightness(1.18) drop-shadow(0 0 16px #42a5f5cc);
-}
-
 /* --- Hamburger icon: the three lines turn into an X while the menu is open --- */
 .hamburger {
     position: relative;
@@ -188,7 +143,7 @@ main section[id] {
     right: 13%;
     height: 2px;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: var(--ink);
     transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.2s ease;
 }
@@ -218,23 +173,22 @@ main section[id] {
 @media (max-width: 991.98px) {
     .navbar-collapse {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         left: 0;
         right: 0;
         padding: 0 1rem;
-        background-color: var(--navbar-bg);
-        border-radius: 0 0 1rem 1rem;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        background-color: var(--surface);
+        border-radius: 24px;
+        box-shadow: var(--shadow-lg);
     }
 
     /* Layout: full-width rows lined up with the logo, thin separators,
        theme + language in their own bar at the bottom. */
     .navbar-collapse .navbar-nav {
         padding: 0.25rem 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
     .navbar-collapse .nav-item + .nav-item {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid var(--hair);
     }
     .navbar-collapse .navbar-nav .nav-link {
         display: flex;
@@ -264,7 +218,7 @@ main section[id] {
         justify-content: space-between;
         margin: 0 !important;
         padding: 0.75rem 0.75rem 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 1px solid var(--hair);
     }
 
     /* The panel unfolds while sliding down and fading in, and the reverse when closing.

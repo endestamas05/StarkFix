@@ -85,6 +85,13 @@ const hu: Translation = {
     phoneLabel: "Telefon:",
     addressLabel: "Cím:",
     contactNote: "Kérdés esetén keressen minket bizalommal!",
+    heroTitle: "Pontosan annyi fény, amennyit szeretne.",
+    lightLabel: "Lamellák állítása",
+    lightOpen: "Nyitva",
+    lightClosed: "Zárva",
+    lightHint: "Próbálja ki: mozgassa a lamellákat.",
+    copyEmail: "E-mail másolása",
+    copied: "Másolva",
   },
 
   // ------------------------------------------------------------

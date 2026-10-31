@@ -4,24 +4,23 @@ import Picture from "../Picture.astro";
 import { company } from "../../data/company";
 import { pageUrl, t, type Lang } from "../../i18n";
 
-const heroPictures = [
-  "/images/references/venetian-blind-conversion/venetian-blind-conversion-1.webp",
-  "/images/references/conservatory-slanted-windows/conservatory-slanted-windows-1.webp",
-  "/images/references/linz-harbour/linz-harbour-1.webp",
-  "/images/references/turquoise-outdoor-roller-blinds.webp",
-  "/images/products/conservatory-shading-1.webp",
-];
+// A nyitókép előtti zsalu lamelláinak száma (javascript/design.js mozgatja őket).
+const slatCount = 18;
 
-const productOrder = [
-  "shutters",
-  "venetianBlinds",
-  "outdoorRollerBlinds",
-  "interiorShading",
-  "conservatoryShading",
-  "pergolas",
-  "awnings",
-  "insectScreens",
-  "service",
+const heroPicture = "/images/references/linz-harbour/linz-harbour-1.webp";
+
+// Termékrács: a "wide" kártya szélesebb. Az oldal tetszőleges sorrendben átrendezhető,
+// a napellenzőnek még nincs fotója, ezért ott rajzolt grafika jelenik meg.
+const tiles = [
+  { page: "shutters", picture: "/images/products/shutters.webp", wide: true },
+  { page: "venetianBlinds", picture: "/images/references/venetian-blind-conversion/venetian-blind-conversion-1.webp", wide: true },
+  { page: "outdoorRollerBlinds", picture: "/images/products/outdoor-roller-blind-green.webp", wide: false },
+  { page: "interiorShading", picture: "/images/products/interior-venetian-blind.webp", wide: false },
+  { page: "conservatoryShading", picture: "/images/products/conservatory-shading-1.webp", wide: false },
+  { page: "pergolas", picture: "/images/products/pergola.webp", wide: true },
+  { page: "awnings", picture: null, wide: true },
+  { page: "insectScreens", picture: "/images/products/insect-screen-pleated.webp", wide: true },
+  { page: "service", picture: "/images/products/service.webp", wide: true },
 ] as const;
 
 // Pictures of each reference card (the first one is the thumbnail); texts are in the language files.
@@ -49,167 +48,163 @@ const { ui, home: text } = t(lang);
 ---
 
 <Layout lang={lang} page="home" meta={text.meta}>
-  <header id="hero-reference" class="d-flex flex-column justify-content-center align-items-center">
-    <div
-      id="heroCarousel"
-      class="carousel slide carousel-fade w-100 h-100 position-relative"
-      data-bs-ride="carousel"
-      data-bs-interval="8000"
-    >
-      <div class="carousel-inner h-100">
-        {
-          heroPictures.map((src, i) => (
-            <div class={i === 0 ? "carousel-item h-100 active" : "carousel-item h-100"}>
-              <Picture
-                src={src}
-                alt={text.heroAlt(i + 1)}
-                class="d-block w-100 hero-img"
-                sizes="(max-width: 575px) 100vw, (max-width: 991px) 80vw, 1200px"
-                width={1200}
-                height={600}
-                priority={i === 0}
-                lazy={i > 0}
-              />
-            </div>
-          ))
-        }
-      </div>
-      <div class="carousel-indicators custom-indicators">
-        {
-          heroPictures.map((_, i) => (
-            <button
-              type="button"
-              data-bs-target="#heroCarousel"
-              data-bs-slide-to={i}
-              class={i === 0 ? "active" : undefined}
-              aria-current={i === 0 ? "true" : undefined}
-              aria-label={ui.image(i + 1)}
-              style="min-width: 15px; min-height: 15px; margin: 4px"
-            />
-          ))
-        }
-      </div>
-      <div class="carousel-controls-custom">
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="prev"
-          aria-label={ui.previousImage}
-          style="min-width: 50px; min-height: 50px; margin: 4px"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">{ui.previous}</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="next"
-          aria-label={ui.nextImage}
-          style="min-width: 50px; min-height: 50px; margin: 4px"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">{ui.next}</span>
-        </button>
+  <header id="hero-reference" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">StarkFix Austria · Fix for you</p>
+      <h1 class="hero-title">{text.heroTitle}</h1>
+      <div class="hero-actions">
+        <a class="pill pill--solid" href="#services">{ui.nav.products}</a>
+        <a class="pill pill--quiet" href="#contact">{ui.nav.contact}</a>
       </div>
     </div>
-    <div class="hero-caption text-center text-white position-absolute w-100" style="top: 0; left: 0">
-      <h1 class="display-4 fw-bold">StarkFix Austria</h1>
-      <p class="fix-for-you">Fix for you</p>
+
+    <!-- Az ablak: a fotó előtt igazi lamellák. JavaScript nélkül csak a fotó látszik. -->
+    <figure class="window">
+      <Picture
+        src={heroPicture}
+        alt={text.references[0].title}
+        class="window-photo"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        width={1200}
+        height={675}
+        priority
+      />
+      <div class="blinds" aria-hidden="true">
+        <span class="blinds-dim"></span>
+        <span class="blinds-rail"></span>
+        <span class="blinds-cord blinds-cord--left"></span>
+        <span class="blinds-cord blinds-cord--right"></span>
+        <div class="blinds-slats">
+          {Array.from({ length: slatCount }, () => <span class="slat"></span>)}
+        </div>
+      </div>
+    </figure>
+
+    <div class="light-control">
+      <span class="light-end" aria-hidden="true">{text.lightClosed}</span>
+      <input
+        id="light-slider"
+        class="light-slider"
+        type="range"
+        min="0"
+        max="100"
+        value="72"
+        aria-label={text.lightLabel}
+      />
+      <span class="light-end" aria-hidden="true">{text.lightOpen}</span>
     </div>
+    <p class="light-hint">{text.lightHint}</p>
   </header>
 
   <main>
-  <section id="about" class="container-fluid about-section shadow">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-6 text-center text-lg-start">
-        <h2 class="mb-3">{text.aboutTitle}</h2>
-        <p>{text.aboutText}</p>
+    <section id="about" class="about">
+      <!-- Az a fény, amit fent a látogató beenged: a csíkok erősségét a lamellák állása adja. -->
+      <div class="sun-band" aria-hidden="true"></div>
+      <div class="about-inner reveal">
+        <p class="eyebrow">{text.aboutTitle}</p>
+        <h2 class="visually-hidden">{text.aboutTitle}</h2>
+        <p class="about-text">{text.aboutText}</p>
       </div>
-      <div class="col-lg-6 d-none d-lg-block">
-        <!-- Shutter illustration -->
-        <svg width="100%" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="theme-svg">
-          <rect x="10" y="10" width="380" height="100" rx="18" fill="var(--primary-color-light)" stroke="var(--primary-color)" stroke-width="4" class="svg-rect-bg"></rect>
-          <rect x="20" y="25" width="360" height="12" rx="4" fill="var(--primary-color)" opacity="0.7" class="svg-rect"></rect>
-          <rect x="20" y="45" width="360" height="12" rx="4" fill="var(--primary-color)" opacity="0.5" class="svg-rect"></rect>
-          <rect x="20" y="65" width="360" height="12" rx="4" fill="var(--primary-color)" opacity="0.7" class="svg-rect"></rect>
-          <rect x="20" y="85" width="360" height="12" rx="4" fill="var(--primary-color)" opacity="0.5" class="svg-rect"></rect>
-        </svg>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services" class="container-fluid services-section shadow">
-    <h2 class="mb-4 text-center">{text.productsTitle}</h2>
-    <div class="row g-4">
-      {
-        productOrder.map((page, i) => (
-          <div class={i === productOrder.length - 1 ? "col-md-4 col-sm-12" : "col-md-4 col-sm-6"}>
-            <a href={pageUrl(page, lang)} class="text-decoration-none text-reset">
-              <div class="card h-100 text-center p-3">
-                <div class="card-body">
-                  <h3 class="card-title h5">{text.products[page].title}</h3>
-                  <p class="card-text fst-italic">{text.products[page].tagline}</p>
-                </div>
+    <section id="services" class="products">
+      <div class="section-head reveal">
+        <h2>{text.productsTitle}</h2>
+      </div>
+      <div class="tile-grid">
+        {
+          tiles.map((tile) => (
+            <a href={pageUrl(tile.page, lang)} class:list={["tile", "reveal", { "tile--wide": tile.wide, "tile--drawn": !tile.picture }]}>
+              {tile.picture ? (
+                <Picture
+                  src={tile.picture}
+                  alt=""
+                  class="tile-photo"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 600px"
+                  width={800}
+                  height={600}
+                  lazy
+                />
+              ) : (
+                <svg class="tile-awning" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 0h400v96a25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0z" />
+                </svg>
+              )}
+              <div class="tile-text">
+                <h3 class="tile-title">{text.products[tile.page].title}</h3>
+                <p class="tile-tagline">{text.products[tile.page].tagline}</p>
               </div>
+              <span class="tile-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
             </a>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+          ))
+        }
+      </div>
+    </section>
 
-  <section id="references" class="container-fluid references-section shadow py-5">
-    <h2 class="mb-4 text-center fw-bold references-title">{text.referencesTitle}</h2>
-    <div class="row g-4 justify-content-center">
-      {
-        text.references.map((reference, i) => (
-          <div class="col-md-4">
-            <div
-              class="card reference-card h-100 border-0 p-3"
+    <section id="references" class="references">
+      <div class="section-head reveal">
+        <h2>{text.referencesTitle}</h2>
+      </div>
+      <div class="rail">
+        {
+          text.references.map((reference, i) => (
+            <button
+              type="button"
+              class="reference-card rail-card"
               data-bs-toggle="modal"
               data-bs-target="#referenceModal"
               data-title={reference.title}
               data-images={referencePictures[i].join(",")}
               data-desc={reference.description}
             >
-              <Picture
-                src={referencePictures[i][0]}
-                alt={reference.title}
-                class="img-fluid shadow"
-                sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"
-                width={400}
-                height={250}
-                lazy
-              />
-              <div class="card-body">
-                <h3 class="card-title h5">{reference.title}</h3>
-                <p class="card-text text-secondary fst-italic">{reference.description}</p>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section id="contact" class="container-fluid contact-section shadow rounded-0 mb-0">
-    <h2 class="mb-3 text-center">{text.contactTitle}</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6 contact-info text-center p-5">
-        <p>
-          <strong>Email:</strong>
-          <a href={`mailto:${company.email}`}>{company.email}</a>
-        </p>
-        <p>
-          <strong>{text.phoneLabel}</strong>
-          <a href={company.phoneHref}>{company.phone}</a>
-        </p>
-        <p><strong>{text.addressLabel}</strong> {company.businessAddress.postalCity}, {company.businessAddress.street}</p>
-        <p class="mt-3 text-secondary" style="font-size: 0.95rem">{text.contactNote}</p>
+              <span class="rail-frame reveal-image">
+                <Picture
+                  src={referencePictures[i][0]}
+                  alt=""
+                  class="rail-photo"
+                  sizes="(max-width: 640px) 85vw, 520px"
+                  width={800}
+                  height={600}
+                  lazy
+                />
+              </span>
+              <span class="rail-title">{reference.title}</span>
+              <span class="rail-desc">{reference.description}</span>
+            </button>
+          ))
+        }
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-panel reveal">
+        <p class="eyebrow">{text.contactTitle}</p>
+        <h2 class="contact-title">{text.contactNote}</h2>
+        <div class="contact-links">
+          <a class="contact-link" href={company.phoneHref}>
+            <span class="contact-label">{text.phoneLabel}</span>
+            {company.phone}
+          </a>
+          <div class="contact-mail">
+            <a class="contact-link" href={`mailto:${company.email}`}>
+              <span class="contact-label">E-Mail:</span>
+              {company.email}
+            </a>
+            <!-- Másolás gomb: a felirat elmosódva vált, hogy egy állapotváltásnak hasson. -->
+            <button type="button" class="copy-button" data-copy={company.email} data-copied={text.copied}>
+              <span class="copy-label">{text.copyEmail}</span>
+            </button>
+          </div>
+        </div>
+        <p class="contact-address">
+          <span class="contact-label">{text.addressLabel}</span>
+          {company.businessAddress.postalCity}, {company.businessAddress.street}
+        </p>
+      </div>
+    </section>
   </main>
 </Layout>

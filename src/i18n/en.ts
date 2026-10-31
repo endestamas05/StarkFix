@@ -78,6 +78,13 @@ const en: Translation = {
     phoneLabel: "Phone:",
     addressLabel: "Address:",
     contactNote: "If you have any questions, feel free to contact us!",
+    heroTitle: "Exactly as much light as you want.",
+    lightLabel: "Adjust the slats",
+    lightOpen: "Open",
+    lightClosed: "Closed",
+    lightHint: "Try it: move the slats.",
+    copyEmail: "Copy e-mail",
+    copied: "Copied",
   },
 
   // ------------------------------------------------------------
