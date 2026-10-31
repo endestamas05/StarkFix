@@ -19,12 +19,11 @@
     --on-accent: #ffffff;
     --sun: #1565c0;
     --glass: rgba(247, 250, 254, 0.78);
-    --slat-a: #f4f4f1;
-    --slat-b: #cfcfca;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.06), 0 24px 60px rgba(0, 0, 0, 0.14);
-    --sun-strength: 0.3;
 
+    /* A menüsáv magassága: ehhez igazodnak a tapadó elemek is. */
+    --nav-h: 80px;
     --radius-lg: 28px;
     --radius-md: 20px;
     --gutter: clamp(1rem, 4vw, 3rem);
@@ -48,11 +47,8 @@
     --on-accent: #10151b;
     --sun: #90caf9;
     --glass: rgba(24, 32, 42, 0.72);
-    --slat-a: #55555a;
-    --slat-b: #2f2f33;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 60px rgba(0, 0, 0, 0.55);
-    --sun-strength: 0.16;
 }
 
 /* --- Alapok --- */
@@ -157,28 +153,28 @@ a {
     transform: scale(0.97);
 }
 
-/* --- Lebegő, üveg hatású menüsáv --- */
+/* --- Teljes szélességű felső menüsáv --- */
 .navbar {
     position: sticky;
-    top: 10px;
+    top: 0;
     z-index: 2000;
-    align-self: center;
-    width: min(var(--page), calc(100% - 20px));
-    margin-top: 10px;
-    padding: 0.3rem 0.5rem;
-    border-radius: 999px;
-    background-color: rgba(21, 101, 192, 0.9);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    box-shadow: 0 8px 24px rgba(13, 71, 161, 0.22);
+    width: 100%;
+    min-height: var(--nav-h);
+    padding: 0.5rem 0;
+    background-color: var(--brand);
     transition: box-shadow 200ms ease;
 }
 .navbar.scrolled {
-    box-shadow: 0 12px 32px rgba(13, 71, 161, 0.34);
+    box-shadow: 0 6px 24px rgba(13, 71, 161, 0.32);
+}
+/* A sáv tartalma az oldal tartalmával egy vonalban van. */
+.navbar > .container-fluid {
+    width: min(var(--page), calc(100% - var(--gutter) * 2));
+    padding: 0;
 }
 .navbar-brand {
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.45rem;
     font-weight: 650;
     letter-spacing: -0.015em;
 }
@@ -187,14 +183,16 @@ a {
 }
 .navbar-logo {
     width: auto;
-    height: 34px;
-    max-height: 34px;
+    height: 50px;
+    max-height: 50px;
 }
 .nav-link {
     margin: 0 0.1rem;
+    padding: 0.55rem 0.9rem !important;
     border-radius: 999px;
     color: #fff;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    font-weight: 500;
     transition: background-color 160ms ease, color 160ms ease;
 }
 .nav-link:hover,
@@ -216,8 +214,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
     border-radius: 50%;
@@ -232,11 +230,11 @@ a {
     transform: scale(0.94);
 }
 .lang-switcher-light {
-    min-height: 38px;
-    padding: 0 0.9rem;
+    min-height: 44px;
+    padding: 0 1rem;
     background-color: rgba(255, 255, 255, 0.18);
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 /* A Bootstrap türkiz gombszíne helyett nyitva is a saját semleges szín marad. */
 .lang-switcher-light:hover,
@@ -283,41 +281,28 @@ a {
     color: var(--muted);
 }
 
-/* --- Nyitókép: cím, majd az ablak a mozgatható lamellákkal --- */
+/* --- Nyitókép: teljes képernyős fotó, rajta nagy fehér cím és vékony haladásjelző --- */
 .hero {
-    width: min(var(--page), calc(100% - var(--gutter) * 2));
-    margin: 0 auto;
-    padding-top: clamp(3rem, 7vw, 5.5rem);
-    text-align: center;
-}
-.hero-title {
-    max-width: 16ch;
-    margin: 0 auto;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 700;
-    line-height: 1.04;
-    letter-spacing: -0.035em;
-    text-wrap: balance;
-}
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.6rem;
-    margin-top: 1.75rem;
-}
-
-.window {
     position: relative;
-    margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+    display: flex;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
-    border-radius: var(--radius-lg);
-    background-color: var(--surface-2);
-    box-shadow: var(--shadow-lg);
+    width: 100%;
+    min-height: max(560px, calc(100vh - var(--nav-h)));
+    background-color: var(--brand-deep);
+    color: #fff;
 }
-/* A fotók egymáson vannak, mindig csak az aktív látszik (a csere zárt lamellák mögött történik). */
-.window-photo {
+@supports (height: 100svh) {
+    .hero {
+        min-height: max(560px, calc(100svh - var(--nav-h)));
+    }
+}
+.hero-media {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+}
+/* A képek egymáson vannak: lassú áttűnés, közben az aktív kép finoman közelebb jön. */
+.hero-photo {
     position: absolute;
     inset: 0;
     display: block;
@@ -325,303 +310,179 @@ a {
     height: 100%;
     object-fit: cover;
     opacity: 0;
+    transform: scale(1.07);
+    transition: opacity 1300ms cubic-bezier(0.4, 0, 0.2, 1), transform 1300ms linear;
 }
-.window-photo.is-active {
+.hero-photo.is-active {
     opacity: 1;
+    transform: scale(1);
+    transition: opacity 1300ms cubic-bezier(0.4, 0, 0.2, 1), transform 9000ms var(--ease-out);
 }
-
-/* Képléptető sáv az ablak alján, a lamellák fölött. */
-.window-bar {
-    display: none;
-}
-.js .window-bar {
+/* Sötétítés a szöveg alatt: alulról és balról, a kép jobb fele tiszta marad. */
+.hero::after {
+    content: "";
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    z-index: 3;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 0.75rem;
+    inset: 0;
+    background:
+        linear-gradient(0deg, rgba(5, 18, 43, 0.86) 0%, rgba(5, 18, 43, 0.3) 46%, rgba(5, 18, 43, 0.08) 72%),
+        linear-gradient(90deg, rgba(5, 18, 43, 0.5) 0%, transparent 62%);
     pointer-events: none;
 }
-.window-info {
+.hero-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    min-width: 0;
-    padding: 0.5rem 0.85rem 0.3rem;
-    border-radius: 18px;
-    background-color: rgba(13, 71, 161, 0.72);
+    justify-content: flex-end;
+    gap: clamp(1.75rem, 4vh, 3rem);
+    width: min(var(--page), calc(100% - var(--gutter) * 2));
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 5rem) 0 clamp(1.25rem, 3vh, 2rem);
+}
+.hero-eyebrow {
+    margin: 0 0 1rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    font-weight: 500;
+}
+.hero-title {
+    max-width: 15ch;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.75rem, 7.2vw, 6.25rem);
+    font-weight: 650;
+    line-height: 1.02;
+    letter-spacing: -0.038em;
+    text-wrap: balance;
+}
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+.pill--glass {
+    background-color: rgba(255, 255, 255, 0.16);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     color: #fff;
-    text-align: left;
-    pointer-events: auto;
 }
-.window-caption {
-    font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    transition: opacity 120ms ease, filter 120ms ease;
+@media (hover: hover) and (pointer: fine) {
+    .pill--glass:hover {
+        background-color: rgba(255, 255, 255, 0.26);
+        color: #fff;
+    }
 }
-.window-caption.swapping {
+.hero :focus-visible {
+    outline-color: #fff;
+}
+.hero-bar {
+    display: none;
+}
+.js .hero-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+.hero-progress {
+    min-width: 0;
+}
+.hero-caption {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 200ms ease, filter 200ms ease;
+}
+.hero-caption.swapping {
     opacity: 0;
     filter: blur(2px);
 }
-.window-dots {
+.hero-segments {
     display: flex;
-    align-items: center;
-    margin-left: -5px;
+    gap: 6px;
 }
-/* A pötty kattintható területe 24 px, a látszó rész kisebb. */
-.window-dot {
+/* A vonal vékony, de a kattintható terület 24 px magas. */
+.hero-segment {
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 18px;
+    width: clamp(30px, 5.5vw, 72px);
     height: 24px;
-    padding: 0 5px;
+    padding: 0;
     border: 0;
     background: none;
 }
-.window-dot-track {
+.hero-segment-track {
     position: relative;
     display: block;
     overflow: hidden;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.45);
-    transition: width 200ms var(--ease-out);
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.34);
 }
-.window-dot.is-active .window-dot-track {
-    width: 30px;
-}
-.window-dot-fill {
+.hero-segment-fill {
     position: absolute;
     inset: 0;
-    border-radius: inherit;
     background-color: #fff;
     transform: scaleX(0);
     transform-origin: left;
 }
 /* Ez az animáció az időzítő: ha véget ér, a design.js a következő képre lép. */
-.window-dot.is-active .window-dot-fill {
-    animation: dot-fill 7s linear forwards;
+.hero-segment.is-active .hero-segment-fill {
+    animation: segment-fill 7s linear forwards;
 }
-.window.paused .window-dot-fill {
+.hero.paused .hero-segment-fill {
     animation-play-state: paused;
 }
-@keyframes dot-fill {
+@keyframes segment-fill {
     to {
         transform: scaleX(1);
     }
 }
-.window-buttons {
+.hero-buttons {
     display: flex;
     flex: none;
     gap: 0.35rem;
-    pointer-events: auto;
 }
-.window-button {
+.hero-button {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
     padding: 0;
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    background-color: rgba(13, 71, 161, 0.72);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    background: none;
     color: #fff;
     transition: transform 160ms var(--ease-out), background-color 200ms ease;
 }
-.window-button:active {
-    transform: scale(0.92);
-}
-.window-bar :focus-visible {
-    outline-color: #fff;
+.hero-button:active {
+    transform: scale(0.94);
 }
 @media (hover: hover) and (pointer: fine) {
-    .window-button:hover {
-        background-color: rgba(21, 101, 192, 0.95);
+    .hero-button:hover {
+        background-color: rgba(255, 255, 255, 0.16);
     }
 }
 .icon-play,
-.window.user-paused .icon-pause {
+.hero.user-paused .icon-pause {
     display: none;
 }
-.window.user-paused .icon-play {
+.hero.user-paused .icon-play {
     display: block;
-}
-.blinds {
-    display: none;
-}
-.js .blinds {
-    display: block;
-    position: absolute;
-    inset: 0;
-}
-/* Csukott zsalunál a szobába kevesebb fény jut: a kép mögöttük sötétedik. */
-.blinds-dim {
-    position: absolute;
-    inset: 0;
-    background-color: #000;
-    opacity: 0.45;
-}
-.blinds-rail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    height: 12px;
-    background: linear-gradient(var(--slat-a), var(--slat-b));
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-.blinds-cord {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    width: 2px;
-    background-color: rgba(255, 255, 255, 0.28);
-}
-.blinds-cord--left {
-    left: 18%;
-}
-.blinds-cord--right {
-    right: 18%;
-}
-.blinds-slats {
-    position: absolute;
-    inset: 12px 0 0;
-    display: flex;
-    flex-direction: column;
-}
-.slat {
-    flex: 1 1 0;
-    /* Hajszálnyi átfedés, hogy zárt állapotban ne látsszon rés. */
-    margin-bottom: -1px;
-    background: linear-gradient(var(--slat-a) 0%, var(--slat-a) 42%, var(--slat-b) 100%);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
-    will-change: transform;
 }
 
-/* A csúszka: a kitöltés a JS-ből jön (--fill). */
-.light-control {
-    display: none;
-}
-.js .light-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.9rem;
-    margin-top: 1.5rem;
-}
-.light-end {
-    min-width: 3.5rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-.light-end:first-child {
-    text-align: right;
-}
-.light-end:last-child {
-    text-align: left;
-}
-.light-slider {
-    --fill: 72%;
-    flex: 0 1 340px;
-    min-width: 0;
-    height: 44px;
-    margin: 0;
-    background: transparent;
-    cursor: grab;
-    -webkit-appearance: none;
-    appearance: none;
-}
-.light-slider:active {
-    cursor: grabbing;
-}
-.light-slider::-webkit-slider-runnable-track {
-    height: 6px;
-    border-radius: 999px;
-    background: linear-gradient(to right, var(--sun) var(--fill), var(--surface-2) var(--fill));
-    box-shadow: inset 0 0 0 1px var(--hair);
-}
-.light-slider::-moz-range-track {
-    height: 6px;
-    border-radius: 999px;
-    background: var(--surface-2);
-    box-shadow: inset 0 0 0 1px var(--hair);
-}
-.light-slider::-moz-range-progress {
-    height: 6px;
-    border-radius: 999px;
-    background: var(--sun);
-}
-.light-slider::-webkit-slider-thumb {
-    width: 28px;
-    height: 28px;
-    margin-top: -11px;
-    border: 0;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.25);
-    transition: transform 160ms var(--ease-out);
-    -webkit-appearance: none;
-    appearance: none;
-}
-.light-slider::-moz-range-thumb {
-    width: 28px;
-    height: 28px;
-    border: 0;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.25);
-}
-.light-slider:active::-webkit-slider-thumb {
-    transform: scale(1.08);
-}
-.light-hint {
-    display: none;
-}
-.js .light-hint {
-    display: block;
-    margin: 0.25rem 0 0;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-/* --- Rólunk: nagy betűs szöveg, rajta a beengedett fény csíkjai --- */
+/* --- Rólunk: nagy betűs szöveg --- */
 .about {
     position: relative;
-    margin-top: clamp(3rem, 8vw, 6rem);
     padding: clamp(3.5rem, 9vw, 7rem) var(--gutter);
     overflow: hidden;
     background-color: var(--tint);
-}
-.sun-band {
-    position: absolute;
-    inset: -20% -5%;
-    opacity: 0;
-    background: repeating-linear-gradient(
-        180deg,
-        rgba(66, 165, 245, var(--sun-strength)) 0 46px,
-        transparent 46px 74px
-    );
-    transform: skewY(-7deg);
-    -webkit-mask-image: linear-gradient(100deg, transparent 0%, #000 45%, transparent 100%);
-    mask-image: linear-gradient(100deg, transparent 0%, #000 45%, transparent 100%);
-    pointer-events: none;
-    transition: opacity 240ms ease;
-    will-change: transform;
 }
 .about-inner {
     position: relative;
@@ -808,7 +669,7 @@ a {
 }
 .stack-card {
     position: sticky;
-    top: 84px;
+    top: calc(var(--nav-h) + 14px);
     display: block;
     width: 100%;
     height: max(min(74vh, 680px), 420px);
@@ -972,7 +833,7 @@ a {
 }
 .gallery > .scroll-nav {
     position: sticky;
-    top: 74px;
+    top: calc(var(--nav-h) + 10px);
     z-index: 1020;
     margin: 1.75rem 0;
 }
@@ -1472,8 +1333,15 @@ footer a.text-primary:hover {
 
 /* --- Kisebb kijelzők --- */
 @media (max-width: 991.98px) {
-    .navbar {
-        border-radius: 22px;
+    :root {
+        --nav-h: 72px;
+    }
+    .navbar-logo {
+        height: 44px;
+        max-height: 44px;
+    }
+    .navbar-brand {
+        font-size: 1.3rem;
     }
     /* Üveg sáv alatt a panel teljesen tömör, hogy olvasható maradjon. */
     .nav-link:hover,
@@ -1494,9 +1362,6 @@ footer a.text-primary:hover {
     }
 }
 @media (max-width: 640px) {
-    .window {
-        aspect-ratio: 4 / 5;
-    }
     .tile-grid {
         grid-template-columns: minmax(0, 1fr);
         grid-auto-rows: 300px;
@@ -1509,11 +1374,8 @@ footer a.text-primary:hover {
     .stack-card {
         height: max(72vh, 440px);
     }
-    .window-caption {
-        font-size: 0.82rem;
-    }
-    .window-prev,
-    .window-next {
+    .hero-prev,
+    .hero-next {
         display: none;
     }
     .reference-main {
@@ -1541,11 +1403,16 @@ footer a.text-primary:hover {
     .js .louver {
         display: none;
     }
-    .window-dot.is-active .window-dot-fill {
+    .hero-photo,
+    .hero-photo.is-active {
+        transform: none;
+        transition: none;
+    }
+    .hero-segment.is-active .hero-segment-fill {
         animation: none;
         transform: scaleX(1);
     }
-    .window-pause {
+    .hero-pause {
         display: none;
     }
     .tile-photo {
@@ -1557,8 +1424,5 @@ footer a.text-primary:hover {
     .stack-photo {
         top: 0;
         height: 100%;
-    }
-    .sun-band {
-        transform: skewY(-7deg);
     }
 }

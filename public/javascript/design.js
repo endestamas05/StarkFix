@@ -9,211 +9,107 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // --------------------------------------------------------
-    // Lamellák: a csúszka 0-nál zárt (a lamellák szemből látszanak),
-    // 100-nál nyitott (élükkel fordulnak a néző felé).
-    // Mindegyik ugyanabban a szögben áll, mint egy valódi zsalu,
-    // és a mozgás közben is bármikor megfordítható.
+    // Nyitókép: a képek lassan áttűnnek egymásba. Az időzítő az aktív vonal
+    // kitöltődése (CSS-animáció): ha az szünetel, a léptetés is áll,
+    // ha véget ér, jön a következő kép.
     // --------------------------------------------------------
 
-    const slider = document.getElementById("light-slider");
-    const slats = Array.prototype.slice.call(document.querySelectorAll(".slat"));
-    const dim = document.querySelector(".blinds-dim");
-    const sunBand = document.querySelector(".sun-band");
+    const hero = document.querySelector(".hero");
+    const heroMedia = document.querySelector(".hero-media");
 
-    if (slider && slats.length) {
-        const OPEN_ANGLE = 84;
-        // Lapos lamella: a szomszédos sorok épp fedik egymást, nincs rés.
-        const angles = slats.map(function () {
-            return 0;
-        });
-        let frame = null;
-
-        // Képléptető: amíg "closing" igaz, a lamellák a csúszkától függetlenül összezárnak,
-        // zárt állapotban cserélődik a kép, majd visszaállnak a csúszka szerinti szögre.
-        const figure = document.querySelector(".window");
-        const photos = Array.prototype.slice.call(document.querySelectorAll(".window-photo"));
-        const dots = Array.prototype.slice.call(document.querySelectorAll(".window-dot"));
-        const caption = document.querySelector(".window-caption");
-        // A feliratok rövid nevek; a képek részletes leírása az alt szövegben van.
-        const captions = caption ? JSON.parse(caption.dataset.captions) : [];
+    if (hero) {
+        const photos = Array.prototype.slice.call(hero.querySelectorAll(".hero-photo"));
+        const segments = Array.prototype.slice.call(hero.querySelectorAll(".hero-segment"));
+        const caption = hero.querySelector(".hero-caption");
+        const captions = JSON.parse(caption.dataset.captions);
+        const pauseButton = hero.querySelector(".hero-pause");
         let current = 0;
-        let pending = null;
-        let closing = false;
-        let swapping = false;
-
-        function targetAngle() {
-            return closing ? 0 : (Number(slider.value) / 100) * OPEN_ANGLE;
-        }
-
-        function paint() {
-            slats.forEach(function (slat, i) {
-                // Lamellánként saját perspektíva: így a felső és az alsó is ugyanúgy néz ki.
-                slat.style.transform = "perspective(900px) rotateX(" + angles[i].toFixed(2) + "deg)";
-            });
-            const open = angles[Math.floor(angles.length / 2)] / OPEN_ANGLE;
-            if (dim) dim.style.opacity = String((1 - open) * 0.45);
-        }
-
-        // A beengedett fény az oldal lejjebb lévő részén is látszik. A csúszkát követi,
-        // ezért képváltáskor nem villog.
-        function paintSun() {
-            if (sunBand) sunBand.style.opacity = String(Number(slider.value) / 100);
-        }
+        let wanted = 0;
+        let userPaused = false;
+        let hovering = false;
+        let focused = false;
+        let inView = true;
 
         function showPhoto(index) {
             photos[current].classList.remove("is-active");
-            dots[current].classList.remove("is-active");
-            dots[current].removeAttribute("aria-current");
+            segments[current].classList.remove("is-active");
+            segments[current].removeAttribute("aria-current");
             current = index;
             photos[current].classList.add("is-active");
-            dots[current].classList.add("is-active");
-            dots[current].setAttribute("aria-current", "true");
+            segments[current].classList.add("is-active");
+            segments[current].setAttribute("aria-current", "true");
 
             caption.classList.add("swapping");
             setTimeout(function () {
                 caption.textContent = captions[current];
                 caption.classList.remove("swapping");
-            }, 120);
+            }, 200);
         }
 
-        // Zárt lamellák mögött cserélünk, de csak ha az új kép már betöltött.
-        function swapBehindSlats() {
-            swapping = true;
-            const photo = photos[pending];
+        // Csak a már betöltött kép jöhet elő, különben üres lenne az áttűnés.
+        function goTo(index) {
+            const next = (index + photos.length) % photos.length;
+            wanted = next;
+            const photo = photos[next];
             photo.loading = "eager";
             const ready = photo.decode ? photo.decode().catch(function () {}) : Promise.resolve();
             ready.then(function () {
-                showPhoto(pending);
-                pending = null;
-                closing = false;
-                swapping = false;
-                start();
+                if (wanted === next && next !== current) showPhoto(next);
             });
         }
 
-        function goTo(index) {
-            const next = (index + photos.length) % photos.length;
-            if (next === current && !closing) return;
-            if (reduceMotion) {
-                showPhoto(next);
-                return;
-            }
-            pending = next;
-            closing = true;
-            if (!swapping) start();
+        function syncPause() {
+            hero.classList.toggle("paused", userPaused || hovering || focused || !inView || document.hidden);
+            hero.classList.toggle("user-paused", userPaused);
         }
 
-        function step() {
-            const target = targetAngle();
-            let moving = false;
-            angles.forEach(function (angle, i) {
-                // Minden lamella azonos szögben, egyszerre mozog. Záráskor gyorsabb,
-                // hogy a képváltás ne tartson sokáig.
-                const pull = closing ? 0.3 : 0.2;
-                const next = angle + (target - angle) * pull;
-                if (Math.abs(target - next) > 0.05) moving = true;
-                angles[i] = Math.abs(target - next) > 0.05 ? next : target;
+        hero.querySelector(".hero-prev").addEventListener("click", function () {
+            goTo(wanted - 1);
+        });
+        hero.querySelector(".hero-next").addEventListener("click", function () {
+            goTo(wanted + 1);
+        });
+        segments.forEach(function (segment, i) {
+            segment.addEventListener("click", function () {
+                goTo(i);
             });
-            paint();
-            if (!moving && closing) {
-                frame = null;
-                swapBehindSlats();
-                return;
-            }
-            frame = moving ? requestAnimationFrame(step) : null;
-        }
-
-        function start() {
-            if (reduceMotion) {
-                angles.fill(targetAngle());
-                paint();
-            } else if (!frame) {
-                frame = requestAnimationFrame(step);
-            }
-        }
-
-        function paintFill() {
-            slider.style.setProperty("--fill", slider.value + "%");
-        }
-
-        slider.addEventListener("input", function () {
-            paintFill();
-            paintSun();
-            start();
+        });
+        pauseButton.addEventListener("click", function () {
+            userPaused = !userPaused;
+            pauseButton.setAttribute("aria-label", userPaused ? pauseButton.dataset.play : pauseButton.dataset.pause);
+            syncPause();
+        });
+        hero.querySelector(".hero-segments").addEventListener("animationend", function (event) {
+            if (event.animationName === "segment-fill") goTo(current + 1);
         });
 
-        // Vezérlők. Az időzítő maga a pötty kitöltődése (CSS-animáció): ha az szünetel,
-        // a léptetés is áll, és amikor véget ér, jön a következő kép.
-        if (figure && photos.length > 1) {
-            const pauseButton = figure.querySelector(".window-pause");
-            let userPaused = false;
-            let hovering = false;
-            let focused = false;
-            let inView = true;
-
-            function syncPause() {
-                figure.classList.toggle("paused", userPaused || hovering || focused || !inView || document.hidden);
-                figure.classList.toggle("user-paused", userPaused);
-            }
-
-            figure.querySelector(".window-prev").addEventListener("click", function () {
-                goTo((pending === null ? current : pending) - 1);
-            });
-            figure.querySelector(".window-next").addEventListener("click", function () {
-                goTo((pending === null ? current : pending) + 1);
-            });
-            dots.forEach(function (dot, i) {
-                dot.addEventListener("click", function () {
-                    goTo(i);
-                });
-            });
-            pauseButton.addEventListener("click", function () {
-                userPaused = !userPaused;
-                pauseButton.setAttribute("aria-label", userPaused ? pauseButton.dataset.play : pauseButton.dataset.pause);
+        // Csak a vezérlők fölött áll meg: a kép fölött pihenő egér ne állítsa le.
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            const bar = hero.querySelector(".hero-bar");
+            bar.addEventListener("pointerenter", function () {
+                hovering = true;
                 syncPause();
             });
-            figure.querySelector(".window-dots").addEventListener("animationend", function (event) {
-                if (event.animationName === "dot-fill") goTo(current + 1);
-            });
-
-            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-                // Csak a vezérlők fölött áll meg: a nagy kép fölött pihenő egér ne állítsa le.
-                const bar = figure.querySelector(".window-bar");
-                bar.addEventListener("pointerenter", function () {
-                    hovering = true;
-                    syncPause();
-                });
-                bar.addEventListener("pointerleave", function () {
-                    hovering = false;
-                    syncPause();
-                });
-            }
-            // Csak billentyűzetes fókusznál áll meg: kattintás után a gombon marad a fókusz,
-            // és attól még mennie kell a léptetésnek.
-            figure.addEventListener("focusin", function (event) {
-                focused = event.target.matches(":focus-visible");
+            bar.addEventListener("pointerleave", function () {
+                hovering = false;
                 syncPause();
             });
-            figure.addEventListener("focusout", function () {
-                focused = false;
-                syncPause();
-            });
-            document.addEventListener("visibilitychange", syncPause);
-            if ("IntersectionObserver" in window) {
-                new IntersectionObserver(function (entries) {
-                    inView = entries[0].isIntersecting;
-                    syncPause();
-                }).observe(figure);
-            }
         }
-
-        paintFill();
-        paintSun();
-        // Első betöltéskor a zsalu kinyílik: ez mutatja meg, hogy ez itt mozgatható.
-        if (reduceMotion) start();
-        else {
-            paint();
-            setTimeout(start, 450);
+        // Csak billentyűzetes fókusznál áll meg: kattintás után a gombon marad a fókusz.
+        hero.addEventListener("focusin", function (event) {
+            focused = event.target.matches(":focus-visible");
+            syncPause();
+        });
+        hero.addEventListener("focusout", function () {
+            focused = false;
+            syncPause();
+        });
+        document.addEventListener("visibilitychange", syncPause);
+        if ("IntersectionObserver" in window) {
+            new IntersectionObserver(function (entries) {
+                inView = entries[0].isIntersecting;
+                syncPause();
+            }).observe(hero);
         }
     }
 
@@ -277,7 +173,6 @@
     // --------------------------------------------------------
 
     const nav = document.querySelector(".navbar");
-    const heroWindow = document.querySelector(".window");
     const stackCards = Array.prototype.slice.call(document.querySelectorAll(".stack-card")).map(function (card) {
         return {
             card: card,
@@ -298,20 +193,9 @@
         ticking = false;
         if (reduceMotion) return;
 
-        if (sunBand) {
-            const rect = sunBand.parentElement.getBoundingClientRect();
-            if (rect.bottom > 0 && rect.top < height) {
-                sunBand.style.transform = "translateY(" + (rect.top * -0.12).toFixed(1) + "px) skewY(-7deg)";
-            }
-        }
-
-        // Az ablak görgetésre teljes méretre nő.
-        if (heroWindow) {
-            const rect = heroWindow.getBoundingClientRect();
-            if (rect.bottom > 0) {
-                const grown = clamp((height - rect.top) / (height * 0.75));
-                heroWindow.style.transform = "scale(" + (0.94 + grown * 0.06).toFixed(4) + ")";
-            }
+        // A kép görgetéskor lassabban halad, mint az oldal.
+        if (heroMedia && window.scrollY < height * 1.2) {
+            heroMedia.style.transform = "translateY(" + (window.scrollY * 0.22).toFixed(1) + "px)";
         }
 
         if (aboutWords.length) {

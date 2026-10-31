@@ -1,7 +1,7 @@
 /* Belső árnyékolók típusválasztója: a sáv kinézete közös (redesign.css, .scroll-nav). */
 .belso-type-nav {
     position: sticky;
-    top: 74px;
+    top: calc(var(--nav-h) + 10px);
     z-index: 1020;
     margin-bottom: 2.5rem !important;
 }

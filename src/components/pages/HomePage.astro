@@ -5,10 +5,7 @@ import { company } from "../../data/company";
 import { pictureAlt } from "../../data/pictureAlts";
 import { pageUrl, t, type Lang } from "../../i18n";
 
-// A nyitókép előtti zsalu lamelláinak száma (javascript/design.js mozgatja őket).
-const slatCount = 18;
-
-// A nyitókép képei. Képváltáskor a lamellák összezárnak, mögöttük cserélődik a fotó.
+// A nyitókép képei: lassan áttűnnek egymásba (javascript/design.js).
 const heroPictures = [
   "/images/references/linz-harbour/linz-harbour-1.webp",
   "/images/references/venetian-blind-conversion/venetian-blind-conversion-1.webp",
@@ -66,118 +63,93 @@ const heroTitles = [
 
 <Layout lang={lang} page="home" meta={text.meta}>
   <header id="hero-reference" class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">StarkFix Austria · Fix for you</p>
-      <h1 class="hero-title">
-        {
-          text.heroTitle.split(" ").map((word) => (
-            <>
-              <span class="hero-word">{word}</span>{" "}
-            </>
-          ))
-        }
-      </h1>
-      <div class="hero-actions">
-        <a class="pill pill--solid" href="#services">{ui.nav.products}</a>
-        <a class="pill pill--quiet" href="#contact">{ui.nav.contact}</a>
-      </div>
-    </div>
-
-    <!-- Az ablak: a fotó előtt igazi lamellák. JavaScript nélkül csak a fotó látszik. -->
-    <figure class="window">
+    <div class="hero-media">
       {
         heroPictures.map((src, i) => (
           <Picture
             src={src}
             alt={heroTitles[i]}
-            class={i === 0 ? "window-photo is-active" : "window-photo"}
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            width={1200}
-            height={675}
+            class={i === 0 ? "hero-photo is-active" : "hero-photo"}
+            sizes="100vw"
+            width={1600}
+            height={900}
             priority={i === 0}
             lazy={i > 0}
           />
         ))
       }
-      <div class="blinds" aria-hidden="true">
-        <span class="blinds-dim"></span>
-        <span class="blinds-rail"></span>
-        <span class="blinds-cord blinds-cord--left"></span>
-        <span class="blinds-cord blinds-cord--right"></span>
-        <div class="blinds-slats">
-          {Array.from({ length: slatCount }, () => <span class="slat"></span>)}
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">StarkFix Austria · Fix for you</p>
+        <h1 class="hero-title">
+          {
+            text.heroTitle.split(" ").map((word) => (
+              <>
+                <span class="hero-word">{word}</span>{" "}
+              </>
+            ))
+          }
+        </h1>
+        <div class="hero-actions">
+          <a class="pill pill--white" href="#services">{ui.nav.products}</a>
+          <a class="pill pill--glass" href="#contact">{ui.nav.contact}</a>
         </div>
       </div>
 
-      <!-- Képléptető: a kitöltődő pötty mutatja, mikor jön a következő kép. -->
-      <div class="window-bar">
-        <div class="window-info">
-          <span class="window-caption" aria-hidden="true" data-captions={JSON.stringify(heroTitles)}>{heroTitles[0]}</span>
-          <div class="window-dots">
+      <!-- Képléptető: a kitöltődő vonal mutatja, mikor jön a következő kép. -->
+      <div class="hero-bar">
+        <div class="hero-progress">
+          <span class="hero-caption" aria-hidden="true" data-captions={JSON.stringify(heroTitles)}>{heroTitles[0]}</span>
+          <div class="hero-segments">
             {
               heroPictures.map((_, i) => (
                 <button
                   type="button"
-                  class={i === 0 ? "window-dot is-active" : "window-dot"}
+                  class={i === 0 ? "hero-segment is-active" : "hero-segment"}
                   aria-label={ui.image(i + 1)}
                   aria-current={i === 0 ? "true" : undefined}
                 >
-                  <span class="window-dot-track"><span class="window-dot-fill"></span></span>
+                  <span class="hero-segment-track"><span class="hero-segment-fill"></span></span>
                 </button>
               ))
             }
           </div>
         </div>
-        <div class="window-buttons">
-          <button type="button" class="window-button window-prev" aria-label={ui.previousImage}>
+        <div class="hero-buttons">
+          <button type="button" class="hero-button hero-prev" aria-label={ui.previousImage}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
           <button
             type="button"
-            class="window-button window-pause"
+            class="hero-button hero-pause"
             aria-label={text.heroPause}
             data-pause={text.heroPause}
             data-play={text.heroPlay}
           >
             <svg class="icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <rect x="4" y="3" width="3" height="10" rx="1" />
-              <rect x="9" y="3" width="3" height="10" rx="1" />
+              <rect x="4" y="3" width="2.6" height="10" rx="1" />
+              <rect x="9.4" y="3" width="2.6" height="10" rx="1" />
             </svg>
             <svg class="icon-play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M5 3.2v9.6a.6.6 0 0 0 .92.5l7.3-4.8a.6.6 0 0 0 0-1l-7.3-4.8a.6.6 0 0 0-.92.5z" />
             </svg>
           </button>
-          <button type="button" class="window-button window-next" aria-label={ui.nextImage}>
+          <button type="button" class="hero-button hero-next" aria-label={ui.nextImage}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
         </div>
       </div>
-    </figure>
-
-    <div class="light-control">
-      <span class="light-end" aria-hidden="true">{text.lightClosed}</span>
-      <input
-        id="light-slider"
-        class="light-slider"
-        type="range"
-        min="0"
-        max="100"
-        value="72"
-        aria-label={text.lightLabel}
-      />
-      <span class="light-end" aria-hidden="true">{text.lightOpen}</span>
     </div>
-    <p class="light-hint">{text.lightHint}</p>
   </header>
 
   <main>
     <section id="about" class="about">
-      <!-- Az a fény, amit fent a látogató beenged: a csíkok erősségét a lamellák állása adja. -->
-      <div class="sun-band" aria-hidden="true"></div>
       <div class="about-inner reveal">
         <p class="eyebrow">{text.aboutTitle}</p>
         <h2 class="visually-hidden">{text.aboutTitle}</h2>

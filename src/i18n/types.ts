@@ -73,10 +73,6 @@ export interface Translation {
     addressLabel: string;
     contactNote: string;
     heroTitle: string;
-    lightLabel: string;
-    lightOpen: string;
-    lightClosed: string;
-    lightHint: string;
     referencesCta: string;
     heroPause: string;
     heroPlay: string;

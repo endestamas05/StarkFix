@@ -80,7 +80,7 @@ img.zoomable {
 /* --- Menu links scroll to their section just below the sticky navbar
        (the smooth scrolling itself is in javascript/site.js). --- */
 main section[id] {
-    scroll-margin-top: 72px;
+    scroll-margin-top: calc(var(--nav-h) + 8px);
 }
 
 /* --- Dark mode: links light enough to read on the dark background
@@ -173,12 +173,12 @@ main section[id] {
 @media (max-width: 991.98px) {
     .navbar-collapse {
         position: absolute;
-        top: calc(100% + 8px);
+        top: 100%;
         left: 0;
         right: 0;
         padding: 0 1rem;
         background-color: var(--brand);
-        border-radius: 24px;
+        border-radius: 0 0 20px 20px;
         box-shadow: var(--shadow-lg);
     }
 
