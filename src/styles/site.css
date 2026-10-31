@@ -143,7 +143,7 @@ main section[id] {
     right: 13%;
     height: 2px;
     border-radius: 2px;
-    background-color: var(--ink);
+    background-color: #fff;
     transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.2s ease;
 }
@@ -177,7 +177,7 @@ main section[id] {
         left: 0;
         right: 0;
         padding: 0 1rem;
-        background-color: var(--surface);
+        background-color: var(--brand);
         border-radius: 24px;
         box-shadow: var(--shadow-lg);
     }
@@ -188,7 +188,7 @@ main section[id] {
         padding: 0.25rem 0;
     }
     .navbar-collapse .nav-item + .nav-item {
-        border-top: 1px solid var(--hair);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     .navbar-collapse .navbar-nav .nav-link {
         display: flex;
@@ -218,7 +218,7 @@ main section[id] {
         justify-content: space-between;
         margin: 0 !important;
         padding: 0.75rem 0.75rem 1rem;
-        border-top: 1px solid var(--hair);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     /* The panel unfolds while sliding down and fading in, and the reverse when closing.

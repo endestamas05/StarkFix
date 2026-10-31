@@ -32,6 +32,6 @@
 }
 .mosquito-type-link.active,
 .mosquito-type-link[aria-current="true"] {
-    background-color: var(--ink);
-    color: var(--bg);
+    background-color: var(--accent);
+    color: var(--on-accent);
 }

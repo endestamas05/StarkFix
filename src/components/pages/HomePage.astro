@@ -7,7 +7,14 @@ import { pageUrl, t, type Lang } from "../../i18n";
 // A nyitókép előtti zsalu lamelláinak száma (javascript/design.js mozgatja őket).
 const slatCount = 18;
 
-const heroPicture = "/images/references/linz-harbour/linz-harbour-1.webp";
+// A nyitókép képei. Képváltáskor a lamellák összezárnak, mögöttük cserélődik a fotó.
+const heroPictures = [
+  "/images/references/linz-harbour/linz-harbour-1.webp",
+  "/images/references/venetian-blind-conversion/venetian-blind-conversion-1.webp",
+  "/images/references/conservatory-slanted-windows/conservatory-slanted-windows-1.webp",
+  "/images/references/turquoise-outdoor-roller-blinds.webp",
+  "/images/products/conservatory-shading-1.webp",
+];
 
 // Termékrács: a "wide" kártya szélesebb. Az oldal tetszőleges sorrendben átrendezhető,
 // a napellenzőnek még nincs fotója, ezért ott rajzolt grafika jelenik meg.
@@ -45,13 +52,30 @@ interface Props {
 
 const { lang } = Astro.props;
 const { ui, home: text } = t(lang);
+
+// A képek neve: ez az alt szöveg és a kép bal alsó sarkában látható felirat is.
+const heroTitles = [
+  text.references[0].title,
+  text.references[1].title,
+  text.references[2].title,
+  text.products.outdoorRollerBlinds.title,
+  text.products.conservatoryShading.title,
+];
 ---
 
 <Layout lang={lang} page="home" meta={text.meta}>
   <header id="hero-reference" class="hero">
     <div class="hero-copy">
       <p class="eyebrow">StarkFix Austria · Fix for you</p>
-      <h1 class="hero-title">{text.heroTitle}</h1>
+      <h1 class="hero-title">
+        {
+          text.heroTitle.split(" ").map((word) => (
+            <>
+              <span class="hero-word">{word}</span>{" "}
+            </>
+          ))
+        }
+      </h1>
       <div class="hero-actions">
         <a class="pill pill--solid" href="#services">{ui.nav.products}</a>
         <a class="pill pill--quiet" href="#contact">{ui.nav.contact}</a>
@@ -60,15 +84,20 @@ const { ui, home: text } = t(lang);
 
     <!-- Az ablak: a fotó előtt igazi lamellák. JavaScript nélkül csak a fotó látszik. -->
     <figure class="window">
-      <Picture
-        src={heroPicture}
-        alt={text.references[0].title}
-        class="window-photo"
-        sizes="(max-width: 1200px) 100vw, 1200px"
-        width={1200}
-        height={675}
-        priority
-      />
+      {
+        heroPictures.map((src, i) => (
+          <Picture
+            src={src}
+            alt={heroTitles[i]}
+            class={i === 0 ? "window-photo is-active" : "window-photo"}
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            width={1200}
+            height={675}
+            priority={i === 0}
+            lazy={i > 0}
+          />
+        ))
+      }
       <div class="blinds" aria-hidden="true">
         <span class="blinds-dim"></span>
         <span class="blinds-rail"></span>
@@ -76,6 +105,54 @@ const { ui, home: text } = t(lang);
         <span class="blinds-cord blinds-cord--right"></span>
         <div class="blinds-slats">
           {Array.from({ length: slatCount }, () => <span class="slat"></span>)}
+        </div>
+      </div>
+
+      <!-- Képléptető: a kitöltődő pötty mutatja, mikor jön a következő kép. -->
+      <div class="window-bar">
+        <div class="window-info">
+          <span class="window-caption" aria-hidden="true">{heroTitles[0]}</span>
+          <div class="window-dots">
+            {
+              heroPictures.map((_, i) => (
+                <button
+                  type="button"
+                  class={i === 0 ? "window-dot is-active" : "window-dot"}
+                  aria-label={ui.image(i + 1)}
+                  aria-current={i === 0 ? "true" : undefined}
+                >
+                  <span class="window-dot-track"><span class="window-dot-fill"></span></span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <div class="window-buttons">
+          <button type="button" class="window-button window-prev" aria-label={ui.previousImage}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="window-button window-pause"
+            aria-label={text.heroPause}
+            data-pause={text.heroPause}
+            data-play={text.heroPlay}
+          >
+            <svg class="icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <rect x="4" y="3" width="3" height="10" rx="1" />
+              <rect x="9" y="3" width="3" height="10" rx="1" />
+            </svg>
+            <svg class="icon-play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M5 3.2v9.6a.6.6 0 0 0 .92.5l7.3-4.8a.6.6 0 0 0 0-1l-7.3-4.8a.6.6 0 0 0-.92.5z" />
+            </svg>
+          </button>
+          <button type="button" class="window-button window-next" aria-label={ui.nextImage}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </figure>
@@ -130,6 +207,7 @@ const { ui, home: text } = t(lang);
                   <path d="M0 0h400v96a25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0 25 25 0 0 1-50 0z" />
                 </svg>
               )}
+              <span class="tile-light" aria-hidden="true"></span>
               <div class="tile-text">
                 <h3 class="tile-title">{text.products[tile.page].title}</h3>
                 <p class="tile-tagline">{text.products[tile.page].tagline}</p>
@@ -146,34 +224,46 @@ const { ui, home: text } = t(lang);
     </section>
 
     <section id="references" class="references">
-      <div class="section-head reveal">
-        <h2>{text.referencesTitle}</h2>
-      </div>
-      <div class="rail">
+      <h2 class="references-title reveal">{text.referencesTitle}</h2>
+      <!-- Egymásra csúszó kártyák: a következő ráúszik az előzőre, ami közben hátrébb lép. -->
+      <div class="stack">
         {
           text.references.map((reference, i) => (
             <button
               type="button"
-              class="reference-card rail-card"
+              class="reference-card stack-card"
               data-bs-toggle="modal"
               data-bs-target="#referenceModal"
               data-title={reference.title}
               data-images={referencePictures[i].join(",")}
               data-desc={reference.description}
             >
-              <span class="rail-frame reveal-image">
+              <span class="stack-inner">
                 <Picture
                   src={referencePictures[i][0]}
                   alt=""
-                  class="rail-photo"
-                  sizes="(max-width: 640px) 85vw, 520px"
-                  width={800}
-                  height={600}
+                  class="stack-photo"
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  width={1200}
+                  height={800}
                   lazy
                 />
+                <span class="stack-dim" aria-hidden="true"></span>
+                <span class="stack-text">
+                  <span class="stack-title">{reference.title}</span>
+                  <span class="stack-desc">{reference.description}</span>
+                  <span class="stack-cta">
+                    {text.referencesCta}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </span>
+                <!-- Kék lamellák a képen: görgetésre egyszerre felhúzódnak. -->
+                <span class="louver" aria-hidden="true">
+                  {Array.from({ length: 9 }, () => <i></i>)}
+                </span>
               </span>
-              <span class="rail-title">{reference.title}</span>
-              <span class="rail-desc">{reference.description}</span>
             </button>
           ))
         }

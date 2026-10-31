@@ -77,6 +77,9 @@ export interface Translation {
     lightOpen: string;
     lightClosed: string;
     lightHint: string;
+    referencesCta: string;
+    heroPause: string;
+    heroPlay: string;
     copyEmail: string;
     copied: string;
   };
