@@ -128,6 +128,8 @@ export interface Translation {
       registerNumber: string;
       registerCourt: string;
       taxNumber: string;
+      euVatNumber: string;
+      mainActivity: string;
       hosting: string;
       hostingValue: string;
     };

@@ -403,6 +403,8 @@ const hu: Translation = {
       registerNumber: "Cégjegyzékszám:",
       registerCourt: "Nyilvántartó cégbíróság:",
       taxNumber: "Adószám:",
+      euVatNumber: "Közösségi adószám:",
+      mainActivity: "Főtevékenység:",
       hosting: "Tárhelyszolgáltató:",
       hostingValue:
         'GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, <a href="https://support.github.com" rel="noopener">support.github.com</a>, adatvédelmi megkeresésekre: <a href="mailto:privacy@github.com">privacy@github.com</a>',

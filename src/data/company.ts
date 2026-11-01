@@ -35,6 +35,9 @@ export const hungarianCompany = {
   registerNumber: "13-09-245153",
   registerCourt: "Budapest Környéki Törvényszék Cégbírósága",
   taxNumber: "32982525-2-13",
+  euVatNumber: "HU32982525",
+  /** Main activity with its TEÁOR code; the other registered activities are in the company register. */
+  mainActivity: "4332 Épületasztalos-szerkezet szerelése",
   /** For now the Austrian contacts; replace the e-mail once there is a Hungarian one. */
   email: "info@starkfixaustria.at",
   phone: "+43 699 18391466",
