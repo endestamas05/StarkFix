@@ -1,5 +1,7 @@
 ---
 import { contentSizes, srcsetFor } from "../lib/images";
+import { pictureAlt } from "../data/pictureAlts";
+import type { Lang } from "../i18n/routes";
 
 interface Props {
   src: string;
@@ -24,13 +26,16 @@ const {
   priority = false,
 } = Astro.props;
 const srcset = srcsetFor(src);
+// Az oldal nyelve az URL elején van (/de/…, /en/…, /hu/…).
+const lang = Astro.url.pathname.split("/")[1] as Lang;
+const description = pictureAlt(src, lang) ?? alt;
 ---
 
 <img
   src={src}
   srcset={srcset}
   sizes={srcset ? sizes : undefined}
-  alt={alt}
+  alt={description}
   class={className}
   width={width}
   height={height}

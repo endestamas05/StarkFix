@@ -99,6 +99,10 @@ export const legacyFiles: Partial<Record<PageKey, Record<Lang, string>>> = {
   legal: { de: "legal.html", en: "legal-en.html", hu: "legal-hu.html" },
 };
 
+// Jogi oldalak: a keresők ne indexeljék őket (Layout: noindex, sitemap: kimarad).
+// A robots.txt-ben nem szabad tiltani, különben a kereső nem látja a noindex jelzést.
+export const noindexPages: readonly PageKey[] = ["legal", "privacy", "cookies"];
+
 /** Site-relative URL of a page, e.g. pageUrl("shutters", "de") → "/de/rolllaeden/". */
 export function pageUrl(page: PageKey, lang: Lang): string {
   const slug = slugs[page][lang];

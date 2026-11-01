@@ -261,6 +261,22 @@
     }
 
     // --------------------------------------------------------
+    // Reference cards: every picture in the viewer gets its own description.
+    // common.min.js fills the viewer on the same click, so this runs right after it.
+    // --------------------------------------------------------
+
+    document.querySelectorAll(".reference-card[data-alts]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            setTimeout(function () {
+                const alts = JSON.parse(card.dataset.alts);
+                document.querySelectorAll("#referenceCarouselInner img").forEach(function (img, i) {
+                    img.alt = alts[i] || img.alt;
+                });
+            }, 0);
+        });
+    });
+
+    // --------------------------------------------------------
     // Mobile menu: close it after choosing a menu item.
     // --------------------------------------------------------
 

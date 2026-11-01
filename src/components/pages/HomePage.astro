@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Picture from "../Picture.astro";
 import { company } from "../../data/company";
+import { pictureAlt } from "../../data/pictureAlts";
 import { pageUrl, t, type Lang } from "../../i18n";
 
 const heroPictures = [
@@ -172,6 +173,7 @@ const { ui, home: text } = t(lang);
               data-bs-target="#referenceModal"
               data-title={reference.title}
               data-images={referencePictures[i].join(",")}
+              data-alts={JSON.stringify(referencePictures[i].map((src) => pictureAlt(src, lang)))}
               data-desc={reference.description}
             >
               <Picture
