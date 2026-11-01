@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 import { defaultLang, languages, pageKeys, pageUrl } from "../i18n";
-import { noindexPages } from "../i18n/routes";
+import { isIndexable } from "../i18n/routes";
 
 export const GET: APIRoute = ({ site }) => {
   const absolute = (path: string) => new URL(path, site).href;
 
-  const urls = pageKeys.filter((page) => !noindexPages.includes(page)).flatMap((page) =>
+  const urls = pageKeys.filter(isIndexable).flatMap((page) =>
     languages.map((lang) => {
       const alternates = languages
         .map((other) => `    <xhtml:link rel="alternate" hreflang="${other}" href="${absolute(pageUrl(page, other))}" />`)

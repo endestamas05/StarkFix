@@ -32,9 +32,11 @@ const absolute = (path: string) => new URL(path, Astro.site).href;
     <noscript><meta http-equiv="refresh" content={`0; url=${pageUrl("home", defaultLang)}`} /></noscript>
     <title>StarkFix Austria</title>
     <meta name="description" content={t(defaultLang).home.meta.description} />
-    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/images/icons/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
     {languages.map((lang) => <link rel="alternate" hreflang={lang} href={absolute(pageUrl("home", lang))} />)}
-    <link rel="alternate" hreflang="x-default" href={absolute("/")} />
+    <link rel="alternate" hreflang="x-default" href={absolute(pageUrl("home", defaultLang))} />
   </head>
   <body>
     <ul>
