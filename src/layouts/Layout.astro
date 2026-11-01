@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import ImageViewer from "../components/ImageViewer.astro";
 import { defaultLang, languages, pageUrl, type Lang, type PageKey } from "../i18n";
-import { noindexPages } from "../i18n/routes";
+import { isIndexable } from "../i18n/routes";
 import type { Meta } from "../i18n/types";
 import "../styles/site.css";
 import "../styles/redesign.css";
@@ -19,7 +19,7 @@ interface Props {
 
 const { lang, page, meta, styles = [], scripts = [] } = Astro.props;
 const absolute = (path: string) => new URL(path, Astro.site).href;
-const noindex = noindexPages.includes(page);
+const noindex = !isIndexable(page);
 ---
 
 <!doctype html>
@@ -47,7 +47,9 @@ const noindex = noindexPages.includes(page);
     </script>
     <title>StarkFix Austria - {meta.title}</title>
     <meta name="description" content={meta.description} />
-    <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/images/icons/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     {styles.map((href) => <link rel="stylesheet" href={href} />)}
 
